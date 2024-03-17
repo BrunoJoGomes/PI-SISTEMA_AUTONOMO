@@ -1,14 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\samuk\\OneDrive\\\u00C1rea de Trabalho\\projeto\\PI\\",
+  "WorkspaceRootPath": "C:\\Users\\limma\\Desktop\\Sistema Aut\u00F4nomo\\PI-SISTEMA_AUTONOMO\\PI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|c:\\users\\samuk\\onedrive\\\u00E1rea de trabalho\\projeto\\pi\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|c:\\users\\limma\\desktop\\sistema aut\u00F4nomo\\pi-sistema_autonomo\\pi\\frmlobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|solutionrelative:frmlobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|C:\\Users\\samuk\\OneDrive\\\u00C1rea de Trabalho\\projeto\\PI\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|C:\\Users\\limma\\Desktop\\Sistema Aut\u00F4nomo\\PI-SISTEMA_AUTONOMO\\PI\\frmlobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|solutionrelative:frmlobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|C:\\Users\\limma\\Desktop\\Sistema Aut\u00F4nomo\\PI-SISTEMA_AUTONOMO\\PI\\frmpartida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|solutionrelative:frmpartida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|c:\\users\\limma\\desktop\\sistema aut\u00F4nomo\\pi-sistema_autonomo\\pi\\frmpartida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|solutionrelative:frmpartida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,34 +26,57 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\samuk\\OneDrive\\\u00C1rea de Trabalho\\projeto\\PI\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\samuk\\OneDrive\\\u00C1rea de Trabalho\\projeto\\PI\\Form1.cs [Design]",
-              "RelativeToolTip": "Form1.cs [Design]",
+              "DocumentIndex": 3,
+              "Title": "frmPartida.cs",
+              "DocumentMoniker": "C:\\Users\\limma\\Desktop\\Sistema Aut\u00F4nomo\\PI-SISTEMA_AUTONOMO\\PI\\frmPartida.cs",
+              "RelativeDocumentMoniker": "frmPartida.cs",
+              "ToolTip": "C:\\Users\\limma\\Desktop\\Sistema Aut\u00F4nomo\\PI-SISTEMA_AUTONOMO\\PI\\frmPartida.cs",
+              "RelativeToolTip": "frmPartida.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-06T23:36:29.56Z",
-              "IsPinned": true,
+              "WhenOpened": "2024-03-17T02:48:55.483Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmPartida.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\limma\\Desktop\\Sistema Aut\u00F4nomo\\PI-SISTEMA_AUTONOMO\\PI\\frmPartida.cs",
+              "RelativeDocumentMoniker": "frmPartida.cs",
+              "ToolTip": "C:\\Users\\limma\\Desktop\\Sistema Aut\u00F4nomo\\PI-SISTEMA_AUTONOMO\\PI\\frmPartida.cs [Design]",
+              "RelativeToolTip": "frmPartida.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-17T02:35:26.85Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\samuk\\OneDrive\\\u00C1rea de Trabalho\\projeto\\PI\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\samuk\\OneDrive\\\u00C1rea de Trabalho\\projeto\\PI\\Form1.cs",
-              "RelativeToolTip": "Form1.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAAwB0AAAAiAAAA",
+              "Title": "frmLobby.cs",
+              "DocumentMoniker": "C:\\Users\\limma\\Desktop\\Sistema Aut\u00F4nomo\\PI-SISTEMA_AUTONOMO\\PI\\frmLobby.cs",
+              "RelativeDocumentMoniker": "frmLobby.cs",
+              "ToolTip": "C:\\Users\\limma\\Desktop\\Sistema Aut\u00F4nomo\\PI-SISTEMA_AUTONOMO\\PI\\frmLobby.cs",
+              "RelativeToolTip": "frmLobby.cs",
+              "ViewState": "AQIAAHwAAAAAAAAAAAAqwIkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-06T23:38:56.238Z",
-              "IsPinned": true,
+              "WhenOpened": "2024-03-17T00:02:18.71Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmLobby.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\limma\\Desktop\\Sistema Aut\u00F4nomo\\PI-SISTEMA_AUTONOMO\\PI\\frmLobby.cs",
+              "RelativeDocumentMoniker": "frmLobby.cs",
+              "ToolTip": "C:\\Users\\limma\\Desktop\\Sistema Aut\u00F4nomo\\PI-SISTEMA_AUTONOMO\\PI\\frmLobby.cs [Design]",
+              "RelativeToolTip": "frmLobby.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-17T00:02:24.567Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }
