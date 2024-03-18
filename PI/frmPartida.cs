@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MagicTrickServer;
+
 
 namespace PI
 {
@@ -16,6 +18,8 @@ namespace PI
         public frmPartida()
         {
             InitializeComponent();
+            //frmLobby frmLobby = new frmLobby();
+            //int idJogador = frmLobby.txtIdJogador.Text; 
             //string jogadorSorteado = Jogo.IniciarPartida
         }
     }

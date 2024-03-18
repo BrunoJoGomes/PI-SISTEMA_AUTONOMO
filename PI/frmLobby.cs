@@ -19,6 +19,7 @@ namespace PI
             lblVersao.Text = Jogo.Versao;
         }
 
+        int[] idJogadores = new int[4];
 
         private void lstPartida_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -34,7 +35,7 @@ namespace PI
             lblDataPartida.Text = dataPartida;
 
             string retorno = Jogo.ListarJogadores(idPartida);
-            if (partida.Substring(0, 4) == "ERRO")
+            if (partida.Substring(0, 3) == "ERRO")
             {
                 MessageBox.Show("Ocorreu um erro! \n" + partida.Substring(5), "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -54,7 +55,7 @@ namespace PI
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             string retorno = Jogo.ListarPartidas("T");
-            if (retorno.Substring(0, 4) == "ERRO")
+            if (retorno.Substring(0, 3) == "ERRO")
             {
                 MessageBox.Show("Ocorreu um erro! \n" + retorno.Substring(5), "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -74,7 +75,7 @@ namespace PI
         private void btnListarPartidas_Click(object sender, EventArgs e)
         {
             string retorno = Jogo.ListarPartidas("T");
-            if (retorno.Substring(0, 4) == "ERRO")
+            if (retorno.Substring(0,3) == "ERRO")
             {
                 MessageBox.Show("Ocorreu um erro! \n" + retorno.Substring(5), "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -94,27 +95,27 @@ namespace PI
 
         private void btnCriarPartida_Click(object sender, EventArgs e)
         {   
-            string player = txtPlayers.Text;
+            string partida = txtNomePartida02.Text;
             string senha = txtSenha.Text;
             string grupo = txtNomeGrupo.Text;
-            string retorno = Jogo.CriarPartida(player, senha, grupo);
-            if (retorno.Substring(0, 4) == "ERRO")
+            string retorno = Jogo.CriarPartida(partida, senha, grupo);
+            if (retorno.Substring(0, 3) == "ERRO")
             {
                 MessageBox.Show("Ocorreu um erro! \n" + retorno.Substring(5), "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                MessageBox.Show("Grupo salvo", "SUCESSO");
+                MessageBox.Show("Grupo salvo", "SUCESSO!");
             }
         }
 
         private void btnEntrarPartida_Click(object sender, EventArgs e)
         {
             int idPartida = Convert.ToInt32(lblIdPartida.Text);
-            string player = txtPlayers.Text;
+            string jogador = txtNomeJogador.Text;
             string senha = txtSenha.Text;
-            string partida = Jogo.EntrarPartida(idPartida, player, senha);
-            if (partida.Substring(0,4) == "ERRO")
+            string partida = Jogo.EntrarPartida(idPartida, jogador, senha);
+            if (partida.Substring(0, 3) == "ERRO")
             {
                 MessageBox.Show("Ocorreu um erro! \n" + partida.Substring(5), "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -124,14 +125,42 @@ namespace PI
                 string[] informacoes = partida.Split(',');
                 txtIdJogador.Text = informacoes[0];
                 txtSenhaJogador.Text = informacoes[1];
+                //idJogadores = 
             }
            
         }
 
         private void btnIniciarPartida_Click(object sender, EventArgs e)
         {
-            frmPartida formPartida = new frmPartida();
-            formPartida.Show();
+            //INSTANCIA DO NOVO FORMS
+            //frmPartida formPartida = new frmPartida();
+            //formPartida.Show();
+
+            int idJogador = Convert.ToInt32(txtIdJogador.Text);
+            string senhaJogador = txtSenhaJogador.Text;
+            string jogadorSorteado = Jogo.IniciarPartida(idJogador, senhaJogador);
+
+            int idPartida = Convert.ToInt32(lblIdPartida.Text);
+            string retorno = Jogo.ListarJogadores(idPartida);
+            retorno = retorno.Replace("\r", "");
+            string[] players = retorno.Split('\n');
+
+            lblIdSorteado.Text = jogadorSorteado;
+            //int inicio = 0;
+            //int fim = 3;
+
+            //string substring;
+            //for (int i = 0; i < 4; i++)
+            //{
+            //    substring = players[i].Substring(inicio, fim);
+            //    //MessageBox.Show(players[i].Substring(inicio, fim) + "\n");
+
+            //    if (substring == jogadorSorteado)
+            //    {
+            //        lblNomeSorteado.Text = players[i];
+            //    }
+            //}
+
         }
     }
 }
