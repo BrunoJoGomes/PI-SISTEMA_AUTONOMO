@@ -25,3 +25,17 @@ C:\Users\limma\Desktop\Sistema Autônomo\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.exe
 C:\Users\limma\Desktop\Sistema Autônomo\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.pdb
 C:\Users\limma\Desktop\Sistema Autônomo\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.frmLobby.resources
 C:\Users\limma\Desktop\Sistema Autônomo\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.frmPartida.resources
+C:\Users\samuk\OneDrive\Área de Trabalho\pi\PI\bin\Debug\PI.exe.config
+C:\Users\samuk\OneDrive\Área de Trabalho\pi\PI\bin\Debug\PI.exe
+C:\Users\samuk\OneDrive\Área de Trabalho\pi\PI\bin\Debug\PI.pdb
+C:\Users\samuk\OneDrive\Área de Trabalho\pi\PI\bin\Debug\MagicTrickServer.dll
+C:\Users\samuk\OneDrive\Área de Trabalho\pi\PI\bin\Debug\MagicTrickServer.xml
+C:\Users\samuk\OneDrive\Área de Trabalho\pi\PI\obj\Debug\PI.csproj.AssemblyReference.cache
+C:\Users\samuk\OneDrive\Área de Trabalho\pi\PI\obj\Debug\PI.frmLobby.resources
+C:\Users\samuk\OneDrive\Área de Trabalho\pi\PI\obj\Debug\PI.frmPartida.resources
+C:\Users\samuk\OneDrive\Área de Trabalho\pi\PI\obj\Debug\PI.Properties.Resources.resources
+C:\Users\samuk\OneDrive\Área de Trabalho\pi\PI\obj\Debug\PI.csproj.GenerateResource.cache
+C:\Users\samuk\OneDrive\Área de Trabalho\pi\PI\obj\Debug\PI.csproj.CoreCompileInputs.cache
+C:\Users\samuk\OneDrive\Área de Trabalho\pi\PI\obj\Debug\PI.csproj.Up2Date
+C:\Users\samuk\OneDrive\Área de Trabalho\pi\PI\obj\Debug\PI.exe
+C:\Users\samuk\OneDrive\Área de Trabalho\pi\PI\obj\Debug\PI.pdb

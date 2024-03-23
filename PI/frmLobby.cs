@@ -162,5 +162,21 @@ namespace PI
             //}
 
         }
+
+        private void bntMostrarCartas_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine(lblIdPartida.Text);
+            int idpartida = Convert.ToInt32(lblIdPartida.Text);
+            string retorno = Jogo.ConsultarMao(idpartida);
+
+            retorno = retorno.Replace("\r", "");
+            string[] cartas = retorno.Split('\n');
+
+            lstCartas.Items.Clear();
+            for (int i = 0; i < cartas.Length - 1; i++)
+            {
+                lstCartas.Items.Add(cartas[i]);
+            }
+        }
     }
 }
