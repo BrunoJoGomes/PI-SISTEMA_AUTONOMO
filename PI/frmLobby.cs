@@ -13,6 +13,13 @@ namespace PI
 {
     public partial class frmLobby : Form
     {
+        private string idPlayerOne;
+        private string idPlayerTwo;
+        private string passwordPlayerOne;
+        private string passwordPlayerTwo;
+        private string idMatch;
+        private string idDrawn;
+        List<string> senhas = new List<string>();
         public frmLobby()
         {
             InitializeComponent();
@@ -125,7 +132,7 @@ namespace PI
                 string[] informacoes = partida.Split(',');
                 txtIdJogador.Text = informacoes[0];
                 txtSenhaJogador.Text = informacoes[1];
-                //idJogadores = 
+                senhas.Add(informacoes[1]);
             }
            
         }
@@ -133,50 +140,55 @@ namespace PI
         private void btnIniciarPartida_Click(object sender, EventArgs e)
         {
             //INSTANCIA DO NOVO FORMS
-            //frmPartida formPartida = new frmPartida();
-            //formPartida.Show();
+            frmPartida formPartida = new frmPartida();
 
             int idJogador = Convert.ToInt32(txtIdJogador.Text);
             string senhaJogador = txtSenhaJogador.Text;
             string jogadorSorteado = Jogo.IniciarPartida(idJogador, senhaJogador);
 
             int idPartida = Convert.ToInt32(lblIdPartida.Text);
+
             string retorno = Jogo.ListarJogadores(idPartida);
             retorno = retorno.Replace("\r", "");
             string[] players = retorno.Split('\n');
 
             lblIdSorteado.Text = jogadorSorteado;
-            //int inicio = 0;
-            //int fim = 3;
+            idDrawn = lblIdSorteado.Text;
 
-            //string substring;
-            //for (int i = 0; i < 4; i++)
-            //{
-            //    substring = players[i].Substring(inicio, fim);
-            //    //MessageBox.Show(players[i].Substring(inicio, fim) + "\n");
-
-            //    if (substring == jogadorSorteado)
-            //    {
-            //        lblNomeSorteado.Text = players[i];
-            //    }
-            //}
-
-        }
-
-        private void bntMostrarCartas_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine(lblIdPartida.Text);
-            int idpartida = Convert.ToInt32(lblIdPartida.Text);
-            string retorno = Jogo.ConsultarMao(idpartida);
-
-            retorno = retorno.Replace("\r", "");
-            string[] cartas = retorno.Split('\n');
-
-            lstCartas.Items.Clear();
-            for (int i = 0; i < cartas.Length - 1; i++)
+            string substring;
+            for (int i = 0; i < players.Length - 1; i++)
             {
-                lstCartas.Items.Add(cartas[i]);
+                substring = players[i].Substring(0, 4);
+
+                if ( substring == jogadorSorteado)
+                {
+                    lblNomeSorteado.Text = players[i].Substring(5);
+                }
             }
+
+            idMatch = lblIdPartida.Text;
+            string[] idJogadores = new string[2];
+            for (int i = 0; i < players.Length - 1; i++)
+            {
+                idJogadores[i] = players[i].Substring(0,4);
+                            
+            }
+
+            idPlayerOne = idJogadores[0];
+            idPlayerTwo = idJogadores[1];
+            passwordPlayerOne = senhas[0];
+            passwordPlayerTwo = senhas[1];
+            formPartida.idPartida = idMatch;
+            formPartida.idJogadorUm = idPlayerOne;
+            formPartida.senhaJogadorUm = passwordPlayerOne;
+            formPartida.idJogadorDois = idPlayerTwo;
+            formPartida.senhaJogadorDois = passwordPlayerTwo;
+            formPartida.idJogadorSorteado = idDrawn;
+            formPartida.AtualizarTela();
+            formPartida.ShowDialog();
+
         }
+
+        
     }
 }
