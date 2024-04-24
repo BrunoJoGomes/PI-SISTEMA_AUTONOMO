@@ -7,12 +7,16 @@
       "RelativeMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|solutionrelative:frmpartida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmlobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|solutionrelative:frmlobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmpartida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|solutionrelative:frmpartida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmlobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|solutionrelative:frmlobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmlobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|solutionrelative:frmlobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmpartida.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,20 +26,12 @@
       "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|PI||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmlobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|solutionrelative:frmlobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmlobby.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|solutionrelative:frmlobby.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|c:\\users\\bruno\\desktop\\pi\\pi-sistema_autonomo\\pi\\properties\\resources.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
-      "RelativeMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|solutionrelative:properties\\resources.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
     }
   ],
   "DocumentGroupContainers": [
@@ -45,7 +41,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -57,19 +53,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PI",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\PI.csproj",
-              "RelativeDocumentMoniker": "PI.csproj",
-              "ToolTip": "C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\PI.csproj",
-              "RelativeToolTip": "PI.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-04-07T18:38:46.448Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "frmLobby.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmLobby.cs",
               "RelativeDocumentMoniker": "frmLobby.cs",
@@ -87,14 +71,14 @@
               "RelativeDocumentMoniker": "frmPartida.cs",
               "ToolTip": "C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmPartida.cs",
               "RelativeToolTip": "frmPartida.cs",
-              "ViewState": "AQIAABYDAAAAAAAAAAAAACkDAAAsAAAA",
+              "ViewState": "AQIAAHkDAAAAAAAAAAAAAIcDAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-17T02:48:55.483Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "frmPartida.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmPartida.cs",
               "RelativeDocumentMoniker": "frmPartida.cs",
@@ -107,6 +91,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "frmLobby.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmLobby.cs",
+              "RelativeDocumentMoniker": "frmLobby.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmLobby.cs",
+              "RelativeToolTip": "frmLobby.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABQAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-17T00:02:18.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "frmPartida.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmPartida.Designer.cs",
               "RelativeDocumentMoniker": "frmPartida.Designer.cs",
@@ -120,15 +117,13 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "frmLobby.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmLobby.cs",
-              "RelativeDocumentMoniker": "frmLobby.cs",
-              "ToolTip": "C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmLobby.cs",
-              "RelativeToolTip": "frmLobby.cs",
-              "ViewState": "AQIAAGsAAAAAAAAAAAArwHgAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-17T00:02:18.71Z",
-              "EditorCaption": ""
+              "Title": "PI",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\PI.csproj",
+              "RelativeDocumentMoniker": "PI.csproj",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\PI.csproj",
+              "RelativeToolTip": "PI.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-07T18:38:46.448Z"
             },
             {
               "$type": "Document",

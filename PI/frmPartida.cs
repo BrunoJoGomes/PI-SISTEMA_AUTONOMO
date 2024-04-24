@@ -1,5 +1,4 @@
-﻿using MagicTrickServer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MagicTrickServer;
 
 
 namespace PI
 {
     public partial class frmPartida : Form
     {
+       
         public string idJogadorUm { get; set; }
         public string idJogadorDois { get; set; }
         public string senhaJogadorUm { get; set; }
@@ -21,6 +22,7 @@ namespace PI
         public string idPartida { get; set; }
         public string idJogadorSorteado { get; set; }
 
+        public string idDaPartida;
         
         Panel pnlCarta1 = new Panel();
         Panel pnlCarta2 = new Panel();
@@ -48,6 +50,12 @@ namespace PI
         Panel pnlCarta24 = new Panel();
 
         List<Panel> paineis = new List<Panel>();
+
+        string informacoes;
+        string statusPartida;
+        string idJogadorDaVez;
+        string numRodada;
+        string statusRodada;
         
 
         public frmPartida()
@@ -60,6 +68,7 @@ namespace PI
         public void AtualizarTela()
         {
             lblPartida.Text = idPartida;
+            idDaPartida = idPartida;
             txtIdJogadorUm.Text = idJogadorUm;
             txtSenhaJogadorUm.Text = senhaJogadorUm;
             txtIdJogadorDois.Text = idJogadorDois; 
@@ -81,6 +90,17 @@ namespace PI
             Console.WriteLine(lblPartida.Text);
             int idpartida = Convert.ToInt32(lblPartida.Text);
             string retorno = Jogo.ConsultarMao(idpartida);
+            informacoes = Jogo.VerificarVez2(idpartida);
+            statusPartida = informacoes.Substring(0);
+            idJogadorDaVez = informacoes.Substring(2, 3);
+            numRodada = informacoes.Substring(5,1);
+            statusRodada = informacoes.Substring(8,1);
+            lblVez.Text = idJogadorDaVez;
+            lblStatusRodada.Text = statusRodada;
+
+
+
+
 
             retorno = retorno.Replace("\r", "");
             cartas = retorno.Split('\n');
@@ -213,14 +233,14 @@ namespace PI
             pnlCarta24.Width = 50;
 
 
-            if (cartas[0].Substring(7) == "O")
+            if (cartas[0].Substring(6) == "O")
             {
                 pnlCarta1.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta1.BackColor = Color.Transparent;
                 pnlCarta1.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta1);
             }
-            else if (cartas[0].Substring(7) == "E")
+            else if (cartas[0].Substring(6) == "E")
             {
                 pnlCarta1.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta1.BackColor = Color.Transparent;
@@ -236,14 +256,14 @@ namespace PI
                this.Controls.Add(pnlCarta1);
             }
 
-            if (cartas[1].Substring(7) == "O")
+            if (cartas[1].Substring(6) == "O")
             {
                 pnlCarta2.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta2.BackColor = Color.Transparent;
                 pnlCarta2.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta2);
             }
-            else if (cartas[1].Substring(7) == "E")
+            else if (cartas[1].Substring(6) == "E")
             {
                 pnlCarta2.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta2.BackColor = Color.Transparent;
@@ -259,14 +279,14 @@ namespace PI
                 this.Controls.Add(pnlCarta2);
             }
 
-            if (cartas[2].Substring(7) == "O")
+            if (cartas[2].Substring(6) == "O")
             {
                 pnlCarta3.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta3.BackColor = Color.Transparent;
                 pnlCarta3.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta3);
             }
-            else if (cartas[2].Substring(7) == "E")
+            else if (cartas[2].Substring(6) == "E")
             {
                 pnlCarta3.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta3.BackColor = Color.Transparent;
@@ -282,14 +302,14 @@ namespace PI
                 this.Controls.Add(pnlCarta3);
             }
 
-            if (cartas[3].Substring(7) == "O")
+            if (cartas[3].Substring(6) == "O")
             {
                 pnlCarta4.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta4.BackColor = Color.Transparent;
                 pnlCarta4.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta4);
             }
-            else if (cartas[3].Substring(7) == "E")
+            else if (cartas[3].Substring(6) == "E")
             {
                 pnlCarta4.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta4.BackColor = Color.Transparent;
@@ -305,14 +325,14 @@ namespace PI
                 this.Controls.Add(pnlCarta4);
             }
 
-            if (cartas[4].Substring(7) == "O")
+            if (cartas[4].Substring(6) == "O")
             {
                 pnlCarta5.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta5.BackColor = Color.Transparent;
                 pnlCarta5.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta5);
             }
-            else if (cartas[4].Substring(7) == "E")
+            else if (cartas[4].Substring(6) == "E")
             {
                 pnlCarta5.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta5.BackColor = Color.Transparent;
@@ -328,14 +348,14 @@ namespace PI
                 this.Controls.Add(pnlCarta5);
             }
 
-            if (cartas[5].Substring(7) == "O")
+            if (cartas[5].Substring(6) == "O")
             {
                 pnlCarta6.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta6.BackColor = Color.Transparent;
                 pnlCarta6.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta6);
             }
-            else if (cartas[5].Substring(7) == "E")
+            else if (cartas[5].Substring(6) == "E")
             {
                 pnlCarta6.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta6.BackColor = Color.Transparent;
@@ -351,14 +371,14 @@ namespace PI
                 this.Controls.Add(pnlCarta6);
             }
 
-            if (cartas[6].Substring(7) == "O")
+            if (cartas[6].Substring(6) == "O")
             {
                 pnlCarta7.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta7.BackColor = Color.Transparent;
                 pnlCarta7.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta7);
             }
-            else if (cartas[6].Substring(7) == "E")
+            else if (cartas[6].Substring(6) == "E")
             {
                 pnlCarta7.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta7.BackColor = Color.Transparent;
@@ -374,14 +394,14 @@ namespace PI
                 this.Controls.Add(pnlCarta7);
             }
 
-            if (cartas[7].Substring(7) == "O")
+            if (cartas[7].Substring(6) == "O")
             {
                 pnlCarta8.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta8.BackColor = Color.Transparent;
                 pnlCarta8.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta8);
             }
-            else if (cartas[7].Substring(7) == "E")
+            else if (cartas[7].Substring(6) == "E")
             {
                 pnlCarta8.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta8.BackColor = Color.Transparent;
@@ -397,14 +417,14 @@ namespace PI
                 this.Controls.Add(pnlCarta8);
             }
 
-            if (cartas[8].Substring(7) == "O")
+            if (cartas[8].Substring(6) == "O")
             {
                 pnlCarta9.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta9.BackColor = Color.Transparent;
                 pnlCarta9.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta9);
             }
-            else if (cartas[8].Substring(7) == "E")
+            else if (cartas[8].Substring(6) == "E")
             {
                 pnlCarta9.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta9.BackColor = Color.Transparent;
@@ -420,14 +440,14 @@ namespace PI
                 this.Controls.Add(pnlCarta9);
             }
 
-            if (cartas[9].Substring(8) == "O")
+            if (cartas[9].Substring(7) == "O")
             {
                 pnlCarta10.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta10.BackColor = Color.Transparent;
                 pnlCarta10.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta10);
             }
-            else if (cartas[9].Substring(8) == "E")
+            else if (cartas[9].Substring(7) == "E")
             {
                 pnlCarta10.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta10.BackColor = Color.Transparent;
@@ -443,14 +463,14 @@ namespace PI
                 this.Controls.Add(pnlCarta10);
             }
 
-            if (cartas[10].Substring(8) == "O")
+            if (cartas[10].Substring(7) == "O")
             {
                 pnlCarta11.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta11.BackColor = Color.Transparent;
                 pnlCarta11.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta11);
             }
-            else if (cartas[10].Substring(8) == "E")
+            else if (cartas[10].Substring(7) == "E")
             {
                 pnlCarta11.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta11.BackColor = Color.Transparent;
@@ -466,14 +486,14 @@ namespace PI
                 this.Controls.Add(pnlCarta11);
             }
 
-            if (cartas[11].Substring(8) == "O")
+            if (cartas[11].Substring(7) == "O")
             {
                 pnlCarta12.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta12.BackColor = Color.Transparent;
                 pnlCarta12.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta12);
             }
-            else if (cartas[11].Substring(8) == "E")
+            else if (cartas[11].Substring(7) == "E")
             {
                 pnlCarta12.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta12.BackColor = Color.Transparent;
@@ -512,14 +532,14 @@ namespace PI
                 this.Controls.Add(pnlCarta13);
             }
 
-            if (cartas[13].Substring(7) == "O")
+            if (cartas[13].Substring(6) == "O")
             {
                 pnlCarta14.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta14.BackColor = Color.Transparent;
                 pnlCarta14.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta14);
             }
-            else if (cartas[13].Substring(7) == "E")
+            else if (cartas[13].Substring(6) == "E")
             {
                 pnlCarta14.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta14.BackColor = Color.Transparent;
@@ -535,14 +555,14 @@ namespace PI
                 this.Controls.Add(pnlCarta14);
             }
 
-            if (cartas[14].Substring(7) == "O")
+            if (cartas[14].Substring(6) == "O")
             {
                 pnlCarta15.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta15.BackColor = Color.Transparent;
                 pnlCarta15.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta15);
             }
-            else if (cartas[14].Substring(7) == "E")
+            else if (cartas[14].Substring(6) == "E")
             {
                 pnlCarta15.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta15.BackColor = Color.Transparent;
@@ -558,14 +578,14 @@ namespace PI
                 this.Controls.Add(pnlCarta15);
             }
 
-            if (cartas[15].Substring(7) == "O")
+            if (cartas[15].Substring(6) == "O")
             {
                 pnlCarta16.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta16.BackColor = Color.Transparent;
                 pnlCarta16.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta16);
             }
-            else if (cartas[15].Substring(7) == "E")
+            else if (cartas[15].Substring(6) == "E")
             {
                 pnlCarta16.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta16.BackColor = Color.Transparent;
@@ -581,14 +601,14 @@ namespace PI
                 this.Controls.Add(pnlCarta16);
             }
 
-            if (cartas[16].Substring(7) == "O")
+            if (cartas[16].Substring(6) == "O")
             {
                 pnlCarta17.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta17.BackColor = Color.Transparent;
                 pnlCarta17.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta17);
             }
-            else if (cartas[16].Substring(7) == "E")
+            else if (cartas[16].Substring(6) == "E")
             {
                 pnlCarta17.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta17.BackColor = Color.Transparent;
@@ -604,14 +624,14 @@ namespace PI
                 this.Controls.Add(pnlCarta17);
             }
 
-            if (cartas[17].Substring(7) == "O")
+            if (cartas[17].Substring(6) == "O")
             {
                 pnlCarta18.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta18.BackColor = Color.Transparent;
                 pnlCarta18.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta18);
             }
-            else if (cartas[17].Substring(7) == "E")
+            else if (cartas[17].Substring(6) == "E")
             {
                 pnlCarta18.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta18.BackColor = Color.Transparent;
@@ -627,14 +647,14 @@ namespace PI
                 this.Controls.Add(pnlCarta18);
             }
 
-            if (cartas[18].Substring(7) == "O")
+            if (cartas[18].Substring(6) == "O")
             {
                 pnlCarta19.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta19.BackColor = Color.Transparent;
                 pnlCarta19.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta19);
             }
-            else if (cartas[18].Substring(7) == "E")
+            else if (cartas[18].Substring(6) == "E")
             {
                 pnlCarta19.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta19.BackColor = Color.Transparent;
@@ -650,14 +670,14 @@ namespace PI
                 this.Controls.Add(pnlCarta19);
             }
 
-            if (cartas[19].Substring(7) == "O")
+            if (cartas[19].Substring(6) == "O")
             {
                 pnlCarta20.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta20.BackColor = Color.Transparent;
                 pnlCarta20.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta20);
             }
-            else if (cartas[19].Substring(7) == "E")
+            else if (cartas[19].Substring(6) == "E")
             {
                 pnlCarta20.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta20.BackColor = Color.Transparent;
@@ -673,14 +693,14 @@ namespace PI
                 this.Controls.Add(pnlCarta20);
             }
 
-            if (cartas[20].Substring(7) == "O")
+            if (cartas[20].Substring(6) == "O")
             {
                 pnlCarta21.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta21.BackColor = Color.Transparent;
                 pnlCarta21.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta21);
             }
-            else if (cartas[20].Substring(7) == "E")
+            else if (cartas[20].Substring(6) == "E")
             {
                 pnlCarta21.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta21.BackColor = Color.Transparent;
@@ -696,14 +716,14 @@ namespace PI
                 this.Controls.Add(pnlCarta21);
             }
 
-            if (cartas[21].Substring(8) == "O")
+            if (cartas[21].Substring(7) == "O")
             {
                 pnlCarta22.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta22.BackColor = Color.Transparent;
                 pnlCarta22.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta22);
             }
-            else if (cartas[21].Substring(8) == "E")
+            else if (cartas[21].Substring(7) == "E")
             {
                 pnlCarta22.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta22.BackColor = Color.Transparent;
@@ -719,14 +739,14 @@ namespace PI
                 this.Controls.Add(pnlCarta22);
             }
 
-            if (cartas[22].Substring(8) == "O")
+            if (cartas[22].Substring(7) == "O")
             {
                 pnlCarta23.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta23.BackColor = Color.Transparent;
                 pnlCarta23.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta23);
             }
-            else if (cartas[22].Substring(8) == "E")
+            else if (cartas[22].Substring(7) == "E")
             {
                 pnlCarta23.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta23.BackColor = Color.Transparent;
@@ -742,14 +762,14 @@ namespace PI
                 this.Controls.Add(pnlCarta23);
             }
 
-            if (cartas[23].Substring(8) == "O")
+            if (cartas[23].Substring(7) == "O")
             {
                 pnlCarta24.BackgroundImage = Properties.Resources.Ouros1;
                 pnlCarta24.BackColor = Color.Transparent;
                 pnlCarta24.BackgroundImageLayout = ImageLayout.Stretch;
                 this.Controls.Add(pnlCarta24);
             }
-            else if (cartas[23].Substring(8) == "E")
+            else if (cartas[23].Substring(7) == "E")
             {
                 pnlCarta24.BackgroundImage = Properties.Resources.Espadas1;
                 pnlCarta24.BackColor = Color.Transparent;
@@ -803,7 +823,7 @@ namespace PI
             string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicaoCartaJogada);
             MessageBox.Show("Valor da carta jogada: " + valorCarta);
 
-            
+
             Panel cartaJogada = paineis[posicaoCartaJogada - 1];
             cartaJogada.Top = 100;
             cartaJogada.Left = 750;
@@ -839,6 +859,7 @@ namespace PI
             //}
         }
 
+
         private void btnApostar_Click(object sender, EventArgs e)
         {
             int idJogadorApostando = Convert.ToInt32(txtIdJogadorJogando.Text);
@@ -854,7 +875,82 @@ namespace PI
             {
                 MessageBox.Show("Carta Apostada: " + valorCartaApostada);
             }
+
             
+            
+        }
+
+        private void ConsultarVez()
+        {
+            if (idJogadorDaVez == txtIdJogadorUm.Text.Substring(0,3)) 
+            {
+                txtIdJogadorJogando.Text = txtIdJogadorUm.Text.Substring(0, 3);
+                txtSenhaJogadorJogando.Text = txtSenhaJogadorUm.Text;
+                txtPosicaoCarta.Text = "0";
+                int idJogadorJogando = Convert.ToInt32(txtIdJogadorJogando.Text.Substring(0, 3));
+                string senhaJogadorJogando = txtSenhaJogadorJogando.Text;
+                //int posicaoCartaJogada = Convert.ToInt32(txtPosicaoCarta.Text);
+
+                string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando,1);
+                MessageBox.Show("Valor da carta jogada: " + valorCarta);
+
+
+                //Panel cartaJogada = paineis[posicaoCartaJogada - 1];
+                Panel cartaJogada = paineis[0];
+                cartaJogada.Top = 100;
+                cartaJogada.Left = 750;
+                lblValorCarta.Text = valorCarta;
+
+                AtualizarCampos();
+
+                int idJogadorApostando = Convert.ToInt32(txtIdJogadorJogando.Text);
+                string senhaJogadorApostando = txtSenhaJogadorJogando.Text;
+                txtCartaApostada.Text = "0";
+                int cartaApostada = Convert.ToInt32(txtCartaApostada.Text);
+
+                string valorCartaApostada = Jogo.Apostar(idJogadorApostando, senhaJogadorApostando, cartaApostada);
+                if (valorCartaApostada == "0")
+                {
+                    MessageBox.Show("Pulou a aposta!");
+                }
+                else
+                {
+                    MessageBox.Show("Carta Apostada: " + valorCartaApostada);
+                }
+
+
+                AtualizarCampos();
+            }
+            else
+            {
+                MessageBox.Show("Sua vez de jogar");
+            }
+        }
+
+        private void AtualizarCampos()
+        {
+            
+            informacoes = Jogo.VerificarVez2(Convert.ToInt32(idDaPartida));
+            statusPartida = informacoes.Substring(0);
+            idJogadorDaVez = informacoes.Substring(2, 3);
+            numRodada = informacoes.Substring(5, 1);
+            statusRodada = informacoes.Substring(8, 1);
+            lblVez.Text = idJogadorDaVez;
+            lblStatusRodada.Text = statusRodada;
+
+        }
+
+        private void tmrIniciarAutomacao_Tick(object sender, EventArgs e)
+        {
+            ConsultarVez();
+            //AtualizarCampos();
+            
+        }
+
+        private void btnIniciarAutomacao_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Automação iniciada");
+            tmrIniciarAutomacao.Enabled = true;
         }
     }
 }

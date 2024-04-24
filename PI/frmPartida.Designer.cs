@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.lblPartida = new System.Windows.Forms.Label();
             this.lblIdPartida = new System.Windows.Forms.Label();
@@ -59,6 +60,12 @@
             this.lblCartasJogadorDois = new System.Windows.Forms.Label();
             this.lblMesa = new System.Windows.Forms.Label();
             this.lblValorCarta = new System.Windows.Forms.Label();
+            this.tmrIniciarAutomacao = new System.Windows.Forms.Timer(this.components);
+            this.btnIniciarAutomacao = new System.Windows.Forms.Button();
+            this.lblVez = new System.Windows.Forms.Label();
+            this.lblVezTitulo = new System.Windows.Forms.Label();
+            this.lxtStatusRodadaTitulo = new System.Windows.Forms.Label();
+            this.lblStatusRodada = new System.Windows.Forms.Label();
             this.grpJogar.SuspendLayout();
             this.grpApostar.SuspendLayout();
             this.SuspendLayout();
@@ -342,11 +349,67 @@
             this.lblValorCarta.TabIndex = 45;
             this.lblValorCarta.Text = ".";
             // 
+            // tmrIniciarAutomacao
+            // 
+            this.tmrIniciarAutomacao.Interval = 7000;
+            this.tmrIniciarAutomacao.Tick += new System.EventHandler(this.tmrIniciarAutomacao_Tick);
+            // 
+            // btnIniciarAutomacao
+            // 
+            this.btnIniciarAutomacao.Location = new System.Drawing.Point(23, 361);
+            this.btnIniciarAutomacao.Name = "btnIniciarAutomacao";
+            this.btnIniciarAutomacao.Size = new System.Drawing.Size(152, 31);
+            this.btnIniciarAutomacao.TabIndex = 46;
+            this.btnIniciarAutomacao.Text = "Iniciar Automação";
+            this.btnIniciarAutomacao.UseVisualStyleBackColor = true;
+            this.btnIniciarAutomacao.Click += new System.EventHandler(this.btnIniciarAutomacao_Click);
+            // 
+            // lblVez
+            // 
+            this.lblVez.AutoSize = true;
+            this.lblVez.Location = new System.Drawing.Point(62, 256);
+            this.lblVez.Name = "lblVez";
+            this.lblVez.Size = new System.Drawing.Size(10, 16);
+            this.lblVez.TabIndex = 47;
+            this.lblVez.Text = ".";
+            // 
+            // lblVezTitulo
+            // 
+            this.lblVezTitulo.AutoSize = true;
+            this.lblVezTitulo.Location = new System.Drawing.Point(23, 256);
+            this.lblVezTitulo.Name = "lblVezTitulo";
+            this.lblVezTitulo.Size = new System.Drawing.Size(33, 16);
+            this.lblVezTitulo.TabIndex = 48;
+            this.lblVezTitulo.Text = "Vez:";
+            // 
+            // lxtStatusRodadaTitulo
+            // 
+            this.lxtStatusRodadaTitulo.AutoSize = true;
+            this.lxtStatusRodadaTitulo.Location = new System.Drawing.Point(23, 299);
+            this.lxtStatusRodadaTitulo.Name = "lxtStatusRodadaTitulo";
+            this.lxtStatusRodadaTitulo.Size = new System.Drawing.Size(113, 16);
+            this.lxtStatusRodadaTitulo.TabIndex = 49;
+            this.lxtStatusRodadaTitulo.Text = "Status da rodada:";
+            // 
+            // lblStatusRodada
+            // 
+            this.lblStatusRodada.AutoSize = true;
+            this.lblStatusRodada.Location = new System.Drawing.Point(139, 299);
+            this.lblStatusRodada.Name = "lblStatusRodada";
+            this.lblStatusRodada.Size = new System.Drawing.Size(10, 16);
+            this.lblStatusRodada.TabIndex = 50;
+            this.lblStatusRodada.Text = ".";
+            // 
             // frmPartida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1297, 689);
+            this.Controls.Add(this.lblStatusRodada);
+            this.Controls.Add(this.lxtStatusRodadaTitulo);
+            this.Controls.Add(this.lblVezTitulo);
+            this.Controls.Add(this.lblVez);
+            this.Controls.Add(this.btnIniciarAutomacao);
             this.Controls.Add(this.lblValorCarta);
             this.Controls.Add(this.lblMesa);
             this.Controls.Add(this.lblCartasJogadorDois);
@@ -414,5 +477,11 @@
         private System.Windows.Forms.Label lblCartasJogadorDois;
         private System.Windows.Forms.Label lblMesa;
         private System.Windows.Forms.Label lblValorCarta;
+        private System.Windows.Forms.Timer tmrIniciarAutomacao;
+        private System.Windows.Forms.Button btnIniciarAutomacao;
+        private System.Windows.Forms.Label lblVez;
+        private System.Windows.Forms.Label lblVezTitulo;
+        private System.Windows.Forms.Label lxtStatusRodadaTitulo;
+        private System.Windows.Forms.Label lblStatusRodada;
     }
 }
