@@ -13,6 +13,9 @@ namespace PI
 {
     public partial class frmLobby : Form
     {
+        public string nomeDoGrupo = "Berlim";
+        //public int idPartida;
+        //public string senhaPartida;
         private string idPlayerOne;
         private string idPlayerTwo;
         private string passwordPlayerOne;
@@ -20,28 +23,48 @@ namespace PI
         private string idMatch;
         private string idDrawn;
         List<string> senhas = new List<string>();
+
+        Partida partida = new Partida();
+        Jogador jogador = new Jogador();
+
+
         public frmLobby()
         {
             InitializeComponent();
             lblVersao.Text = Jogo.Versao;
+
         }
 
         int[] idJogadores = new int[4];
+
+        private void btnCriarPartida_Click(object sender, EventArgs e)
+        {
+
+            
+            
+            partida.nomeDaPartida = txtNomePartida02.Text;
+            partida.senhaDaPartida = txtSenha.Text;
+            partida.CriarPartida(nomeDoGrupo);
+            //lblIdPartida.Text = partida.idDaPartida;
+            //idPartida = Convert.ToInt32(partida.idDaPartida);
+            //senhaPartida = partida.senhaDaPartida;
+            //lblNomePartida.Text = partida.nomeDaPartida;
+            //lblSenhaPartida.Text = partida.senhaDaPartida;
+
+
+        }
 
         private void lstPartida_SelectedIndexChanged(object sender, EventArgs e)
         {
             string partida = lstPartida.SelectedItem.ToString();
             string[] infoPartidas = partida.Split(',');
-
-            int idPartida = Convert.ToInt32(infoPartidas[0]);
-            string nomePartida = infoPartidas[1];
             string dataPartida = infoPartidas[2];
 
-            lblIdPartida.Text = idPartida.ToString();
-            lblNomePartida.Text = nomePartida;
-            lblDataPartida.Text = dataPartida;
+            lblIdPartida.Text = infoPartidas[0];
+            lblNomePartida.Text = infoPartidas[1];
+            lblDataPartida.Text = infoPartidas[2];
 
-            string retorno = Jogo.ListarJogadores(idPartida);
+            string retorno = Jogo.ListarJogadores(Convert.ToInt32(lblIdPartida.Text));
             if (partida.Substring(0, 3) == "ERRO")
             {
                 MessageBox.Show("Ocorreu um erro! \n" + partida.Substring(5), "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -100,40 +123,14 @@ namespace PI
             }
         }
 
-        private void btnCriarPartida_Click(object sender, EventArgs e)
-        {   
-            string partida = txtNomePartida02.Text;
-            string senha = txtSenha.Text;
-            string grupo = txtNomeGrupo.Text;
-            string retorno = Jogo.CriarPartida(partida, senha, grupo);
-            if (retorno.Substring(0, 3) == "ERRO")
-            {
-                MessageBox.Show("Ocorreu um erro! \n" + retorno.Substring(5), "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                MessageBox.Show("Grupo salvo", "SUCESSO!");
-            }
-        }
 
         private void btnEntrarPartida_Click(object sender, EventArgs e)
         {
-            int idPartida = Convert.ToInt32(lblIdPartida.Text);
-            string jogador = txtNomeJogador.Text;
-            string senha = txtSenha.Text;
-            string partida = Jogo.EntrarPartida(idPartida, jogador, senha);
-            if (partida.Substring(0, 3) == "ERRO")
-            {
-                MessageBox.Show("Ocorreu um erro! \n" + partida.Substring(5), "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                partida = partida.Replace("\r", "");
-                string[] informacoes = partida.Split(',');
-                txtIdJogador.Text = informacoes[0];
-                txtSenhaJogador.Text = informacoes[1];
-                senhas.Add(informacoes[1]);
-            }
+
+            jogador.nomeDoJogador = txtNomeJogador.Text;
+            jogador.EntrarNaPartida(Convert.ToInt32(partida.idDaPartida),partida.senhaDaPartida);
+            txtIdJogador.Text = jogador.idDoJogador;
+            txtSenhaJogador.Text = jogador.senhaDoJogador;
            
         }
 
@@ -142,13 +139,9 @@ namespace PI
             //INSTANCIA DO NOVO FORMS
             frmPartida formPartida = new frmPartida();
 
-            int idJogador = Convert.ToInt32(txtIdJogador.Text);
-            string senhaJogador = txtSenhaJogador.Text;
-            string jogadorSorteado = Jogo.IniciarPartida(idJogador, senhaJogador);
+            string jogadorSorteado = Jogo.IniciarPartida(Convert.ToInt32(txtIdJogador.Text),txtSenhaJogador.Text);
 
-            int idPartida = Convert.ToInt32(lblIdPartida.Text);
-
-            string retorno = Jogo.ListarJogadores(idPartida);
+            string retorno = Jogo.ListarJogadores(Convert.ToInt32(partida.idDaPartida));
             retorno = retorno.Replace("\r", "");
             string[] players = retorno.Split('\n');
 
@@ -174,10 +167,12 @@ namespace PI
                             
             }
 
-            idPlayerOne = idJogadores[0];
-            idPlayerTwo = idJogadores[1];
-            passwordPlayerOne = senhas[0];
-            passwordPlayerTwo = senhas[1];
+            //idPlayerOne = idJogadores[0];
+            //idPlayerTwo = idJogadores[1];
+            //passwordPlayerOne = senhas[0];
+            //passwordPlayerTwo = senhas[1];
+            idPlayerOne = jogador.idDoJogador;
+            passwordPlayerOne = jogador.senhaDoJogador;
             formPartida.idPartida = idMatch;
             formPartida.idJogadorUm = idPlayerOne;
             formPartida.senhaJogadorUm = passwordPlayerOne;

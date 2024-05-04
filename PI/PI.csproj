@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Carta.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="frmLobby.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +64,8 @@
     <Compile Include="frmPartida.Designer.cs">
       <DependentUpon>frmPartida.cs</DependentUpon>
     </Compile>
+    <Compile Include="Jogador.cs" />
+    <Compile Include="Partida.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmLobby.resx">
