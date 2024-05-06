@@ -29,7 +29,8 @@ namespace PI
             }
             else
             {
-                
+                retorno = retorno.Replace("\r", "");
+                retorno = retorno.Replace("\n", "");
                 this.idDoJogador = retorno.Substring(0, 4);
                 this.senhaDoJogador = retorno.Substring(5);
             }

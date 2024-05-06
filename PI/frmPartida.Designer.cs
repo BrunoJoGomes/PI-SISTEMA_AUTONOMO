@@ -351,7 +351,7 @@
             // 
             // tmrIniciarAutomacao
             // 
-            this.tmrIniciarAutomacao.Interval = 7000;
+            this.tmrIniciarAutomacao.Interval = 15000;
             this.tmrIniciarAutomacao.Tick += new System.EventHandler(this.tmrIniciarAutomacao_Tick);
             // 
             // btnIniciarAutomacao
