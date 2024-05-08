@@ -31,8 +31,9 @@ namespace PI
             {
                 retorno = retorno.Replace("\r", "");
                 retorno = retorno.Replace("\n", "");
-                this.idDoJogador = retorno.Substring(0, 4);
-                this.senhaDoJogador = retorno.Substring(5);
+                string[] dados = retorno.Split(',');
+                this.idDoJogador = dados[0];
+                this.senhaDoJogador = dados[1];
             }
             
         }

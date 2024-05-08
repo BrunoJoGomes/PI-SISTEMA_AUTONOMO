@@ -53,3 +53,17 @@ C:\Users\Bruno\Desktop\PI\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.csproj.CoreCompile
 C:\Users\Bruno\Desktop\PI\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.csproj.Up2Date
 C:\Users\Bruno\Desktop\PI\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.exe
 C:\Users\Bruno\Desktop\PI\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.pdb
+C:\Users\bruno.jogomes\source\repos\PI-SISTEMA_AUTONOMO\PI\bin\Debug\PI.exe.config
+C:\Users\bruno.jogomes\source\repos\PI-SISTEMA_AUTONOMO\PI\bin\Debug\PI.exe
+C:\Users\bruno.jogomes\source\repos\PI-SISTEMA_AUTONOMO\PI\bin\Debug\PI.pdb
+C:\Users\bruno.jogomes\source\repos\PI-SISTEMA_AUTONOMO\PI\bin\Debug\MagicTrickServer.dll
+C:\Users\bruno.jogomes\source\repos\PI-SISTEMA_AUTONOMO\PI\bin\Debug\MagicTrickServer.xml
+C:\Users\bruno.jogomes\source\repos\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.csproj.AssemblyReference.cache
+C:\Users\bruno.jogomes\source\repos\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.frmLobby.resources
+C:\Users\bruno.jogomes\source\repos\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.frmPartida.resources
+C:\Users\bruno.jogomes\source\repos\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.Properties.Resources.resources
+C:\Users\bruno.jogomes\source\repos\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.csproj.GenerateResource.cache
+C:\Users\bruno.jogomes\source\repos\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.csproj.CoreCompileInputs.cache
+C:\Users\bruno.jogomes\source\repos\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.csproj.CopyComplete
+C:\Users\bruno.jogomes\source\repos\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.exe
+C:\Users\bruno.jogomes\source\repos\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.pdb

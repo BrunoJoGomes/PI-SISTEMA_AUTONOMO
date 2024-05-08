@@ -48,6 +48,7 @@ namespace PI
         List<Carta> listaDeCartasJogadas = new List<Carta>();
 
         string informacoes;
+        string[] dadosRodada;
         string statusPartida;
         string idJogadorDaVez;
         string numRodada;
@@ -123,11 +124,11 @@ namespace PI
             {
                 if (i <= 9)
                 {
-                    naipes[i] = cartas[i-1].Substring(7);
+                    naipes[i] = cartas[i-1].Substring(8);
                 }
                 else
                 {
-                    naipes[i] = cartas[i-1].Substring(8);
+                    naipes[i] = cartas[i-1].Substring(9);
                 }
             }
 
@@ -148,6 +149,7 @@ namespace PI
                 if (i == 1)
                 {
                     listaDeCartas[i].naipe = naipes[i];
+                    Console.WriteLine($"Carta {i} = naipe {listaDeCartas[i].naipe}");
                     listaDeCartas[i].Top = 360;
                     listaDeCartas[i].Left = 190;
                     listaDeCartas[i].posicao = i;
@@ -157,6 +159,7 @@ namespace PI
                 else
                 {
                     listaDeCartas[i].naipe = naipes[i];
+                    Console.WriteLine($"Carta {i} = naipe {listaDeCartas[i].naipe}");
                     listaDeCartas[i].Top = 360;
                     listaDeCartas[i].posicao = i;
                     //listaDeCartas[i].Left = listaDeCartas[0].Width + 60;
@@ -262,11 +265,23 @@ namespace PI
         private void Automacao()
         {
             AtualizarCampos();
+
             if (ConsultarVez())
             {
                 
                 int idJogadorJogando = Convert.ToInt32(idJogadorUm);
                 string senhaJogadorJogando = senhaJogadorUm;
+                string informacoes = Jogo.ExibirJogadas2(Convert.ToInt32(idDaPartida));
+                // [0] ROUND
+                // [1] Id do Jogador
+                // [2] Naipe 
+                // [3] Valor
+                // [4] Posição
+                Console.WriteLine(informacoes);
+                //informacoes = informacoes.Remove('\n');
+                //informacoes = informacoes.Remove('\r');
+                string[] infos = informacoes.Split(',');
+
                 if (rodada == 1)
                 {
                     //MessageBox.Show("Eu começo!");
@@ -280,7 +295,7 @@ namespace PI
                     listaDeCartasJogadas.Add(cartaJogada);
                     cartaJogada.Top = 100;
                     cartaJogada.Left = 750;
-                    listaDeCartas.RemoveAt(posicaoCartaJogada);
+                    listaDeCartas[posicaoCartaJogada] = null;
                     lblValorCarta.Text = valorCarta;
 
                     AtualizarCampos();
@@ -303,30 +318,32 @@ namespace PI
                     rodada++;
 
                 }
-                else //Quando é a vez do bot mas não´´e a priemira jogada da partida
+                else //Quando é a vez do bot mas não é a primeira jogada da partida
                 {
 
                     
                     AtualizarCampos();
-                    string informacoes = Jogo.ExibirJogadas2(Convert.ToInt32(idDaPartida));
-                    // [0] ROUND
-                    // [1] Id do Jogador
-                    // [2] Naipe 
-                    // [3] Valor
-                    // [4] Posição
-                    Console.WriteLine(informacoes);
-                    string[] infos = informacoes.Split(',');
+                    //string informacoes = Jogo.ExibirJogadas2(Convert.ToInt32(idDaPartida));
+                    //// [0] ROUND
+                    //// [1] Id do Jogador
+                    //// [2] Naipe 
+                    //// [3] Valor
+                    //// [4] Posição
+                    //Console.WriteLine(informacoes);
+                    ////informacoes = informacoes.Remove('\n');
+                    ////informacoes = informacoes.Remove('\r');
+                    //string[] infos = informacoes.Split(',');
 
-                    //for (int i = 0; i < infos.Length; i++)
-                    //{
-                    //    Console.WriteLine(infos[i]);
-                    //}
+                    for (int i = 0; i < infos.Length; i++)
+                    {
+                        Console.WriteLine(infos[i]);
+                    }
 
-                    if (infos[infos.Length-4] == idJogadorUm) //bot ganhou ultima rodada
+                    if (infos[infos.Length - 4] == idJogadorUm) //bot ganhou ultima rodada
                     {
 
                         txtPosicaoCarta.Text = "11";
-                        string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando,11);
+                        string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, 11);
                         MessageBox.Show("Valor da carta jogada: " + valorCarta);
                         //    //MessageBox.Show("JOGUEI");
 
@@ -334,7 +351,7 @@ namespace PI
                         listaDeCartasJogadas.Add(cartaJogada);
                         cartaJogada.Top = 100;
                         cartaJogada.Left = 750;
-                        listaDeCartas.RemoveAt(11);
+                        listaDeCartas[11] = null;
                         //MessageBox.Show("Tirei da lista");
                         lblValorCarta.Text = valorCarta;
 
@@ -342,11 +359,11 @@ namespace PI
 
                         AtualizarCampos();
 
-                        int idJogadorApostando = Convert.ToInt32(idJogadorUm);
-                        string senhaJogadorApostando = senhaJogadorUm;
+                        //int idJogadorApostando = Convert.ToInt32(idJogadorUm);
+                        //string senhaJogadorApostando = senhaJogadorUm;
                         txtCartaApostada.Text = "0";
                         int cartaApostada = Convert.ToInt32(txtCartaApostada.Text);
-                        string valorCartaApostada = Jogo.Apostar(idJogadorApostando, senhaJogadorApostando, cartaApostada);
+                        string valorCartaApostada = Jogo.Apostar(Convert.ToInt32(idJogadorUm), senhaJogadorUm, cartaApostada);
                         if (valorCartaApostada == "0")
                         {
                             MessageBox.Show("Pulou a aposta!");
@@ -357,6 +374,16 @@ namespace PI
                         }
 
                     }
+
+                    //string dados = Jogo.ListarJogadores2(Convert.ToInt32(idPartida));
+                    //string[] dadosPontuacao = dados.Split(',');
+                    //int Pontuacao = 0;
+                    //int pontuacao += Convert.ToInt32(dadosPontuacao[dadosPontuacao.Length - 5]);
+
+                    //if ()
+                    //{
+
+                    //}
                     else
                     {
                         int posicao = ComparaNaipes(listaDeCartas, infos);
@@ -372,7 +399,7 @@ namespace PI
                         listaDeCartasJogadas.Add(cartaJogada);
                         cartaJogada.Top = 100;
                         cartaJogada.Left = 750;
-                        listaDeCartas.RemoveAt(posicao);
+                        listaDeCartas[posicao] = null;
                         //MessageBox.Show("Tirei da lista");
                         lblValorCarta.Text = valorCarta;
 
@@ -394,6 +421,7 @@ namespace PI
                             MessageBox.Show("Carta Apostada: " + valorCartaApostada);
                         }
                     }
+
                     
 
 
@@ -418,7 +446,7 @@ namespace PI
 
                 if (cartas[i].naipe == naipe[naipe.Length-3])
                 {
-                    Console.WriteLine($"{cartas[i].naipe} = {naipe[naipe.Length - 3]}, posição {i}");
+                    Console.WriteLine($"Comparação de naipe: {cartas[i].naipe} = {naipe[naipe.Length - 3]}, posição {i}");
 
                     return i;
                 }
@@ -432,19 +460,31 @@ namespace PI
         {
             
             informacoes = Jogo.VerificarVez2(Convert.ToInt32(idDaPartida));
-            statusPartida = informacoes.Substring(0);
-            idJogadorDaVez = informacoes.Substring(2, 4);
-            numRodada = informacoes.Substring(7, 1);
-            statusRodada = informacoes.Substring(9);
+            dadosRodada = informacoes.Split(',');
+            //statusPartida = dadosRodada[0];
+            //idJogadorDaVez = informacoes.Substring(2, 4);
+            //numRodada = informacoes.Substring(7, 1);
+            //statusRodada = informacoes.Substring(9);
+            //lblVez.Text = idJogadorDaVez;
+            //lblStatusRodada.Text = statusRodada;
+            statusPartida = dadosRodada[0];
+            idJogadorDaVez = dadosRodada[1];
+            numRodada = dadosRodada[2];
+            statusRodada = dadosRodada[3];
             lblVez.Text = idJogadorDaVez;
+            lblStatusRodada.Text = "";
             lblStatusRodada.Text = statusRodada;
-            
+
+
 
 
         }
 
         public bool ConsultarVez()
         {
+            informacoes = Jogo.VerificarVez2(Convert.ToInt32(idDaPartida));
+            dadosRodada = informacoes.Split(',');
+            idJogadorDaVez = dadosRodada[1];
             if (idJogadorDaVez == idJogadorUm)
             {
                 return true;
@@ -457,9 +497,13 @@ namespace PI
 
         private void tmrIniciarAutomacao_Tick(object sender, EventArgs e)
         {
+            tmrIniciarAutomacao.Enabled = false;
             Automacao();
             //AtualizarCampos();
             
+            
+            tmrIniciarAutomacao.Enabled = true;
+
         }
 
         private void btnIniciarAutomacao_Click(object sender, EventArgs e)
