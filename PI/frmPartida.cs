@@ -101,18 +101,6 @@ namespace PI
             int idpartida = Convert.ToInt32(lblPartida.Text);
             string retorno = Jogo.ConsultarMao(idpartida);
             AtualizarCampos();
-            //informacoes = Jogo.VerificarVez2(idpartida);
-            //statusPartida = informacoes.Substring(0);
-            //idJogadorDaVez = informacoes.Substring(2, 4);
-            //numRodada = informacoes.Substring(5,1);
-            //statusRodada = informacoes.Substring(8);
-            //lblVez.Text = idJogadorDaVez;
-            //lblStatusRodada.Text = statusRodada;
-            //txtIdJogadorJogando.Text = idJogadorUm;
-            //txtSenhaJogadorJogando.Text = senhaJogadorUm;
-
-
-
 
 
             retorno = retorno.Replace("\r", "");
@@ -131,18 +119,6 @@ namespace PI
                     naipes[i] = cartas[i-1].Substring(9);
                 }
             }
-
-
-            //carta1.naipe = cartas[0].Substring(7);
-            ////carta1.naipe = "O"; 
-            //carta1.Top = 360;
-            //carta1.Left = 190;
-            //carta1.DescobrirImagem();
-
-            //foreach(Carta carta in listaDeCartas)
-            //{
-            //    carta.naipe = naipes[i];
-            //}
 
             for(int i = 1; i <= 12; i++)
             {
@@ -184,35 +160,6 @@ namespace PI
             {
                 this.Controls.Add(listaDeCartas[i]);
             }
-
-            //MessageBox.Show(carta1.naipe);
-            //MessageBox.Show(carta1.Top.ToString());
-            //MessageBox.Show(carta1.Left.ToString());
-
-
-            //string[] naipes = new string[24];
-
-            //for(int i = 0; i < 10; i++)
-            //{
-            //    naipes[i] = cartas[i].Substring(8);
-            //}
-
-
-            //string[] cartasJogador1 = new string[12];
-            //string[] cartasJogador2 = new string[12];
-
-            //for(int i = 0; i < 12; i++)
-            //{
-            //    cartasJogador1[i] = cartas[i];
-            //}
-
-            //for (int i = 12; i < 24; i++)
-            //{
-            //    cartasJogador2[i] = cartas[i];
-            //}
-
-
-
 
             lstCartas.Items.Clear();
             for (int i = 0; i < cartas.Length - 1; i++)
@@ -262,9 +209,14 @@ namespace PI
         }
 
         int rodada = 1;
+        int pontuacaoAnterior = 0;
+        int pontuacaoAtual = 0;
         private void Automacao()
         {
             AtualizarCampos();
+            pontuacaoAnterior = pontuacaoAtual;
+            pontuacaoAtual = Pontuacao();
+
 
             if (ConsultarVez())
             {
@@ -278,14 +230,11 @@ namespace PI
                 // [3] Valor
                 // [4] Posição
                 Console.WriteLine(informacoes);
-                //informacoes = informacoes.Remove('\n');
-                //informacoes = informacoes.Remove('\r');
                 string[] infos = informacoes.Split(',');
 
                 if (rodada == 1)
                 {
-                    //MessageBox.Show("Eu começo!");
-                    //txtPosicaoCarta.Text = "6";
+                    Console.WriteLine("Eu começo!");
                     int posicaoCartaJogada = 6;
                     string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicaoCartaJogada);
                     MessageBox.Show("Valor da carta jogada: " + valorCarta);
@@ -323,87 +272,31 @@ namespace PI
 
                     
                     AtualizarCampos();
-                    //string informacoes = Jogo.ExibirJogadas2(Convert.ToInt32(idDaPartida));
                     //// [0] ROUND
                     //// [1] Id do Jogador
                     //// [2] Naipe 
                     //// [3] Valor
                     //// [4] Posição
-                    //Console.WriteLine(informacoes);
-                    ////informacoes = informacoes.Remove('\n');
-                    ////informacoes = informacoes.Remove('\r');
-                    //string[] infos = informacoes.Split(',');
-
                     for (int i = 0; i < infos.Length; i++)
                     {
                         Console.WriteLine(infos[i]);
                     }
 
-                    if (infos[infos.Length - 4] == idJogadorUm) //bot ganhou ultima rodada
-                    {
-
-                        txtPosicaoCarta.Text = "11";
-                        string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, 11);
-                        MessageBox.Show("Valor da carta jogada: " + valorCarta);
-                        //    //MessageBox.Show("JOGUEI");
-
-                        Carta cartaJogada = listaDeCartas[11];
-                        listaDeCartasJogadas.Add(cartaJogada);
-                        cartaJogada.Top = 100;
-                        cartaJogada.Left = 750;
-                        listaDeCartas[11] = null;
-                        //MessageBox.Show("Tirei da lista");
-                        lblValorCarta.Text = valorCarta;
-
-                        //MessageBox.Show("Saí do for");
-
-                        AtualizarCampos();
-
-                        //int idJogadorApostando = Convert.ToInt32(idJogadorUm);
-                        //string senhaJogadorApostando = senhaJogadorUm;
-                        txtCartaApostada.Text = "0";
-                        int cartaApostada = Convert.ToInt32(txtCartaApostada.Text);
-                        string valorCartaApostada = Jogo.Apostar(Convert.ToInt32(idJogadorUm), senhaJogadorUm, cartaApostada);
-                        if (valorCartaApostada == "0")
-                        {
-                            MessageBox.Show("Pulou a aposta!");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Carta Apostada: " + valorCartaApostada);
-                        }
-
-                    }
-
-                    //string dados = Jogo.ListarJogadores2(Convert.ToInt32(idPartida));
-                    //string[] dadosPontuacao = dados.Split(',');
-                    //int Pontuacao = 0;
-                    //int pontuacao += Convert.ToInt32(dadosPontuacao[dadosPontuacao.Length - 5]);
-
-                    //if ()
-                    //{
-
-                    //}
-                    else
+                    if (pontuacaoAtual == pontuacaoAnterior) //Bot não ganhou ou ainda pode ganhar
                     {
                         int posicao = ComparaNaipes(listaDeCartas, infos);
                         Console.WriteLine(posicao);
 
                         txtPosicaoCarta.Text = posicao.ToString();
-                        //    int posicaoCartaJogada = posicao;
                         string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicao);
                         MessageBox.Show("Valor da carta jogada: " + valorCarta);
-                        //    //MessageBox.Show("JOGUEI");
 
                         Carta cartaJogada = listaDeCartas[posicao];
                         listaDeCartasJogadas.Add(cartaJogada);
                         cartaJogada.Top = 100;
                         cartaJogada.Left = 750;
                         listaDeCartas[posicao] = null;
-                        //MessageBox.Show("Tirei da lista");
                         lblValorCarta.Text = valorCarta;
-
-                        //MessageBox.Show("Saí do for");
 
                         AtualizarCampos();
 
@@ -421,36 +314,49 @@ namespace PI
                             MessageBox.Show("Carta Apostada: " + valorCartaApostada);
                         }
                     }
-
-                    
-
-
-
+                    else //bot ganhou ultima rodada, pode escolher qualquer carta para jogar
+                    {
+                        MessageBox.Show("Eu escolho a carta agora!");
+                    }
 
                 }
-
-
-
                 AtualizarCampos();
+            }
+            else
+            {
+                rodada++;
+            }
+        }
 
+
+        public int Pontuacao()
+        {
+            string dados = Jogo.ListarJogadores2(Convert.ToInt32(idPartida));
+            string[] dadosPontuacao = dados.Split(',');
+
+            for (int i = 0; i < dadosPontuacao.Length; i++)
+            {
+                Console.WriteLine($"DADOS: {dadosPontuacao[i]}");
+                Console.WriteLine($"Pontuação atual: {dadosPontuacao[dadosPontuacao.Length - 5]}");
             }
 
-            rodada++;
-
+            return Convert.ToInt32(dadosPontuacao[dadosPontuacao.Length-5]);
         }
 
         public int ComparaNaipes(List<Carta> cartas, string[] naipe)
         {
+            Console.WriteLine($"Naipe jogado pelo adversário é {naipe[naipe.Length-3]}");
             for (int i = 1; i <= 12; i++)
             {
-
-                if (cartas[i].naipe == naipe[naipe.Length-3])
+                if (cartas[i] != null)
                 {
-                    Console.WriteLine($"Comparação de naipe: {cartas[i].naipe} = {naipe[naipe.Length - 3]}, posição {i}");
+                    if (cartas[i].naipe.ToString() == naipe[naipe.Length - 3])
+                    {
+                        Console.WriteLine($"Comparação de naipe: {cartas[i].naipe} = {naipe[naipe.Length - 3]}, posição {i}");
 
-                    return i;
+                        return i;
+                    }
                 }
-
 
             }
             return -1;
@@ -461,12 +367,6 @@ namespace PI
             
             informacoes = Jogo.VerificarVez2(Convert.ToInt32(idDaPartida));
             dadosRodada = informacoes.Split(',');
-            //statusPartida = dadosRodada[0];
-            //idJogadorDaVez = informacoes.Substring(2, 4);
-            //numRodada = informacoes.Substring(7, 1);
-            //statusRodada = informacoes.Substring(9);
-            //lblVez.Text = idJogadorDaVez;
-            //lblStatusRodada.Text = statusRodada;
             statusPartida = dadosRodada[0];
             idJogadorDaVez = dadosRodada[1];
             numRodada = dadosRodada[2];
@@ -474,10 +374,6 @@ namespace PI
             lblVez.Text = idJogadorDaVez;
             lblStatusRodada.Text = "";
             lblStatusRodada.Text = statusRodada;
-
-
-
-
         }
 
         public bool ConsultarVez()
@@ -499,11 +395,7 @@ namespace PI
         {
             tmrIniciarAutomacao.Enabled = false;
             Automacao();
-            //AtualizarCampos();
-            
-            
             tmrIniciarAutomacao.Enabled = true;
-
         }
 
         private void btnIniciarAutomacao_Click(object sender, EventArgs e)
