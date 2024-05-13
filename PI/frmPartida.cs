@@ -208,7 +208,6 @@ namespace PI
 
         }
 
-        int rodada = 1;
         int pontuacaoAnterior = 0;
         int pontuacaoAtual = 0;
         private void Automacao()
@@ -232,7 +231,8 @@ namespace PI
                 Console.WriteLine(informacoes);
                 string[] infos = informacoes.Split(',');
 
-                if (rodada == 1)
+
+                if (idJogadorSorteado == idJogadorUm) //bot começa jogando
                 {
                     Console.WriteLine("Eu começo!");
                     int posicaoCartaJogada = 6;
@@ -264,7 +264,7 @@ namespace PI
                     }
 
 
-                    rodada++;
+                    idJogadorSorteado = "0";
 
                 }
                 else //Quando é a vez do bot mas não é a primeira jogada da partida
@@ -322,25 +322,24 @@ namespace PI
                 }
                 AtualizarCampos();
             }
-            else
-            {
-                rodada++;
-            }
+
         }
 
 
         public int Pontuacao()
         {
             string dados = Jogo.ListarJogadores2(Convert.ToInt32(idPartida));
-            string[] dadosPontuacao = dados.Split(',');
+            string[] dadosPontuacaoJogadores = dados.Split('\n');
+            string[] dadosPontuacao = dadosPontuacaoJogadores[dadosPontuacaoJogadores.Length-1].Split(',');
 
             for (int i = 0; i < dadosPontuacao.Length; i++)
             {
-                Console.WriteLine($"DADOS: {dadosPontuacao[i]}");
-                Console.WriteLine($"Pontuação atual: {dadosPontuacao[dadosPontuacao.Length - 5]}");
+                Console.WriteLine($"DADOS: {dadosPontuacao[i]} posicao {i}");
+                
             }
+            Console.WriteLine($"Pontuação atual: {dadosPontuacao[3]}");
 
-            return Convert.ToInt32(dadosPontuacao[dadosPontuacao.Length-5]);
+            return Convert.ToInt32(dadosPontuacao[3]);
         }
 
         public int ComparaNaipes(List<Carta> cartas, string[] naipe)
