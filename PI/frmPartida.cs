@@ -329,17 +329,29 @@ namespace PI
         public int Pontuacao()
         {
             string dados = Jogo.ListarJogadores2(Convert.ToInt32(idPartida));
+            Console.WriteLine(dados);
+            dados = dados.Replace('\r',' ');
             string[] dadosPontuacaoJogadores = dados.Split('\n');
-            string[] dadosPontuacao = dadosPontuacaoJogadores[dadosPontuacaoJogadores.Length-1].Split(',');
 
-            for (int i = 0; i < dadosPontuacao.Length; i++)
+            int tamanhoVetor = dadosPontuacaoJogadores.Length;
+            Console.WriteLine($"Tamanho vetor: {tamanhoVetor}");
+            Console.WriteLine($"Dados jogador 1: {dadosPontuacaoJogadores[tamanhoVetor - 3]}");
+            Console.WriteLine($"Dados jogador 2: {dadosPontuacaoJogadores[1]}");
+
+            string[] dadosPontuacao = new string[4];
+
+            foreach (string item in dadosPontuacaoJogadores)
             {
-                Console.WriteLine($"DADOS: {dadosPontuacao[i]} posicao {i}");
-                
-            }
-            Console.WriteLine($"Pontuação atual: {dadosPontuacao[3]}");
+                if (item.StartsWith(idJogadorUm))
+                {
+                    dadosPontuacao = item.Split(',');
 
-            return Convert.ToInt32(dadosPontuacao[3]);
+                }
+            }
+
+            Console.WriteLine($"Tamanho do vetor dadosPontuacao {dadosPontuacao.Length}");
+            Console.WriteLine($"Pontuação atual: {dadosPontuacao[dadosPontuacao.Length - 1]}");
+            return Convert.ToInt32(dadosPontuacao[dadosPontuacao.Length-1]);
         }
 
         public int ComparaNaipes(List<Carta> cartas, string[] naipe)
