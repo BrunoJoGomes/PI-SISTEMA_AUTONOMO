@@ -210,6 +210,7 @@ namespace PI
 
         int pontuacaoAnterior = 0;
         int pontuacaoAtual = 0;
+        int posicaoCarta = 1;
         private void Automacao()
         {
             AtualizarCampos();
@@ -285,38 +286,139 @@ namespace PI
                     if (pontuacaoAtual == pontuacaoAnterior) //Bot não ganhou ou ainda pode ganhar
                     {
                         int posicao = ComparaNaipes(listaDeCartas, infos);
-                        Console.WriteLine(posicao);
-
-                        txtPosicaoCarta.Text = posicao.ToString();
-                        string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicao);
-                        MessageBox.Show("Valor da carta jogada: " + valorCarta);
-
-                        Carta cartaJogada = listaDeCartas[posicao];
-                        listaDeCartasJogadas.Add(cartaJogada);
-                        cartaJogada.Top = 100;
-                        cartaJogada.Left = 750;
-                        listaDeCartas[posicao] = null;
-                        lblValorCarta.Text = valorCarta;
-
-                        AtualizarCampos();
-
-                        int idJogadorApostando = Convert.ToInt32(idJogadorUm);
-                        string senhaJogadorApostando = senhaJogadorUm;
-                        txtCartaApostada.Text = "0";
-                        int cartaApostada = Convert.ToInt32(txtCartaApostada.Text);
-                        string valorCartaApostada = Jogo.Apostar(idJogadorApostando, senhaJogadorApostando, cartaApostada);
-                        if (valorCartaApostada == "0")
+                        if (posicao == -1)
                         {
-                            MessageBox.Show("Pulou a aposta!");
+                            posicao = ComparaNaipes2(listaDeCartas, "C");
+                            Console.WriteLine(posicao);
+
+                            txtPosicaoCarta.Text = posicao.ToString();
+                            string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicao);
+                            MessageBox.Show("Valor da carta jogada: " + valorCarta);
+
+                            Carta cartaJogada = listaDeCartas[posicao];
+                            listaDeCartasJogadas.Add(cartaJogada);
+                            cartaJogada.Top = 100;
+                            cartaJogada.Left = 750;
+                            listaDeCartas[posicao] = null;
+                            lblValorCarta.Text = valorCarta;
+
+                            AtualizarCampos();
+
+                            int idJogadorApostando = Convert.ToInt32(idJogadorUm);
+                            string senhaJogadorApostando = senhaJogadorUm;
+                            txtCartaApostada.Text = "0";
+                            int cartaApostada = Convert.ToInt32(txtCartaApostada.Text);
+                            string valorCartaApostada = Jogo.Apostar(idJogadorApostando, senhaJogadorApostando, cartaApostada);
+                            if (valorCartaApostada == "0")
+                            {
+                                MessageBox.Show("Pulou a aposta!");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Carta Apostada: " + valorCartaApostada);
+                            }
+
                         }
                         else
                         {
-                            MessageBox.Show("Carta Apostada: " + valorCartaApostada);
+                            Console.WriteLine(posicao);
+
+                            txtPosicaoCarta.Text = posicao.ToString();
+                            string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicao);
+                            MessageBox.Show("Valor da carta jogada: " + valorCarta);
+
+                            Carta cartaJogada = listaDeCartas[posicao];
+                            listaDeCartasJogadas.Add(cartaJogada);
+                            cartaJogada.Top = 100;
+                            cartaJogada.Left = 750;
+                            listaDeCartas[posicao] = null;
+                            lblValorCarta.Text = valorCarta;
+
+                            AtualizarCampos();
+
+                            int idJogadorApostando = Convert.ToInt32(idJogadorUm);
+                            string senhaJogadorApostando = senhaJogadorUm;
+                            txtCartaApostada.Text = "0";
+                            int cartaApostada = Convert.ToInt32(txtCartaApostada.Text);
+                            string valorCartaApostada = Jogo.Apostar(idJogadorApostando, senhaJogadorApostando, cartaApostada);
+                            if (valorCartaApostada == "0")
+                            {
+                                MessageBox.Show("Pulou a aposta!");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Carta Apostada: " + valorCartaApostada);
+                            }
                         }
+                        
+                        
                     }
                     else //bot ganhou ultima rodada, pode escolher qualquer carta para jogar
                     {
-                        MessageBox.Show("Eu escolho a carta agora!");
+                        int posicao = ComparaNaipes2(listaDeCartas, "O");
+                        if (posicao == -1)
+                        {
+                            posicao = ComparaNaipes2(listaDeCartas, "E");
+                            Console.WriteLine(posicao);
+
+                            txtPosicaoCarta.Text = posicao.ToString();
+                            string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicao);
+                            MessageBox.Show("Valor da carta jogada: " + valorCarta);
+
+                            Carta cartaJogada = listaDeCartas[posicao];
+                            listaDeCartasJogadas.Add(cartaJogada);
+                            cartaJogada.Top = 100;
+                            cartaJogada.Left = 750;
+                            listaDeCartas[posicao] = null;
+                            lblValorCarta.Text = valorCarta;
+
+                            AtualizarCampos();
+
+                            int idJogadorApostando = Convert.ToInt32(idJogadorUm);
+                            string senhaJogadorApostando = senhaJogadorUm;
+                            txtCartaApostada.Text = "0";
+                            int cartaApostada = Convert.ToInt32(txtCartaApostada.Text);
+                            string valorCartaApostada = Jogo.Apostar(idJogadorApostando, senhaJogadorApostando, cartaApostada);
+                            if (valorCartaApostada == "0")
+                            {
+                                MessageBox.Show("Pulou a aposta!");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Carta Apostada: " + valorCartaApostada);
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine(posicao);
+
+                            txtPosicaoCarta.Text = posicao.ToString();
+                            string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicao);
+                            MessageBox.Show("Valor da carta jogada: " + valorCarta);
+
+                            Carta cartaJogada = listaDeCartas[posicao];
+                            listaDeCartasJogadas.Add(cartaJogada);
+                            cartaJogada.Top = 100;
+                            cartaJogada.Left = 750;
+                            listaDeCartas[posicao] = null;
+                            lblValorCarta.Text = valorCarta;
+
+                            AtualizarCampos();
+
+                            int idJogadorApostando = Convert.ToInt32(idJogadorUm);
+                            string senhaJogadorApostando = senhaJogadorUm;
+                            txtCartaApostada.Text = "0";
+                            int cartaApostada = Convert.ToInt32(txtCartaApostada.Text);
+                            string valorCartaApostada = Jogo.Apostar(idJogadorApostando, senhaJogadorApostando, cartaApostada);
+                            if (valorCartaApostada == "0")
+                            {
+                                MessageBox.Show("Pulou a aposta!");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Carta Apostada: " + valorCartaApostada);
+                            }
+                        }
                     }
 
                 }
@@ -373,6 +475,22 @@ namespace PI
             return -1;
         }
 
+        public int ComparaNaipes2(List<Carta> cartas, string naipe)
+        {
+            for (int i = 1; i <= 12; i++)
+            {
+                if (cartas[i] != null)
+                {
+                    if (cartas[i].naipe.ToString() == naipe)
+                    { 
+                        return i;
+                    }
+                }
+
+            }
+            return -1;
+        }
+
         private void AtualizarCampos()
         {
             
@@ -401,6 +519,19 @@ namespace PI
                 return false;
             }
         }
+
+        //public bool ChecarCarta(int posicao)
+        //{
+
+        //    if (listaDeCartas[posicao] != null)
+        //    {
+        //        return true; //Tem a carta na posição 
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
 
         private void tmrIniciarAutomacao_Tick(object sender, EventArgs e)
         {
