@@ -160,7 +160,7 @@ namespace PI
             }
 
             idMatch = lblIdPartida.Text;
-            string[] idJogadores = new string[2];
+            string[] idJogadores = new string[4];
             for (int i = 0; i < players.Length - 1; i++)
             {
                 idJogadores[i] = players[i].Substring(0,4);

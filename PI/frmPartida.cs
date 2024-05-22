@@ -39,8 +39,11 @@ namespace PI
         Carta carta10 = new Carta();
         Carta carta11 = new Carta();
         Carta carta12 = new Carta();
+        Carta carta13 = new Carta();
+        Carta carta14 = new Carta();
 
-        
+
+
 
 
         List<Carta> listaDeCartas = new List<Carta>();
@@ -72,6 +75,8 @@ namespace PI
             listaDeCartas.Add(carta10);
             listaDeCartas.Add(carta11);
             listaDeCartas.Add(carta12);
+            listaDeCartas.Add(carta13);
+            listaDeCartas.Add(carta14);
 
         }
 
@@ -92,7 +97,7 @@ namespace PI
             this.Close();
         }
 
-        string[] cartas = new string[24];
+        string[] cartas = new string[48];
 
 
         private void btnMostrarCartas_Click(object sender, EventArgs e)
@@ -106,21 +111,21 @@ namespace PI
             retorno = retorno.Replace("\r", "");
             cartas = retorno.Split('\n');
 
-            string[] naipes = new string[13];
+            string[] naipes = new string[15];
 
-            for (int i = 1; i <= 12; i++)
+            for (int i = 1; i <= 14; i++)
             {
                 if (i <= 9)
                 {
-                    naipes[i] = cartas[i-1].Substring(8);
+                    naipes[i] = cartas[i-1].Substring(7);
                 }
                 else
                 {
-                    naipes[i] = cartas[i-1].Substring(9);
+                    naipes[i] = cartas[i-1].Substring(8);
                 }
             }
 
-            for(int i = 1; i <= 12; i++)
+            for(int i = 1; i <= 14; i++)
             {
                 if (i == 1)
                 {
@@ -155,8 +160,10 @@ namespace PI
             listaDeCartas[10].Left = listaDeCartas[1].Width + 680;
             listaDeCartas[11].Left = listaDeCartas[1].Width + 740;
             listaDeCartas[12].Left = listaDeCartas[1].Width + 800;
+            listaDeCartas[13].Left = listaDeCartas[1].Width + 840;
+            listaDeCartas[14].Left = listaDeCartas[1].Width + 880;
 
-            for (int i = 2; i <= 12; i++)
+            for (int i = 2; i <= 14; i++)
             {
                 this.Controls.Add(listaDeCartas[i]);
             }
