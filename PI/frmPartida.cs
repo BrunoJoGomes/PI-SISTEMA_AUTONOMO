@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Security.AccessControl;
@@ -111,25 +112,57 @@ namespace PI
             retorno = retorno.Replace("\r", "");
             cartas = retorno.Split('\n');
 
-            string[] naipes = new string[15];
-
-            for (int i = 1; i <= 14; i++)
+            for (int i = 0; i < cartas.Length; i++)
             {
-                if (i <= 9)
+                Console.WriteLine(cartas[i]);
+            }
+
+            List<string> maoDeCartas = new List<string>();
+            maoDeCartas.Add(null);
+
+            foreach (string item in cartas)
+            {
+                if (item.StartsWith(idJogadorUm))
                 {
-                    naipes[i] = cartas[i-1].Substring(7);
-                }
-                else
-                {
-                    naipes[i] = cartas[i-1].Substring(8);
+                    maoDeCartas.Add(item);
                 }
             }
 
-            for(int i = 1; i <= 14; i++)
+            for (int i = 1; i < maoDeCartas.Count; i++)
+            {
+                Console.WriteLine($"Mão de cartas {maoDeCartas[i]} posição {i}");
+
+            }
+
+
+            for (int i = 1; i < listaDeCartas.Count; i++) //Percorre lista de cartas
+            {
+
+                listaDeCartas[i].naipe = maoDeCartas[i].Substring(maoDeCartas[i].Length-1);
+                Console.WriteLine($"O naipe da posição {i} é {listaDeCartas[i].naipe}");
+            }
+
+
+
+
+
+            //for (int i = 1; i <= 14; i++)
+            //{
+            //    if (i <= 9)
+            //    {
+            //        naipes[i] = cartas[i-1].Substring(7);
+            //    }
+            //    else
+            //    {
+            //        naipes[i] = cartas[i-1].Substring(8);
+            //    }
+            //}
+
+            for (int i = 1; i < listaDeCartas.Count; i++)
             {
                 if (i == 1)
                 {
-                    listaDeCartas[i].naipe = naipes[i];
+                    //listaDeCartas[i].naipe = naipes[i];
                     Console.WriteLine($"Carta {i} = naipe {listaDeCartas[i].naipe}");
                     listaDeCartas[i].Top = 360;
                     listaDeCartas[i].Left = 190;
@@ -139,7 +172,7 @@ namespace PI
                 }
                 else
                 {
-                    listaDeCartas[i].naipe = naipes[i];
+                    //listaDeCartas[i].naipe = naipes[i];
                     Console.WriteLine($"Carta {i} = naipe {listaDeCartas[i].naipe}");
                     listaDeCartas[i].Top = 360;
                     listaDeCartas[i].posicao = i;
@@ -163,7 +196,7 @@ namespace PI
             listaDeCartas[13].Left = listaDeCartas[1].Width + 840;
             listaDeCartas[14].Left = listaDeCartas[1].Width + 880;
 
-            for (int i = 2; i <= 14; i++)
+            for (int i = 2; i < listaDeCartas.Count; i++)
             {
                 this.Controls.Add(listaDeCartas[i]);
             }
@@ -250,6 +283,8 @@ namespace PI
 
                     Carta cartaJogada = listaDeCartas[posicaoCartaJogada];
                     listaDeCartasJogadas.Add(cartaJogada);
+                    cartaJogada.valor = valorCarta;
+                    cartaJogada.VirarImagem();
                     cartaJogada.Top = 100;
                     cartaJogada.Left = 750;
                     listaDeCartas[posicaoCartaJogada] = null;
@@ -304,8 +339,10 @@ namespace PI
 
                             Carta cartaJogada = listaDeCartas[posicao];
                             listaDeCartasJogadas.Add(cartaJogada);
-                            cartaJogada.Top = 100;
-                            cartaJogada.Left = 750;
+                            cartaJogada.valor = valorCarta;
+                            cartaJogada.VirarImagem();
+                            //cartaJogada.Top = 100;
+                            //cartaJogada.Left = 750;
                             listaDeCartas[posicao] = null;
                             lblValorCarta.Text = valorCarta;
 
@@ -336,8 +373,10 @@ namespace PI
 
                             Carta cartaJogada = listaDeCartas[posicao];
                             listaDeCartasJogadas.Add(cartaJogada);
-                            cartaJogada.Top = 100;
-                            cartaJogada.Left = 750;
+                            cartaJogada.valor = valorCarta;
+                            cartaJogada.VirarImagem();
+                            //cartaJogada.Top = 100;
+                            //cartaJogada.Left = 750;
                             listaDeCartas[posicao] = null;
                             lblValorCarta.Text = valorCarta;
 
@@ -374,8 +413,10 @@ namespace PI
 
                             Carta cartaJogada = listaDeCartas[posicao];
                             listaDeCartasJogadas.Add(cartaJogada);
-                            cartaJogada.Top = 100;
-                            cartaJogada.Left = 750;
+                            cartaJogada.valor = valorCarta;
+                            cartaJogada.VirarImagem();
+                            //cartaJogada.Top = 100;
+                            //cartaJogada.Left = 750;
                             listaDeCartas[posicao] = null;
                             lblValorCarta.Text = valorCarta;
 
@@ -405,8 +446,8 @@ namespace PI
 
                             Carta cartaJogada = listaDeCartas[posicao];
                             listaDeCartasJogadas.Add(cartaJogada);
-                            cartaJogada.Top = 100;
-                            cartaJogada.Left = 750;
+                            //cartaJogada.Top = 100;
+                            //cartaJogada.Left = 750;
                             listaDeCartas[posicao] = null;
                             lblValorCarta.Text = valorCarta;
 
@@ -484,7 +525,7 @@ namespace PI
 
         public int ComparaNaipes2(List<Carta> cartas, string naipe)
         {
-            for (int i = 1; i <= 12; i++)
+            for (int i = 1; i < listaDeCartas.Count; i++)
             {
                 if (cartas[i] != null)
                 {
