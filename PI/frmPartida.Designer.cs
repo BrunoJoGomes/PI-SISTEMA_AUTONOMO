@@ -34,14 +34,10 @@
             this.lblIdPartida = new System.Windows.Forms.Label();
             this.lblIdJogadorUm = new System.Windows.Forms.Label();
             this.txtIdJogadorUm = new System.Windows.Forms.TextBox();
-            this.lblIdJogadorDois = new System.Windows.Forms.Label();
-            this.txtIdJogadorDois = new System.Windows.Forms.TextBox();
             this.lstCartas = new System.Windows.Forms.ListBox();
             this.btnMostrarCartas = new System.Windows.Forms.Button();
             this.blbSenhaJogadorUm = new System.Windows.Forms.Label();
             this.txtSenhaJogadorUm = new System.Windows.Forms.TextBox();
-            this.lblSenhaJogadorDois = new System.Windows.Forms.Label();
-            this.txtSenhaJogadorDois = new System.Windows.Forms.TextBox();
             this.lblIdJogadorSorteado = new System.Windows.Forms.Label();
             this.lblIdSorteado = new System.Windows.Forms.Label();
             this.grpJogar = new System.Windows.Forms.GroupBox();
@@ -51,13 +47,9 @@
             this.lblSenhaJogadorJogando = new System.Windows.Forms.Label();
             this.txtIdJogadorJogando = new System.Windows.Forms.TextBox();
             this.lblIdJogadorJogando = new System.Windows.Forms.Label();
-            this.btnJogar = new System.Windows.Forms.Button();
             this.grpApostar = new System.Windows.Forms.GroupBox();
             this.txtCartaApostada = new System.Windows.Forms.TextBox();
             this.lblCartaApostada = new System.Windows.Forms.Label();
-            this.btnApostar = new System.Windows.Forms.Button();
-            this.lblCartasJogadorUm = new System.Windows.Forms.Label();
-            this.lblCartasJogadorDois = new System.Windows.Forms.Label();
             this.lblMesa = new System.Windows.Forms.Label();
             this.lblValorCarta = new System.Windows.Forms.Label();
             this.tmrIniciarAutomacao = new System.Windows.Forms.Timer(this.components);
@@ -114,22 +106,6 @@
             this.txtIdJogadorUm.Size = new System.Drawing.Size(100, 22);
             this.txtIdJogadorUm.TabIndex = 4;
             // 
-            // lblIdJogadorDois
-            // 
-            this.lblIdJogadorDois.AutoSize = true;
-            this.lblIdJogadorDois.Location = new System.Drawing.Point(20, 163);
-            this.lblIdJogadorDois.Name = "lblIdJogadorDois";
-            this.lblIdJogadorDois.Size = new System.Drawing.Size(83, 16);
-            this.lblIdJogadorDois.TabIndex = 5;
-            this.lblIdJogadorDois.Text = "ID jogador 2:";
-            // 
-            // txtIdJogadorDois
-            // 
-            this.txtIdJogadorDois.Location = new System.Drawing.Point(137, 158);
-            this.txtIdJogadorDois.Name = "txtIdJogadorDois";
-            this.txtIdJogadorDois.Size = new System.Drawing.Size(100, 22);
-            this.txtIdJogadorDois.TabIndex = 6;
-            // 
             // lstCartas
             // 
             this.lstCartas.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -167,22 +143,6 @@
             this.txtSenhaJogadorUm.Size = new System.Drawing.Size(100, 22);
             this.txtSenhaJogadorUm.TabIndex = 35;
             // 
-            // lblSenhaJogadorDois
-            // 
-            this.lblSenhaJogadorDois.AutoSize = true;
-            this.lblSenhaJogadorDois.Location = new System.Drawing.Point(20, 196);
-            this.lblSenhaJogadorDois.Name = "lblSenhaJogadorDois";
-            this.lblSenhaJogadorDois.Size = new System.Drawing.Size(109, 16);
-            this.lblSenhaJogadorDois.TabIndex = 36;
-            this.lblSenhaJogadorDois.Text = "Senha jogador 2:";
-            // 
-            // txtSenhaJogadorDois
-            // 
-            this.txtSenhaJogadorDois.Location = new System.Drawing.Point(137, 190);
-            this.txtSenhaJogadorDois.Name = "txtSenhaJogadorDois";
-            this.txtSenhaJogadorDois.Size = new System.Drawing.Size(100, 22);
-            this.txtSenhaJogadorDois.TabIndex = 37;
-            // 
             // lblIdJogadorSorteado
             // 
             this.lblIdJogadorSorteado.AutoSize = true;
@@ -209,7 +169,6 @@
             this.grpJogar.Controls.Add(this.lblSenhaJogadorJogando);
             this.grpJogar.Controls.Add(this.txtIdJogadorJogando);
             this.grpJogar.Controls.Add(this.lblIdJogadorJogando);
-            this.grpJogar.Controls.Add(this.btnJogar);
             this.grpJogar.Location = new System.Drawing.Point(472, 12);
             this.grpJogar.Name = "grpJogar";
             this.grpJogar.Size = new System.Drawing.Size(262, 172);
@@ -265,21 +224,10 @@
             this.lblIdJogadorJogando.TabIndex = 1;
             this.lblIdJogadorJogando.Text = "ID jogador:";
             // 
-            // btnJogar
-            // 
-            this.btnJogar.Location = new System.Drawing.Point(77, 134);
-            this.btnJogar.Name = "btnJogar";
-            this.btnJogar.Size = new System.Drawing.Size(85, 32);
-            this.btnJogar.TabIndex = 0;
-            this.btnJogar.Text = "Jogar";
-            this.btnJogar.UseVisualStyleBackColor = true;
-            this.btnJogar.Click += new System.EventHandler(this.btnJogar_Click);
-            // 
             // grpApostar
             // 
             this.grpApostar.Controls.Add(this.txtCartaApostada);
             this.grpApostar.Controls.Add(this.lblCartaApostada);
-            this.grpApostar.Controls.Add(this.btnApostar);
             this.grpApostar.Location = new System.Drawing.Point(472, 190);
             this.grpApostar.Name = "grpApostar";
             this.grpApostar.Size = new System.Drawing.Size(262, 141);
@@ -302,34 +250,6 @@
             this.lblCartaApostada.Size = new System.Drawing.Size(95, 16);
             this.lblCartaApostada.TabIndex = 7;
             this.lblCartaApostada.Text = "Posição Carta:";
-            // 
-            // btnApostar
-            // 
-            this.btnApostar.Location = new System.Drawing.Point(77, 93);
-            this.btnApostar.Name = "btnApostar";
-            this.btnApostar.Size = new System.Drawing.Size(85, 32);
-            this.btnApostar.TabIndex = 1;
-            this.btnApostar.Text = "Apostar";
-            this.btnApostar.UseVisualStyleBackColor = true;
-            this.btnApostar.Click += new System.EventHandler(this.btnApostar_Click);
-            // 
-            // lblCartasJogadorUm
-            // 
-            this.lblCartasJogadorUm.AutoSize = true;
-            this.lblCartasJogadorUm.Location = new System.Drawing.Point(255, 415);
-            this.lblCartasJogadorUm.Name = "lblCartasJogadorUm";
-            this.lblCartasJogadorUm.Size = new System.Drawing.Size(128, 16);
-            this.lblCartasJogadorUm.TabIndex = 42;
-            this.lblCartasJogadorUm.Text = "Cartas do jogador 1:";
-            // 
-            // lblCartasJogadorDois
-            // 
-            this.lblCartasJogadorDois.AutoSize = true;
-            this.lblCartasJogadorDois.Location = new System.Drawing.Point(255, 556);
-            this.lblCartasJogadorDois.Name = "lblCartasJogadorDois";
-            this.lblCartasJogadorDois.Size = new System.Drawing.Size(128, 16);
-            this.lblCartasJogadorDois.TabIndex = 43;
-            this.lblCartasJogadorDois.Text = "Cartas do jogador 2:";
             // 
             // lblMesa
             // 
@@ -356,7 +276,7 @@
             // 
             // btnIniciarAutomacao
             // 
-            this.btnIniciarAutomacao.Location = new System.Drawing.Point(23, 361);
+            this.btnIniciarAutomacao.Location = new System.Drawing.Point(13, 361);
             this.btnIniciarAutomacao.Name = "btnIniciarAutomacao";
             this.btnIniciarAutomacao.Size = new System.Drawing.Size(152, 31);
             this.btnIniciarAutomacao.TabIndex = 46;
@@ -412,20 +332,14 @@
             this.Controls.Add(this.btnIniciarAutomacao);
             this.Controls.Add(this.lblValorCarta);
             this.Controls.Add(this.lblMesa);
-            this.Controls.Add(this.lblCartasJogadorDois);
-            this.Controls.Add(this.lblCartasJogadorUm);
             this.Controls.Add(this.grpApostar);
             this.Controls.Add(this.grpJogar);
             this.Controls.Add(this.lblIdSorteado);
             this.Controls.Add(this.lblIdJogadorSorteado);
-            this.Controls.Add(this.txtSenhaJogadorDois);
-            this.Controls.Add(this.lblSenhaJogadorDois);
             this.Controls.Add(this.txtSenhaJogadorUm);
             this.Controls.Add(this.blbSenhaJogadorUm);
             this.Controls.Add(this.btnMostrarCartas);
             this.Controls.Add(this.lstCartas);
-            this.Controls.Add(this.txtIdJogadorDois);
-            this.Controls.Add(this.lblIdJogadorDois);
             this.Controls.Add(this.txtIdJogadorUm);
             this.Controls.Add(this.lblIdJogadorUm);
             this.Controls.Add(this.lblIdPartida);
@@ -451,21 +365,15 @@
         private System.Windows.Forms.Label lblIdPartida;
         private System.Windows.Forms.Label lblIdJogadorUm;
         private System.Windows.Forms.TextBox txtIdJogadorUm;
-        private System.Windows.Forms.Label lblIdJogadorDois;
-        private System.Windows.Forms.TextBox txtIdJogadorDois;
         private System.Windows.Forms.ListBox lstCartas;
         private System.Windows.Forms.Button btnMostrarCartas;
         private System.Windows.Forms.Label blbSenhaJogadorUm;
         private System.Windows.Forms.TextBox txtSenhaJogadorUm;
-        private System.Windows.Forms.Label lblSenhaJogadorDois;
-        private System.Windows.Forms.TextBox txtSenhaJogadorDois;
         private System.Windows.Forms.Label lblIdJogadorSorteado;
         private System.Windows.Forms.Label lblIdSorteado;
         private System.Windows.Forms.GroupBox grpJogar;
         private System.Windows.Forms.GroupBox grpApostar;
         private System.Windows.Forms.Label lblIdJogadorJogando;
-        private System.Windows.Forms.Button btnJogar;
-        private System.Windows.Forms.Button btnApostar;
         private System.Windows.Forms.TextBox txtSenhaJogadorJogando;
         private System.Windows.Forms.Label lblSenhaJogadorJogando;
         private System.Windows.Forms.TextBox txtIdJogadorJogando;
@@ -473,8 +381,6 @@
         private System.Windows.Forms.Label lblPosicaoCarta;
         private System.Windows.Forms.TextBox txtCartaApostada;
         private System.Windows.Forms.Label lblCartaApostada;
-        private System.Windows.Forms.Label lblCartasJogadorUm;
-        private System.Windows.Forms.Label lblCartasJogadorDois;
         private System.Windows.Forms.Label lblMesa;
         private System.Windows.Forms.Label lblValorCarta;
         private System.Windows.Forms.Timer tmrIniciarAutomacao;

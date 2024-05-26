@@ -13,17 +13,6 @@ namespace PI
         public string naipe;
         public string valor;
         public int posicao;
-        //public int topo;
-        //public int esquerda;
-
-        
-        //public Carta(string[] naipe, int i, string valor,int topo, int esquerda) 
-        //{
-        //    this.naipe = naipe[i];
-        //    this.valor = valor;
-        //    this.topo = topo;
-        //    this.esquerda = esquerda;
-        //}
 
         public void DescobrirImagem()
         {

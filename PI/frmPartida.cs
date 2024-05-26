@@ -49,7 +49,6 @@ namespace PI
 
         List<Carta> listaDeCartas = new List<Carta>();
 
-        List<Carta> listaDeCartasJogadas = new List<Carta>();
 
         string informacoes;
         string[] dadosRodada;
@@ -87,8 +86,6 @@ namespace PI
             idDaPartida = idPartida;
             txtIdJogadorUm.Text = idJogadorUm;
             txtSenhaJogadorUm.Text = senhaJogadorUm;
-            txtIdJogadorDois.Text = idJogadorDois; 
-            txtSenhaJogadorDois.Text = senhaJogadorDois;
             lblIdSorteado.Text = idJogadorSorteado;
 
         }
@@ -143,21 +140,6 @@ namespace PI
             }
 
 
-
-
-
-            //for (int i = 1; i <= 14; i++)
-            //{
-            //    if (i <= 9)
-            //    {
-            //        naipes[i] = cartas[i-1].Substring(7);
-            //    }
-            //    else
-            //    {
-            //        naipes[i] = cartas[i-1].Substring(8);
-            //    }
-            //}
-
             for (int i = 1; i < listaDeCartas.Count; i++)
             {
                 if (i == 1)
@@ -209,48 +191,10 @@ namespace PI
 
         }
 
-        private void btnJogar_Click(object sender, EventArgs e)
-        {
-
-            int idJogadorJogando = Convert.ToInt32(txtIdJogadorJogando.Text);
-            string senhaJogadorJogando = txtSenhaJogadorJogando.Text;
-            int posicaoCartaJogada = Convert.ToInt32(txtPosicaoCarta.Text);
-
-            string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicaoCartaJogada);
-            MessageBox.Show("Valor da carta jogada: " + valorCarta);
-
-
-            Carta cartaJogada = listaDeCartas[posicaoCartaJogada - 1];
-            cartaJogada.Top = 100;
-            cartaJogada.Left = 750;
-            lblValorCarta.Text = valorCarta;
-
-        }
-
-
-        private void btnApostar_Click(object sender, EventArgs e)
-        {
-            int idJogadorApostando = Convert.ToInt32(txtIdJogadorJogando.Text);
-            string senhaJogadorApostando = txtSenhaJogadorJogando.Text;
-            int cartaApostada = Convert.ToInt32(txtCartaApostada.Text);
-
-            string valorCartaApostada = Jogo.Apostar(idJogadorApostando, senhaJogadorApostando, cartaApostada);
-            if (valorCartaApostada == "0")
-            {
-                MessageBox.Show("Pulou a aposta!");
-            }
-            else
-            {
-                MessageBox.Show("Carta Apostada: " + valorCartaApostada);
-            }
-
-
-
-        }
-
         int pontuacaoAnterior = 0;
         int pontuacaoAtual = 0;
         int posicaoCarta = 1;
+        int posicaoVencedor = 0;
         private void Automacao()
         {
             AtualizarCampos();
@@ -263,31 +207,23 @@ namespace PI
                 
                 int idJogadorJogando = Convert.ToInt32(idJogadorUm);
                 string senhaJogadorJogando = senhaJogadorUm;
-                string informacoes = Jogo.ExibirJogadas2(Convert.ToInt32(idDaPartida));
-                // [0] ROUND
-                // [1] Id do Jogador
-                // [2] Naipe 
-                // [3] Valor
-                // [4] Posição
-                Console.WriteLine(informacoes);
-                string[] infos = informacoes.Split(',');
 
 
                 if (idJogadorSorteado == idJogadorUm) //bot começa jogando
                 {
+                    posicaoVencedor += 4;
                     Console.WriteLine("Eu começo!");
                     int posicaoCartaJogada = 6;
                     string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicaoCartaJogada);
                     MessageBox.Show("Valor da carta jogada: " + valorCarta);
-
-
-                    Carta cartaJogada = listaDeCartas[posicaoCartaJogada];
-                    listaDeCartasJogadas.Add(cartaJogada);
-                    cartaJogada.valor = valorCarta;
-                    cartaJogada.VirarImagem();
-                    cartaJogada.Top = 100;
-                    cartaJogada.Left = 750;
-                    listaDeCartas[posicaoCartaJogada] = null;
+                    //Carta cartaJogada = listaDeCartas[posicaoCartaJogada];
+                    //listaDeCartasJogadas.Add(cartaJogada);
+                    //cartaJogada.valor = valorCarta;
+                    //cartaJogada.VirarImagem();
+                    //cartaJogada.Top = 100;
+                    //cartaJogada.Left = 750;
+                    listaDeCartas[posicaoCartaJogada].valor = valorCarta;
+                    listaDeCartas[posicaoCartaJogada].VirarImagem();
                     lblValorCarta.Text = valorCarta;
 
                     AtualizarCampos();
@@ -313,21 +249,49 @@ namespace PI
                 else //Quando é a vez do bot mas não é a primeira jogada da partida
                 {
 
-                    
+
                     AtualizarCampos();
                     //// [0] ROUND
                     //// [1] Id do Jogador
                     //// [2] Naipe 
                     //// [3] Valor
                     //// [4] Posição
-                    for (int i = 0; i < infos.Length; i++)
-                    {
-                        Console.WriteLine(infos[i]);
-                    }
+
+
 
                     if (pontuacaoAtual == pontuacaoAnterior) //Bot não ganhou ou ainda pode ganhar
                     {
-                        int posicao = ComparaNaipes(listaDeCartas, infos);
+                        string informacoes = Jogo.ExibirJogadas2(Convert.ToInt32(idDaPartida));
+                        Console.WriteLine(informacoes);
+                        informacoes = informacoes.Replace('\r', ' ');
+                        string[] infos = informacoes.Split('\n');
+                        //string[] ultimaJogada = infos[infos.Length - 2].Split(',');
+                        string[] dadosVencedor = infos[posicaoVencedor].Split(',');
+                        posicaoVencedor += 4;
+
+                        
+
+                        //for (int i = 0; i < ultimaJogada.Length; i++)
+                        //{
+                        //    Console.WriteLine($"Vetor ultima jogada {ultimaJogada[i]} posição {i}");
+                        //}
+                        //for (int i = 0; i < infos.Length; i++)
+                        //{
+                        //    //Console.WriteLine(infos[i]);
+                        //}
+
+                        //Console.WriteLine($"O round atual é {ultimaJogada[0]}");
+
+                        //int round = Convert.ToInt32(ultimaJogada[0]);
+
+                        //string jogadasRound = Jogo.ExibirJogadas(Convert.ToInt32(idDaPartida));
+                        //Console.WriteLine($"Jogadas no round {jogadasRound}");
+                        //jogadasRound = jogadasRound.Replace('\r', ' ');
+                        //string[] jogadas = jogadasRound.Split(',');
+
+                        //Naipe jogado pelo ultimo vencedor
+                        string naipeJogado = dadosVencedor[2];
+                        int posicao = ComparaNaipes(listaDeCartas, naipeJogado);
                         if (posicao == -1)
                         {
                             posicao = ComparaNaipes2(listaDeCartas, "C");
@@ -337,13 +301,15 @@ namespace PI
                             string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicao);
                             MessageBox.Show("Valor da carta jogada: " + valorCarta);
 
-                            Carta cartaJogada = listaDeCartas[posicao];
-                            listaDeCartasJogadas.Add(cartaJogada);
-                            cartaJogada.valor = valorCarta;
-                            cartaJogada.VirarImagem();
-                            //cartaJogada.Top = 100;
-                            //cartaJogada.Left = 750;
-                            listaDeCartas[posicao] = null;
+                            //Carta cartaJogada = listaDeCartas[posicao];
+                            //listaDeCartasJogadas.Add(cartaJogada);
+                            //cartaJogada.valor = valorCarta;
+                            //cartaJogada.VirarImagem();
+                            ////cartaJogada.Top = 100;
+                            ////cartaJogada.Left = 750;
+                            //listaDeCartas[posicao] = null;
+                            listaDeCartas[posicao].valor = valorCarta;
+                            listaDeCartas[posicao].VirarImagem();
                             lblValorCarta.Text = valorCarta;
 
                             AtualizarCampos();
@@ -371,13 +337,15 @@ namespace PI
                             string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicao);
                             MessageBox.Show("Valor da carta jogada: " + valorCarta);
 
-                            Carta cartaJogada = listaDeCartas[posicao];
-                            listaDeCartasJogadas.Add(cartaJogada);
-                            cartaJogada.valor = valorCarta;
-                            cartaJogada.VirarImagem();
+                            //Carta cartaJogada = listaDeCartas[posicao];
+                            //listaDeCartasJogadas.Add(cartaJogada);
+                            //cartaJogada.valor = valorCarta;
+                            //cartaJogada.VirarImagem();
                             //cartaJogada.Top = 100;
                             //cartaJogada.Left = 750;
-                            listaDeCartas[posicao] = null;
+                            listaDeCartas[posicao].valor = valorCarta;
+                            listaDeCartas[posicao].VirarImagem();
+                            //listaDeCartas[posicao] = null;
                             lblValorCarta.Text = valorCarta;
 
                             AtualizarCampos();
@@ -401,9 +369,11 @@ namespace PI
                     }
                     else //bot ganhou ultima rodada, pode escolher qualquer carta para jogar
                     {
+                        posicaoVencedor += 4;
                         int posicao = ComparaNaipes2(listaDeCartas, "O");
                         if (posicao == -1)
                         {
+                            
                             posicao = ComparaNaipes2(listaDeCartas, "E");
                             Console.WriteLine(posicao);
 
@@ -411,13 +381,15 @@ namespace PI
                             string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicao);
                             MessageBox.Show("Valor da carta jogada: " + valorCarta);
 
-                            Carta cartaJogada = listaDeCartas[posicao];
-                            listaDeCartasJogadas.Add(cartaJogada);
-                            cartaJogada.valor = valorCarta;
-                            cartaJogada.VirarImagem();
+                            //Carta cartaJogada = listaDeCartas[posicao];
+                            //listaDeCartasJogadas.Add(cartaJogada);
+                            //cartaJogada.valor = valorCarta;
+                            //cartaJogada.VirarImagem();
                             //cartaJogada.Top = 100;
                             //cartaJogada.Left = 750;
-                            listaDeCartas[posicao] = null;
+                            //listaDeCartas[posicao] = null;
+                            listaDeCartas[posicao].valor = valorCarta;
+                            listaDeCartas[posicao].VirarImagem();
                             lblValorCarta.Text = valorCarta;
 
                             AtualizarCampos();
@@ -444,11 +416,15 @@ namespace PI
                             string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicao);
                             MessageBox.Show("Valor da carta jogada: " + valorCarta);
 
-                            Carta cartaJogada = listaDeCartas[posicao];
-                            listaDeCartasJogadas.Add(cartaJogada);
+                            //Carta cartaJogada = listaDeCartas[posicao];
+                            //listaDeCartasJogadas.Add(cartaJogada);
+                            //cartaJogada.valor = valorCarta;
+                            //cartaJogada.VirarImagem();
                             //cartaJogada.Top = 100;
                             //cartaJogada.Left = 750;
-                            listaDeCartas[posicao] = null;
+                            //listaDeCartas[posicao] = null;
+                            listaDeCartas[posicao].valor = valorCarta;
+                            listaDeCartas[posicao].VirarImagem();
                             lblValorCarta.Text = valorCarta;
 
                             AtualizarCampos();
@@ -479,14 +455,14 @@ namespace PI
         public int Pontuacao()
         {
             string dados = Jogo.ListarJogadores2(Convert.ToInt32(idPartida));
-            Console.WriteLine(dados);
+            //Console.WriteLine(dados);
             dados = dados.Replace('\r',' ');
             string[] dadosPontuacaoJogadores = dados.Split('\n');
 
             int tamanhoVetor = dadosPontuacaoJogadores.Length;
-            Console.WriteLine($"Tamanho vetor: {tamanhoVetor}");
-            Console.WriteLine($"Dados jogador 1: {dadosPontuacaoJogadores[tamanhoVetor - 3]}");
-            Console.WriteLine($"Dados jogador 2: {dadosPontuacaoJogadores[1]}");
+            //Console.WriteLine($"Tamanho vetor: {tamanhoVetor}");
+            //Console.WriteLine($"Dados jogador 1: {dadosPontuacaoJogadores[tamanhoVetor - 3]}");
+            //Console.WriteLine($"Dados jogador 2: {dadosPontuacaoJogadores[1]}");
 
             string[] dadosPontuacao = new string[4];
 
@@ -499,21 +475,21 @@ namespace PI
                 }
             }
 
-            Console.WriteLine($"Tamanho do vetor dadosPontuacao {dadosPontuacao.Length}");
+            //Console.WriteLine($"Tamanho do vetor dadosPontuacao {dadosPontuacao.Length}");
             Console.WriteLine($"Pontuação atual: {dadosPontuacao[dadosPontuacao.Length - 1]}");
             return Convert.ToInt32(dadosPontuacao[dadosPontuacao.Length-1]);
         }
 
-        public int ComparaNaipes(List<Carta> cartas, string[] naipe)
+        public int ComparaNaipes(List<Carta> cartas, string naipe)
         {
-            Console.WriteLine($"Naipe jogado pelo adversário é {naipe[naipe.Length-3]}");
-            for (int i = 1; i <= 12; i++)
+            Console.WriteLine($"Naipe jogado pelo adversário ganhador {naipe}");
+            for (int i = 1; i <= listaDeCartas.Count; i++)
             {
-                if (cartas[i] != null)
+                if (cartas[i].valor == null)
                 {
-                    if (cartas[i].naipe.ToString() == naipe[naipe.Length - 3])
+                    if (cartas[i].naipe.ToString() == naipe)
                     {
-                        Console.WriteLine($"Comparação de naipe: {cartas[i].naipe} = {naipe[naipe.Length - 3]}, posição {i}");
+                        Console.WriteLine($"Comparação de naipe: {cartas[i].naipe} = {naipe}, posição {i}");
 
                         return i;
                     }
@@ -522,6 +498,7 @@ namespace PI
             }
             return -1;
         }
+
 
         public int ComparaNaipes2(List<Carta> cartas, string naipe)
         {
@@ -568,18 +545,6 @@ namespace PI
             }
         }
 
-        //public bool ChecarCarta(int posicao)
-        //{
-
-        //    if (listaDeCartas[posicao] != null)
-        //    {
-        //        return true; //Tem a carta na posição 
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
 
         private void tmrIniciarAutomacao_Tick(object sender, EventArgs e)
         {
