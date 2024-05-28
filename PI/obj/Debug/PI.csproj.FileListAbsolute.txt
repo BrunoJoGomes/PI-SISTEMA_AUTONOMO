@@ -78,6 +78,6 @@ C:\Users\bruno.jogomes\Documents\Visual Studio 2022\PI-SISTEMA_AUTONOMO\PI\obj\D
 C:\Users\bruno.jogomes\Documents\Visual Studio 2022\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.Properties.Resources.resources
 C:\Users\bruno.jogomes\Documents\Visual Studio 2022\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.csproj.GenerateResource.cache
 C:\Users\bruno.jogomes\Documents\Visual Studio 2022\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.csproj.CoreCompileInputs.cache
-C:\Users\bruno.jogomes\Documents\Visual Studio 2022\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.csproj.CopyComplete
 C:\Users\bruno.jogomes\Documents\Visual Studio 2022\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.exe
 C:\Users\bruno.jogomes\Documents\Visual Studio 2022\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.pdb
+C:\Users\bruno.jogomes\Documents\Visual Studio 2022\PI-SISTEMA_AUTONOMO\PI\obj\Debug\PI.csproj.Up2Date
