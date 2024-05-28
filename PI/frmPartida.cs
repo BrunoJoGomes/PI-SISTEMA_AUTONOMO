@@ -28,26 +28,19 @@ namespace PI
         public string idDaPartida;
 
 
-        Carta carta1 = new Carta();
-        Carta carta2 = new Carta();
-        Carta carta3 = new Carta();
-        Carta carta4 = new Carta();
-        Carta carta5 = new Carta();
-        Carta carta6 = new Carta();
-        Carta carta7 = new Carta();
-        Carta carta8 = new Carta();
-        Carta carta9 = new Carta();
-        Carta carta10 = new Carta();
-        Carta carta11 = new Carta();
-        Carta carta12 = new Carta();
-        Carta carta13 = new Carta();
-        Carta carta14 = new Carta();
 
 
 
 
 
-        List<Carta> listaDeCartas = new List<Carta>();
+
+        List<Carta> minhaListaDeCartas = new List<Carta>();
+
+        List<Carta> listaDeCartasAdversario = new List<Carta>();
+
+        List<Carta> listaDeCartasAdversario2 = new List<Carta>();
+
+        List<Carta> listaDeCartasAdversario3 = new List<Carta>();
 
 
         string informacoes;
@@ -62,21 +55,6 @@ namespace PI
         {
             InitializeComponent();
             frmLobby frmLobby = new frmLobby();
-            listaDeCartas.Add(null);
-            listaDeCartas.Add(carta1);
-            listaDeCartas.Add(carta2);
-            listaDeCartas.Add(carta3);
-            listaDeCartas.Add(carta4);
-            listaDeCartas.Add(carta5);
-            listaDeCartas.Add(carta6);
-            listaDeCartas.Add(carta7);
-            listaDeCartas.Add(carta8);
-            listaDeCartas.Add(carta9);
-            listaDeCartas.Add(carta10);
-            listaDeCartas.Add(carta11);
-            listaDeCartas.Add(carta12);
-            listaDeCartas.Add(carta13);
-            listaDeCartas.Add(carta14);
 
         }
 
@@ -100,88 +78,660 @@ namespace PI
 
         private void btnMostrarCartas_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(lblPartida.Text);
             int idpartida = Convert.ToInt32(lblPartida.Text);
-            string retorno = Jogo.ConsultarMao(idpartida);
             AtualizarCampos();
 
+            string jogadores = Jogo.ListarJogadores(idpartida);
+            string[] vetorJogadores = jogadores.Split('\n');
 
-            retorno = retorno.Replace("\r", "");
-            cartas = retorno.Split('\n');
 
-            for (int i = 0; i < cartas.Length; i++)
+            //Caso tenham 2 jogadores
+            if (vetorJogadores.Length <= 3)
             {
-                Console.WriteLine(cartas[i]);
-            }
 
-            List<string> maoDeCartas = new List<string>();
-            maoDeCartas.Add(null);
+                string idJogador;
+                string[] adversario1 = new string[4];
 
-            foreach (string item in cartas)
-            {
-                if (item.StartsWith(idJogadorUm))
+                //foreach (string jogador in vetorJogadores)
+                //{
+                //    if (jogador.StartsWith(idJogadorUm) != true)
+                //    {
+                //        adversario1 = jogador.Split(',');
+                //        idJogador = vetorJogadores[i];
+                //        Console.WriteLine($"id adversario {idJogador}");
+                //    }
+                //}
+
+                //for (int i = 0; i < vetorJogadores.Length; i++)
+                //{
+                //    if (vetorJogadores[i].StartsWith(idJogadorUm) != true)
+                //    {
+                //        adversario1[] 
+                //        idJogador = vetorJogadores[i];
+                //        Console.WriteLine($"id adversario {idJogador}");
+                //    }
+                //}
+
+                Carta carta1 = new Carta();
+                Carta carta2 = new Carta();
+                Carta carta3 = new Carta();
+                Carta carta4 = new Carta();
+                Carta carta5 = new Carta();
+                Carta carta6 = new Carta();
+                Carta carta7 = new Carta();
+                Carta carta8 = new Carta();
+                Carta carta9 = new Carta();
+                Carta carta10 = new Carta();
+                Carta carta11 = new Carta();
+                Carta carta12 = new Carta();
+
+                Carta carta13 = new Carta();
+                Carta carta14 = new Carta();
+                Carta carta15 = new Carta();
+                Carta carta16 = new Carta();
+                Carta carta17 = new Carta();
+                Carta carta18 = new Carta();
+                Carta carta19 = new Carta();
+                Carta carta20 = new Carta();
+                Carta carta21 = new Carta();
+                Carta carta22 = new Carta();
+                Carta carta23 = new Carta();
+                Carta carta24 = new Carta();
+
+
+                minhaListaDeCartas.Add(null);
+                minhaListaDeCartas.Add(carta1);
+                minhaListaDeCartas.Add(carta2);
+                minhaListaDeCartas.Add(carta3);
+                minhaListaDeCartas.Add(carta4);
+                minhaListaDeCartas.Add(carta5);
+                minhaListaDeCartas.Add(carta6);
+                minhaListaDeCartas.Add(carta7);
+                minhaListaDeCartas.Add(carta8);
+                minhaListaDeCartas.Add(carta9);
+                minhaListaDeCartas.Add(carta10);
+                minhaListaDeCartas.Add(carta11);
+                minhaListaDeCartas.Add(carta12);
+
+                listaDeCartasAdversario.Add(null);
+                listaDeCartasAdversario.Add(carta13);
+                listaDeCartasAdversario.Add(carta14);
+                listaDeCartasAdversario.Add(carta15);
+                listaDeCartasAdversario.Add(carta16);
+                listaDeCartasAdversario.Add(carta17);
+                listaDeCartasAdversario.Add(carta18);
+                listaDeCartasAdversario.Add(carta19);
+                listaDeCartasAdversario.Add(carta20);
+                listaDeCartasAdversario.Add(carta21);
+                listaDeCartasAdversario.Add(carta22);
+                listaDeCartasAdversario.Add(carta23);
+                listaDeCartasAdversario.Add(carta24);
+
+                string retorno = Jogo.ConsultarMao(idpartida);
+
+
+                retorno = retorno.Replace("\r", "");
+                cartas = retorno.Split('\n');
+
+                for (int i = 0; i < cartas.Length; i++)
                 {
-                    maoDeCartas.Add(item);
+                    Console.WriteLine(cartas[i]);
+                }
+
+                List<string> maoDeCartas = new List<string>();
+                maoDeCartas.Add(null);
+
+                List<string> maoDeCartasAdversario = new List<string>();
+                maoDeCartasAdversario.Add(null);
+
+                foreach (string item in cartas)
+                {
+                    if (item.StartsWith(idJogadorUm))
+                    {
+                        maoDeCartas.Add(item);
+                    }
+                    else
+                    {
+                        maoDeCartasAdversario.Add(item);
+                    }
+                }
+
+                for (int i = 1; i < maoDeCartas.Count; i++)
+                {
+                    Console.WriteLine($"Mão de cartas {maoDeCartas[i]} posição {i}");
+
+                }
+
+
+                for (int i = 1; i < minhaListaDeCartas.Count; i++) //Percorre lista de cartas
+                {
+
+                    minhaListaDeCartas[i].naipe = maoDeCartas[i].Substring(maoDeCartas[i].Length - 1);
+                    Console.WriteLine($"O naipe da posição {i} é {minhaListaDeCartas[i].naipe}");
+                }
+
+                for (int i = 1; i < listaDeCartasAdversario.Count; i++) //Percorre lista de cartas adversario
+                {
+
+                    listaDeCartasAdversario[i].naipe = maoDeCartasAdversario[i].Substring(maoDeCartas[i].Length - 1);
+                    Console.WriteLine($"O naipe da posição {i} é {listaDeCartasAdversario[i].naipe}");
+                }
+
+
+
+                //for(int i = 1; i <= cartas.Length; i++)
+                //{
+                //    if (cartas[i-1].StartsWith(idJogadorUm))
+                //    {
+                //        minhaListaDeCartas[i].naipe = cartas[i-1].Substring(cartas[i-1].Length - 1);
+                //    }
+
+                //}
+
+                //for (int i = 1; i <= cartas.Length; i++)
+                //{
+                //    if (cartas[i - 1].StartsWith(idJogadorUm) != true)
+                //    {
+                //        listaDeCartasAdversario[i].naipe = cartas[i - 1].Substring(cartas[i - 1].Length - 1);
+                //    }
+
+                //}
+
+
+
+
+
+
+
+
+
+                for (int i = 1; i < minhaListaDeCartas.Count; i++)
+                {
+                    if (i == 1)
+                    {
+                        Console.WriteLine($"Carta {i} = naipe {minhaListaDeCartas[i].naipe}");
+                        minhaListaDeCartas[i].Left = 350;
+                        minhaListaDeCartas[i].posicao = i;
+                        minhaListaDeCartas[i].DescobrirImagem();
+                        this.Controls.Add(minhaListaDeCartas[i]);
+                    }
+                    else if (i == 7)
+                    {
+                        Console.WriteLine($"Carta {i} = naipe {minhaListaDeCartas[i].naipe}");
+                        minhaListaDeCartas[i].posicao = i;
+                        minhaListaDeCartas[i].Left = 350;
+                        minhaListaDeCartas[i].DescobrirImagem();
+                        this.Controls.Add(minhaListaDeCartas[i]);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Carta {i} = naipe {minhaListaDeCartas[i].naipe}");
+                        minhaListaDeCartas[i].posicao = i;
+                        minhaListaDeCartas[i].Left = minhaListaDeCartas[i - 1].Left + 60;
+                        minhaListaDeCartas[i].DescobrirImagem();
+                        this.Controls.Add(minhaListaDeCartas[i]);
+                    }
+                }
+
+                for (int i = 1; i < minhaListaDeCartas.Count; i++)
+                {
+                    if (i <= 6)
+                    {
+                        minhaListaDeCartas[i].Top = 360;
+                    }
+                    else
+                    {
+                        minhaListaDeCartas[i].Top = 460;
+                    }
+
+                }
+
+                for (int i = 1; i < listaDeCartasAdversario.Count; i++)
+                {
+                    if (i == 1)
+                    {
+                        Console.WriteLine($"Carta {i} = naipe {listaDeCartasAdversario[i].naipe}");
+                        listaDeCartasAdversario[i].Left = 350;
+                        listaDeCartasAdversario[i].posicao = i;
+                        listaDeCartasAdversario[i].DescobrirImagem();
+                        this.Controls.Add(listaDeCartasAdversario[i]);
+                    }
+                    else if (i == 7)
+                    {
+                        Console.WriteLine($"Carta {i} = naipe {listaDeCartasAdversario[i].naipe}");
+                        listaDeCartasAdversario[i].posicao = i;
+                        listaDeCartasAdversario[i].Left = 350;
+                        listaDeCartasAdversario[i].DescobrirImagem();
+                        this.Controls.Add(listaDeCartasAdversario[i]);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Carta {i} = naipe {listaDeCartasAdversario[i].naipe}");
+                        listaDeCartasAdversario[i].posicao = i;
+                        listaDeCartasAdversario[i].Left = listaDeCartasAdversario[i - 1].Left + 60;
+                        listaDeCartasAdversario[i].DescobrirImagem();
+                        this.Controls.Add(listaDeCartasAdversario[i]);
+                    }
+                }
+
+                for (int i = 1; i < listaDeCartasAdversario.Count; i++)
+                {
+                    if (i <= 6)
+                    {
+                        listaDeCartasAdversario[i].Top = 40;
+                    }
+                    else
+                    {
+                        listaDeCartasAdversario[i].Top = 140;
+                    }
+
+                }
+            }
+            else
+            {
+                string[] idJogadores = new string[3];
+
+                Console.WriteLine($"Tamanho do vetor de jogadores {vetorJogadores.Length}");
+
+                for (int i = 1; i < vetorJogadores.Length; i++)
+                {
+                    if (vetorJogadores[i].StartsWith(idJogadorUm) != true)
+                    {
+                        idJogadores[i] = vetorJogadores[i];
+                        Console.WriteLine($"id adversarios {idJogadores[i]}");
+                    }
+                }
+
+                Carta carta1 = new Carta();
+                Carta carta2 = new Carta();
+                Carta carta3 = new Carta();
+                Carta carta4 = new Carta();
+                Carta carta5 = new Carta();
+                Carta carta6 = new Carta();
+                Carta carta7 = new Carta();
+                Carta carta8 = new Carta();
+                Carta carta9 = new Carta();
+                Carta carta10 = new Carta();
+                Carta carta11 = new Carta();
+                Carta carta12 = new Carta();
+                Carta carta13 = new Carta();
+                Carta carta14 = new Carta();
+
+                Carta carta15 = new Carta();
+                Carta carta16 = new Carta();
+                Carta carta17 = new Carta();
+                Carta carta18 = new Carta();
+                Carta carta19 = new Carta();
+                Carta carta20 = new Carta();
+                Carta carta21 = new Carta();
+                Carta carta22 = new Carta();
+                Carta carta23 = new Carta();
+                Carta carta24 = new Carta();
+                Carta carta25 = new Carta();
+                Carta carta26 = new Carta();
+                Carta carta27 = new Carta();
+                Carta carta28 = new Carta();
+
+                Carta carta29 = new Carta();
+                Carta carta30 = new Carta();
+                Carta carta31 = new Carta();
+                Carta carta32 = new Carta();
+                Carta carta33 = new Carta();
+                Carta carta34 = new Carta();
+                Carta carta35 = new Carta();
+                Carta carta36 = new Carta();
+                Carta carta37 = new Carta();
+                Carta carta38 = new Carta();
+                Carta carta39 = new Carta();
+                Carta carta40 = new Carta();
+                Carta carta41 = new Carta();
+                Carta carta42 = new Carta();
+
+                Carta carta43 = new Carta();
+                Carta carta44 = new Carta();
+                Carta carta45 = new Carta();
+                Carta carta46 = new Carta();
+                Carta carta47 = new Carta();
+                Carta carta48 = new Carta();
+                Carta carta49 = new Carta();
+                Carta carta50 = new Carta();
+                Carta carta51 = new Carta();
+                Carta carta52 = new Carta();
+                Carta carta53 = new Carta();
+                Carta carta54 = new Carta();
+                Carta carta55 = new Carta();
+                Carta carta56 = new Carta();
+
+                minhaListaDeCartas.Add(null);
+                minhaListaDeCartas.Add(carta1);
+                minhaListaDeCartas.Add(carta2);
+                minhaListaDeCartas.Add(carta3);
+                minhaListaDeCartas.Add(carta4);
+                minhaListaDeCartas.Add(carta5);
+                minhaListaDeCartas.Add(carta6);
+                minhaListaDeCartas.Add(carta7);
+                minhaListaDeCartas.Add(carta8);
+                minhaListaDeCartas.Add(carta9);
+                minhaListaDeCartas.Add(carta10);
+                minhaListaDeCartas.Add(carta11);
+                minhaListaDeCartas.Add(carta12);
+                minhaListaDeCartas.Add(carta13);
+                minhaListaDeCartas.Add(carta14);
+
+                listaDeCartasAdversario.Add(null);
+                listaDeCartasAdversario.Add(carta15);
+                listaDeCartasAdversario.Add(carta16);
+                listaDeCartasAdversario.Add(carta17);
+                listaDeCartasAdversario.Add(carta18);
+                listaDeCartasAdversario.Add(carta19);
+                listaDeCartasAdversario.Add(carta20);
+                listaDeCartasAdversario.Add(carta21);
+                listaDeCartasAdversario.Add(carta22);
+                listaDeCartasAdversario.Add(carta23);
+                listaDeCartasAdversario.Add(carta24);
+                listaDeCartasAdversario.Add(carta25);
+                listaDeCartasAdversario.Add(carta26);
+                listaDeCartasAdversario.Add(carta27);
+                listaDeCartasAdversario.Add(carta28);
+
+                listaDeCartasAdversario2.Add(null);
+                listaDeCartasAdversario2.Add(carta29);
+                listaDeCartasAdversario2.Add(carta30);
+                listaDeCartasAdversario2.Add(carta31);
+                listaDeCartasAdversario2.Add(carta32);
+                listaDeCartasAdversario2.Add(carta33);
+                listaDeCartasAdversario2.Add(carta34);
+                listaDeCartasAdversario2.Add(carta35);
+                listaDeCartasAdversario2.Add(carta36);
+                listaDeCartasAdversario2.Add(carta37);
+                listaDeCartasAdversario2.Add(carta38);
+                listaDeCartasAdversario2.Add(carta39);
+                listaDeCartasAdversario2.Add(carta40);
+                listaDeCartasAdversario2.Add(carta41);
+                listaDeCartasAdversario2.Add(carta42);
+
+                listaDeCartasAdversario3.Add(null);
+                listaDeCartasAdversario3.Add(carta43);
+                listaDeCartasAdversario3.Add(carta44);
+                listaDeCartasAdversario3.Add(carta45);
+                listaDeCartasAdversario3.Add(carta46);
+                listaDeCartasAdversario3.Add(carta47);
+                listaDeCartasAdversario3.Add(carta48);
+                listaDeCartasAdversario3.Add(carta49);
+                listaDeCartasAdversario3.Add(carta50);
+                listaDeCartasAdversario3.Add(carta51);
+                listaDeCartasAdversario3.Add(carta52);
+                listaDeCartasAdversario3.Add(carta53);
+                listaDeCartasAdversario3.Add(carta54);
+                listaDeCartasAdversario3.Add(carta55);
+                listaDeCartasAdversario3.Add(carta56);
+
+                string retorno = Jogo.ConsultarMao(idpartida);
+
+
+                retorno = retorno.Replace("\r", "");
+                cartas = retorno.Split('\n');
+
+                for (int i = 0; i < cartas.Length; i++)
+                {
+                    Console.WriteLine(cartas[i]);
+                }
+
+                List<string> maoDeCartas = new List<string>();
+                maoDeCartas.Add(null);
+
+                List<string> maoDeCartasAdversario = new List<string>();
+                maoDeCartasAdversario.Add(null);
+
+                List<string> maoDeCartasAdversario2 = new List<string>();
+                maoDeCartasAdversario2.Add(null);
+
+                List<string> maoDeCartasAdversario3 = new List<string>();
+                maoDeCartasAdversario3.Add(null);
+
+                foreach (string item in cartas)
+                {
+                    if (item.StartsWith(idJogadorUm))
+                    {
+                        maoDeCartas.Add(item);
+                    }
+                    else if (item.StartsWith(idJogadores[0]))
+                    {
+                        maoDeCartasAdversario.Add(item);
+                    }
+                    else if (item.StartsWith(idJogadores[1]))
+                    {
+                        maoDeCartasAdversario2.Add(item);
+                    }
+                    else
+                    {
+                        maoDeCartasAdversario3.Add(item);
+                    }
+                }
+
+                for (int i = 1; i < maoDeCartas.Count; i++)
+                {
+                    Console.WriteLine($"Mão de cartas {maoDeCartas[i]} posição {i}");
+
+                }
+
+
+                for (int i = 1; i < minhaListaDeCartas.Count; i++) //Percorre lista de cartas
+                {
+
+                    minhaListaDeCartas[i].naipe = maoDeCartas[i].Substring(maoDeCartas[i].Length - 1);
+                    Console.WriteLine($"O naipe da posição {i} é {minhaListaDeCartas[i].naipe}");
+                }
+
+                for (int i = 1; i < listaDeCartasAdversario.Count; i++) //Percorre lista de cartas adversario
+                {
+
+                    listaDeCartasAdversario[i].naipe = maoDeCartasAdversario[i].Substring(maoDeCartasAdversario[i].Length - 1);
+                    Console.WriteLine($"O naipe da posição {i} é {listaDeCartasAdversario[i].naipe}");
+                }
+
+                for (int i = 1; i < listaDeCartasAdversario2.Count; i++) //Percorre lista de cartas adversario
+                {
+
+                    listaDeCartasAdversario2[i].naipe = maoDeCartasAdversario2[i].Substring(maoDeCartasAdversario2[i].Length - 1);
+                    Console.WriteLine($"O naipe da posição {i} é {listaDeCartasAdversario2[i].naipe}");
+                }
+
+                for (int i = 1; i < listaDeCartasAdversario3.Count; i++) //Percorre lista de cartas adversario
+                {
+
+                    listaDeCartasAdversario3[i].naipe = maoDeCartasAdversario3[i].Substring(maoDeCartasAdversario3[i].Length - 1);
+                    Console.WriteLine($"O naipe da posição {i} é {listaDeCartasAdversario3[i].naipe}");
+                }
+
+
+
+
+
+                //for(int i = 1; i <= cartas.Length; i++)
+                //{
+                //    if (cartas[i-1].StartsWith(idJogadorUm))
+                //    {
+                //        minhaListaDeCartas[i].naipe = cartas[i-1].Substring(cartas[i-1].Length - 1);
+                //    }
+
+                //}
+
+                //for (int i = 1; i <= cartas.Length; i++)
+                //{
+                //    if (cartas[i - 1].StartsWith(idJogadorUm) != true)
+                //    {
+                //        listaDeCartasAdversario[i].naipe = cartas[i - 1].Substring(cartas[i - 1].Length - 1);
+                //    }
+
+                //}
+
+                for (int i = 1; i < minhaListaDeCartas.Count; i++)
+                {
+                    if (i == 1)
+                    {
+                        Console.WriteLine($"Carta {i} = naipe {minhaListaDeCartas[i].naipe}");
+                        minhaListaDeCartas[i].Left = 350;
+                        minhaListaDeCartas[i].posicao = i;
+                        minhaListaDeCartas[i].DescobrirImagem();
+                        this.Controls.Add(minhaListaDeCartas[i]);
+                    }
+                    else if (i == 7)
+                    {
+                        Console.WriteLine($"Carta {i} = naipe {minhaListaDeCartas[i].naipe}");
+                        minhaListaDeCartas[i].posicao = i;
+                        minhaListaDeCartas[i].Left = 350;
+                        minhaListaDeCartas[i].DescobrirImagem();
+                        this.Controls.Add(minhaListaDeCartas[i]);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Carta {i} = naipe {minhaListaDeCartas[i].naipe}");
+                        minhaListaDeCartas[i].posicao = i;
+                        minhaListaDeCartas[i].Left = minhaListaDeCartas[i - 1].Left + 60;
+                        minhaListaDeCartas[i].DescobrirImagem();
+                        this.Controls.Add(minhaListaDeCartas[i]);
+                    }
+                }
+
+                for (int i = 1; i < minhaListaDeCartas.Count; i++)
+                {
+                    if (i <= 6)
+                    {
+                        minhaListaDeCartas[i].Top = 360;
+                    }
+                    else
+                    {
+                        minhaListaDeCartas[i].Top = 460;
+                    }
+
+                }
+
+                for (int i = 1; i < listaDeCartasAdversario.Count; i++)
+                {
+                    if (i == 1)
+                    {
+                        Console.WriteLine($"Carta {i} = naipe {listaDeCartasAdversario[i].naipe}");
+                        listaDeCartasAdversario[i].Left = 350;
+                        listaDeCartasAdversario[i].posicao = i;
+                        listaDeCartasAdversario[i].DescobrirImagem();
+                        this.Controls.Add(listaDeCartasAdversario[i]);
+                    }
+                    else if (i == 7)
+                    {
+                        Console.WriteLine($"Carta {i} = naipe {listaDeCartasAdversario[i].naipe}");
+                        listaDeCartasAdversario[i].posicao = i;
+                        listaDeCartasAdversario[i].Left = 350;
+                        listaDeCartasAdversario[i].DescobrirImagem();
+                        this.Controls.Add(listaDeCartasAdversario[i]);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Carta {i} = naipe {listaDeCartasAdversario[i].naipe}");
+                        listaDeCartasAdversario[i].posicao = i;
+                        listaDeCartasAdversario[i].Left = listaDeCartasAdversario[i - 1].Left + 60;
+                        listaDeCartasAdversario[i].DescobrirImagem();
+                        this.Controls.Add(listaDeCartasAdversario[i]);
+                    }
+                }
+
+                for (int i = 1; i < listaDeCartasAdversario.Count; i++)
+                {
+                    if (i <= 6)
+                    {
+                        listaDeCartasAdversario2[i].Top = 40;
+                    }
+                    else
+                    {
+                        listaDeCartasAdversario2[i].Top = 140;
+                    }
+
+                }
+
+                for (int i = 1; i < listaDeCartasAdversario2.Count; i++)
+                {
+                    if (i == 1)
+                    {
+                        Console.WriteLine($"Carta {i} = naipe {listaDeCartasAdversario2[i].naipe}");
+                        listaDeCartasAdversario2[i].Left = 350;
+                        listaDeCartasAdversario2[i].posicao = i;
+                        listaDeCartasAdversario2[i].DescobrirImagem();
+                        this.Controls.Add(listaDeCartasAdversario2[i]);
+                    }
+                    else if (i == 7)
+                    {
+                        Console.WriteLine($"Carta {i} = naipe {listaDeCartasAdversario2[i].naipe}");
+                        listaDeCartasAdversario2[i].posicao = i;
+                        listaDeCartasAdversario2[i].Left = 350;
+                        listaDeCartasAdversario2[i].DescobrirImagem();
+                        this.Controls.Add(listaDeCartasAdversario2[i]);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Carta {i} = naipe {listaDeCartasAdversario2[i].naipe}");
+                        listaDeCartasAdversario2[i].posicao = i;
+                        listaDeCartasAdversario2[i].Left = listaDeCartasAdversario2[i - 1].Left + 60;
+                        listaDeCartasAdversario2[i].DescobrirImagem();
+                        this.Controls.Add(listaDeCartasAdversario2[i]);
+                    }
+                }
+
+                for (int i = 1; i < listaDeCartasAdversario2.Count; i++)
+                {
+                    if (i <= 6)
+                    {
+                        listaDeCartasAdversario2[i].Top = 80;
+                    }
+                    else
+                    {
+                        listaDeCartasAdversario2[i].Top = 180;
+                    }
+
+                }
+
+                for (int i = 1; i < listaDeCartasAdversario3.Count; i++)
+                {
+                    if (i == 1)
+                    {
+                        Console.WriteLine($"Carta {i} = naipe {listaDeCartasAdversario3[i].naipe}");
+                        listaDeCartasAdversario3[i].Left = 350;
+                        listaDeCartasAdversario3[i].posicao = i;
+                        listaDeCartasAdversario3[i].DescobrirImagem();
+                        this.Controls.Add(listaDeCartasAdversario3[i]);
+                    }
+                    else if (i == 7)
+                    {
+                        Console.WriteLine($"Carta {i} = naipe {listaDeCartasAdversario3[i].naipe}");
+                        listaDeCartasAdversario3[i].posicao = i;
+                        listaDeCartasAdversario3[i].Left = 350;
+                        listaDeCartasAdversario3[i].DescobrirImagem();
+                        this.Controls.Add(listaDeCartasAdversario3[i]);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Carta {i} = naipe {listaDeCartasAdversario3[i].naipe}");
+                        listaDeCartasAdversario3[i].posicao = i;
+                        listaDeCartasAdversario3[i].Left = listaDeCartasAdversario3[i - 1].Left + 60;
+                        listaDeCartasAdversario3[i].DescobrirImagem();
+                        this.Controls.Add(listaDeCartasAdversario3[i]);
+                    }
+                }
+
+                for (int i = 1; i < listaDeCartasAdversario3.Count; i++)
+                {
+                    if (i <= 6)
+                    {
+                        listaDeCartasAdversario3[i].Top = 160;
+                    }
+                    else
+                    {
+                        listaDeCartasAdversario3[i].Top = 260;
+                    }
+
                 }
             }
 
-            for (int i = 1; i < maoDeCartas.Count; i++)
-            {
-                Console.WriteLine($"Mão de cartas {maoDeCartas[i]} posição {i}");
 
-            }
-
-
-            for (int i = 1; i < listaDeCartas.Count; i++) //Percorre lista de cartas
-            {
-
-                listaDeCartas[i].naipe = maoDeCartas[i].Substring(maoDeCartas[i].Length-1);
-                Console.WriteLine($"O naipe da posição {i} é {listaDeCartas[i].naipe}");
-            }
-
-
-            for (int i = 1; i < listaDeCartas.Count; i++)
-            {
-                if (i == 1)
-                {
-                    //listaDeCartas[i].naipe = naipes[i];
-                    Console.WriteLine($"Carta {i} = naipe {listaDeCartas[i].naipe}");
-                    listaDeCartas[i].Top = 360;
-                    listaDeCartas[i].Left = 190;
-                    listaDeCartas[i].posicao = i;
-                    listaDeCartas[i].DescobrirImagem();
-                    this.Controls.Add(listaDeCartas[i]);
-                }
-                else
-                {
-                    //listaDeCartas[i].naipe = naipes[i];
-                    Console.WriteLine($"Carta {i} = naipe {listaDeCartas[i].naipe}");
-                    listaDeCartas[i].Top = 360;
-                    listaDeCartas[i].posicao = i;
-                    //listaDeCartas[i].Left = listaDeCartas[0].Width + 60;
-                    listaDeCartas[i].DescobrirImagem();
-                    //this.Controls.Add(listaDeCartas[i]);
-                }
-            }
-
-            listaDeCartas[2].Left = listaDeCartas[1].Width + 200;
-            listaDeCartas[3].Left = listaDeCartas[1].Width + 260;
-            listaDeCartas[4].Left = listaDeCartas[1].Width + 320;
-            listaDeCartas[5].Left = listaDeCartas[1].Width + 380;
-            listaDeCartas[6].Left = listaDeCartas[1].Width + 440;
-            listaDeCartas[7].Left = listaDeCartas[1].Width + 500;
-            listaDeCartas[8].Left = listaDeCartas[1].Width + 560;
-            listaDeCartas[9].Left = listaDeCartas[1].Width + 620;
-            listaDeCartas[10].Left = listaDeCartas[1].Width + 680;
-            listaDeCartas[11].Left = listaDeCartas[1].Width + 740;
-            listaDeCartas[12].Left = listaDeCartas[1].Width + 800;
-            listaDeCartas[13].Left = listaDeCartas[1].Width + 840;
-            listaDeCartas[14].Left = listaDeCartas[1].Width + 880;
-
-            for (int i = 2; i < listaDeCartas.Count; i++)
-            {
-                this.Controls.Add(listaDeCartas[i]);
-            }
 
             lstCartas.Items.Clear();
             for (int i = 0; i < cartas.Length - 1; i++)
@@ -222,8 +772,8 @@ namespace PI
                     //cartaJogada.VirarImagem();
                     //cartaJogada.Top = 100;
                     //cartaJogada.Left = 750;
-                    listaDeCartas[posicaoCartaJogada].valor = valorCarta;
-                    listaDeCartas[posicaoCartaJogada].VirarImagem();
+                    minhaListaDeCartas[posicaoCartaJogada].valor = valorCarta;
+                    minhaListaDeCartas[posicaoCartaJogada].VirarImagem();
                     lblValorCarta.Text = valorCarta;
 
                     AtualizarCampos();
@@ -291,10 +841,10 @@ namespace PI
 
                         //Naipe jogado pelo ultimo vencedor
                         string naipeJogado = dadosVencedor[2];
-                        int posicao = ComparaNaipes(listaDeCartas, naipeJogado);
+                        int posicao = ComparaNaipes(minhaListaDeCartas, naipeJogado);
                         if (posicao == -1)
                         {
-                            posicao = ComparaNaipes2(listaDeCartas, "C");
+                            posicao = ComparaNaipes2(minhaListaDeCartas, "C");
                             Console.WriteLine(posicao);
 
                             txtPosicaoCarta.Text = posicao.ToString();
@@ -308,8 +858,8 @@ namespace PI
                             ////cartaJogada.Top = 100;
                             ////cartaJogada.Left = 750;
                             //listaDeCartas[posicao] = null;
-                            listaDeCartas[posicao].valor = valorCarta;
-                            listaDeCartas[posicao].VirarImagem();
+                            minhaListaDeCartas[posicao].valor = valorCarta;
+                            minhaListaDeCartas[posicao].VirarImagem();
                             lblValorCarta.Text = valorCarta;
 
                             AtualizarCampos();
@@ -343,8 +893,8 @@ namespace PI
                             //cartaJogada.VirarImagem();
                             //cartaJogada.Top = 100;
                             //cartaJogada.Left = 750;
-                            listaDeCartas[posicao].valor = valorCarta;
-                            listaDeCartas[posicao].VirarImagem();
+                            minhaListaDeCartas[posicao].valor = valorCarta;
+                            minhaListaDeCartas[posicao].VirarImagem();
                             //listaDeCartas[posicao] = null;
                             lblValorCarta.Text = valorCarta;
 
@@ -370,11 +920,11 @@ namespace PI
                     else //bot ganhou ultima rodada, pode escolher qualquer carta para jogar
                     {
                         posicaoVencedor += 4;
-                        int posicao = ComparaNaipes2(listaDeCartas, "O");
+                        int posicao = ComparaNaipes2(minhaListaDeCartas, "O");
                         if (posicao == -1)
                         {
                             
-                            posicao = ComparaNaipes2(listaDeCartas, "E");
+                            posicao = ComparaNaipes2(minhaListaDeCartas, "E");
                             Console.WriteLine(posicao);
 
                             txtPosicaoCarta.Text = posicao.ToString();
@@ -388,8 +938,8 @@ namespace PI
                             //cartaJogada.Top = 100;
                             //cartaJogada.Left = 750;
                             //listaDeCartas[posicao] = null;
-                            listaDeCartas[posicao].valor = valorCarta;
-                            listaDeCartas[posicao].VirarImagem();
+                            minhaListaDeCartas[posicao].valor = valorCarta;
+                            minhaListaDeCartas[posicao].VirarImagem();
                             lblValorCarta.Text = valorCarta;
 
                             AtualizarCampos();
@@ -423,8 +973,8 @@ namespace PI
                             //cartaJogada.Top = 100;
                             //cartaJogada.Left = 750;
                             //listaDeCartas[posicao] = null;
-                            listaDeCartas[posicao].valor = valorCarta;
-                            listaDeCartas[posicao].VirarImagem();
+                            minhaListaDeCartas[posicao].valor = valorCarta;
+                            minhaListaDeCartas[posicao].VirarImagem();
                             lblValorCarta.Text = valorCarta;
 
                             AtualizarCampos();
@@ -483,7 +1033,7 @@ namespace PI
         public int ComparaNaipes(List<Carta> cartas, string naipe)
         {
             Console.WriteLine($"Naipe jogado pelo adversário ganhador {naipe}");
-            for (int i = 1; i <= listaDeCartas.Count; i++)
+            for (int i = 1; i <= minhaListaDeCartas.Count; i++)
             {
                 if (cartas[i].valor == null)
                 {
@@ -502,7 +1052,7 @@ namespace PI
 
         public int ComparaNaipes2(List<Carta> cartas, string naipe)
         {
-            for (int i = 1; i < listaDeCartas.Count; i++)
+            for (int i = 1; i < minhaListaDeCartas.Count; i++)
             {
                 if (cartas[i] != null)
                 {

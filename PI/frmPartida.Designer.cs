@@ -50,7 +50,6 @@
             this.grpApostar = new System.Windows.Forms.GroupBox();
             this.txtCartaApostada = new System.Windows.Forms.TextBox();
             this.lblCartaApostada = new System.Windows.Forms.Label();
-            this.lblMesa = new System.Windows.Forms.Label();
             this.lblValorCarta = new System.Windows.Forms.Label();
             this.tmrIniciarAutomacao = new System.Windows.Forms.Timer(this.components);
             this.btnIniciarAutomacao = new System.Windows.Forms.Button();
@@ -64,7 +63,7 @@
             // 
             // btnVoltar
             // 
-            this.btnVoltar.Location = new System.Drawing.Point(13, 398);
+            this.btnVoltar.Location = new System.Drawing.Point(10, 289);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(85, 34);
             this.btnVoltar.TabIndex = 0;
@@ -111,7 +110,7 @@
             this.lstCartas.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lstCartas.FormattingEnabled = true;
             this.lstCartas.ItemHeight = 16;
-            this.lstCartas.Location = new System.Drawing.Point(255, 17);
+            this.lstCartas.Location = new System.Drawing.Point(12, 328);
             this.lstCartas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lstCartas.Name = "lstCartas";
             this.lstCartas.Size = new System.Drawing.Size(192, 292);
@@ -119,7 +118,7 @@
             // 
             // btnMostrarCartas
             // 
-            this.btnMostrarCartas.Location = new System.Drawing.Point(291, 319);
+            this.btnMostrarCartas.Location = new System.Drawing.Point(48, 630);
             this.btnMostrarCartas.Name = "btnMostrarCartas";
             this.btnMostrarCartas.Size = new System.Drawing.Size(119, 40);
             this.btnMostrarCartas.TabIndex = 33;
@@ -169,7 +168,7 @@
             this.grpJogar.Controls.Add(this.lblSenhaJogadorJogando);
             this.grpJogar.Controls.Add(this.txtIdJogadorJogando);
             this.grpJogar.Controls.Add(this.lblIdJogadorJogando);
-            this.grpJogar.Location = new System.Drawing.Point(472, 12);
+            this.grpJogar.Location = new System.Drawing.Point(347, 199);
             this.grpJogar.Name = "grpJogar";
             this.grpJogar.Size = new System.Drawing.Size(262, 172);
             this.grpJogar.TabIndex = 40;
@@ -228,7 +227,7 @@
             // 
             this.grpApostar.Controls.Add(this.txtCartaApostada);
             this.grpApostar.Controls.Add(this.lblCartaApostada);
-            this.grpApostar.Location = new System.Drawing.Point(472, 190);
+            this.grpApostar.Location = new System.Drawing.Point(651, 219);
             this.grpApostar.Name = "grpApostar";
             this.grpApostar.Size = new System.Drawing.Size(262, 141);
             this.grpApostar.TabIndex = 41;
@@ -251,15 +250,6 @@
             this.lblCartaApostada.TabIndex = 7;
             this.lblCartaApostada.Text = "Posição Carta:";
             // 
-            // lblMesa
-            // 
-            this.lblMesa.AutoSize = true;
-            this.lblMesa.Location = new System.Drawing.Point(839, 17);
-            this.lblMesa.Name = "lblMesa";
-            this.lblMesa.Size = new System.Drawing.Size(44, 16);
-            this.lblMesa.TabIndex = 44;
-            this.lblMesa.Text = "Mesa:";
-            // 
             // lblValorCarta
             // 
             this.lblValorCarta.AutoSize = true;
@@ -276,7 +266,7 @@
             // 
             // btnIniciarAutomacao
             // 
-            this.btnIniciarAutomacao.Location = new System.Drawing.Point(13, 361);
+            this.btnIniciarAutomacao.Location = new System.Drawing.Point(10, 252);
             this.btnIniciarAutomacao.Name = "btnIniciarAutomacao";
             this.btnIniciarAutomacao.Size = new System.Drawing.Size(152, 31);
             this.btnIniciarAutomacao.TabIndex = 46;
@@ -287,7 +277,7 @@
             // lblVez
             // 
             this.lblVez.AutoSize = true;
-            this.lblVez.Location = new System.Drawing.Point(62, 256);
+            this.lblVez.Location = new System.Drawing.Point(59, 147);
             this.lblVez.Name = "lblVez";
             this.lblVez.Size = new System.Drawing.Size(10, 16);
             this.lblVez.TabIndex = 47;
@@ -296,7 +286,7 @@
             // lblVezTitulo
             // 
             this.lblVezTitulo.AutoSize = true;
-            this.lblVezTitulo.Location = new System.Drawing.Point(23, 256);
+            this.lblVezTitulo.Location = new System.Drawing.Point(20, 147);
             this.lblVezTitulo.Name = "lblVezTitulo";
             this.lblVezTitulo.Size = new System.Drawing.Size(33, 16);
             this.lblVezTitulo.TabIndex = 48;
@@ -305,7 +295,7 @@
             // lxtStatusRodadaTitulo
             // 
             this.lxtStatusRodadaTitulo.AutoSize = true;
-            this.lxtStatusRodadaTitulo.Location = new System.Drawing.Point(23, 299);
+            this.lxtStatusRodadaTitulo.Location = new System.Drawing.Point(20, 190);
             this.lxtStatusRodadaTitulo.Name = "lxtStatusRodadaTitulo";
             this.lxtStatusRodadaTitulo.Size = new System.Drawing.Size(113, 16);
             this.lxtStatusRodadaTitulo.TabIndex = 49;
@@ -314,7 +304,7 @@
             // lblStatusRodada
             // 
             this.lblStatusRodada.AutoSize = true;
-            this.lblStatusRodada.Location = new System.Drawing.Point(139, 299);
+            this.lblStatusRodada.Location = new System.Drawing.Point(136, 190);
             this.lblStatusRodada.Name = "lblStatusRodada";
             this.lblStatusRodada.Size = new System.Drawing.Size(10, 16);
             this.lblStatusRodada.TabIndex = 50;
@@ -331,7 +321,6 @@
             this.Controls.Add(this.lblVez);
             this.Controls.Add(this.btnIniciarAutomacao);
             this.Controls.Add(this.lblValorCarta);
-            this.Controls.Add(this.lblMesa);
             this.Controls.Add(this.grpApostar);
             this.Controls.Add(this.grpJogar);
             this.Controls.Add(this.lblIdSorteado);
@@ -381,7 +370,6 @@
         private System.Windows.Forms.Label lblPosicaoCarta;
         private System.Windows.Forms.TextBox txtCartaApostada;
         private System.Windows.Forms.Label lblCartaApostada;
-        private System.Windows.Forms.Label lblMesa;
         private System.Windows.Forms.Label lblValorCarta;
         private System.Windows.Forms.Timer tmrIniciarAutomacao;
         private System.Windows.Forms.Button btnIniciarAutomacao;
