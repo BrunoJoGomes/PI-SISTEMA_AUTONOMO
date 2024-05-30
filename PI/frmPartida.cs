@@ -500,11 +500,11 @@ namespace PI
                 {
                     if (i <= 7)
                     {
-                        listaDeCartasAdversario[i].Top = 40;
+                        listaDeCartasAdversario[i].Top = 20;
                     }
                     else
                     {
-                        listaDeCartasAdversario[i].Top = 140;
+                        listaDeCartasAdversario[i].Top = 120;
                     }
 
                 }
@@ -594,10 +594,13 @@ namespace PI
 
 
 
-            lstCartas.Items.Clear();
+            //lstCartas.Items.Clear();
+            Console.WriteLine("Lista de cartas do round:");    
             for (int i = 0; i < cartas.Length - 1; i++)
             {
-                lstCartas.Items.Add(cartas[i]);
+                //lstCartas.Items.Add(cartas[i]);
+
+                Console.WriteLine(cartas[i]);
             }
 
         }
