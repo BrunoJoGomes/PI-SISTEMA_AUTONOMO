@@ -46,6 +46,7 @@ namespace PI
             partida.nomeDaPartida = txtNomePartida.Text;
             partida.senhaDaPartida = txtSenha.Text;
             partida.CriarPartida(nomeDoGrupo);
+            txtIdPartida.Text = partida.idDaPartida;
         }
 
         private void lstPartida_SelectedIndexChanged(object sender, EventArgs e)
@@ -79,22 +80,7 @@ namespace PI
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            string retorno = Jogo.ListarPartidas("T");
-            if (retorno.Substring(0, 3) == "ERRO")
-            {
-                MessageBox.Show("Ocorreu um erro! \n" + retorno.Substring(5), "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                retorno = retorno.Replace("\r", "");
-                string[] partidas = retorno.Split('\n');
 
-                lstPartida.Items.Clear();
-                for (int i = 0; i < partidas.Length - 1; i++)
-                {
-                    lstPartida.Items.Add(partidas[i]);
-                }
-            }
         }
 
         private void btnListarPartidas_Click(object sender, EventArgs e)
@@ -160,19 +146,19 @@ namespace PI
                 retorno = retorno.Replace("\r", "");
                 string[] players = retorno.Split('\n');
 
-                lblIdSorteado.Text = jogadorSorteado;
-                idDrawn = lblIdSorteado.Text;
+                //lblIdSorteado.Text = jogadorSorteado;
+                idDrawn = jogadorSorteado;
 
-                string substring;
-                for (int i = 0; i < players.Length - 1; i++)
-                {
-                    substring = players[i].Substring(0, 4);
+                //string substring;
+                //for (int i = 0; i < players.Length - 1; i++)
+                //{
+                //    substring = players[i].Substring(0, 4);
 
-                    if (substring == jogadorSorteado)
-                    {
-                        lblNomeSorteado.Text = players[i].Substring(5);
-                    }
-                }
+                //    if (substring == jogadorSorteado)
+                //    {
+                //        lblNomeSorteado.Text = players[i].Substring(5);
+                //    }
+                //}
 
                 idMatch = txtIdPartida.Text;
                 string[] idJogadores = new string[4];
@@ -234,7 +220,7 @@ namespace PI
                 //passwordPlayerTwo = senhas[1];
                 //idPlayerOne = jogador.idDoJogador;
                 //passwordPlayerOne = jogador.senhaDoJogador;
-                formPartida.idPartida = idMatch;
+                formPartida.idPartida = partida.idDaPartida;
                 formPartida.idJogadorUm = meuId;
                 formPartida.senhaJogadorUm = minhaSenha;
                 //formPartida.idJogadorDois = idPlayerTwo;
@@ -244,7 +230,5 @@ namespace PI
                 formPartida.ShowDialog();
             }
         }
-
-        
     }
 }

@@ -28,7 +28,9 @@ namespace PI
         public string idDaPartida;
 
 
-
+        string[] adversario = new string[3];
+        string[] adversario2 = new string[3];
+        string[] adversario3 = new string[3];
 
 
 
@@ -62,8 +64,8 @@ namespace PI
         {
             lblPartida.Text = idPartida;
             idDaPartida = idPartida;
-            txtIdJogadorUm.Text = idJogadorUm;
-            txtSenhaJogadorUm.Text = senhaJogadorUm;
+            txtMeuId.Text = idJogadorUm;
+            txtMinhaSenha.Text = senhaJogadorUm;
             lblIdSorteado.Text = idJogadorSorteado;
 
         }
@@ -78,7 +80,7 @@ namespace PI
 
         private void btnMostrarCartas_Click(object sender, EventArgs e)
         {
-            int idpartida = Convert.ToInt32(lblPartida.Text);
+            int idpartida = Convert.ToInt32(idPartida);
             AtualizarCampos();
 
             string jogadores = Jogo.ListarJogadores(idpartida);
@@ -90,7 +92,7 @@ namespace PI
             {
 
                 List<string> idJogadorAdversario = new List<string>();
-                string[] adversario = new string[3];
+                
 
                 foreach (string jogador in vetorJogadores)
                 {
@@ -100,6 +102,7 @@ namespace PI
                     }
                 }
 
+                //ID, Nome, Pontuação
                 adversario = idJogadorAdversario[0].Split(',');
 
                 for (int i = 0; i < adversario.Length; i++)
@@ -268,9 +271,7 @@ namespace PI
             else
             {
                 List<string> idJogadorAdversario = new List<string>();
-                string[] adversario = new string[3];
-                string[] adversario2 = new string[3];
-                string[] adversario3 = new string[3];
+
 
                 foreach (string jogador in vetorJogadores)
                 {
@@ -592,17 +593,6 @@ namespace PI
                 }
             }
 
-
-
-            //lstCartas.Items.Clear();
-            Console.WriteLine("Lista de cartas do round:");    
-            for (int i = 0; i < cartas.Length - 1; i++)
-            {
-                //lstCartas.Items.Add(cartas[i]);
-
-                Console.WriteLine(cartas[i]);
-            }
-
         }
 
         int pontuacaoAnterior = 0;
@@ -614,6 +604,43 @@ namespace PI
             AtualizarCampos();
             pontuacaoAnterior = pontuacaoAtual;
             pontuacaoAtual = Pontuacao();
+            string retornoJogadas = Jogo.ExibirJogadas2(Convert.ToInt32(idPartida),1);
+            if(retornoJogadas != "")
+            {
+                retornoJogadas = retornoJogadas.Replace('\r',' ');
+                string[] jogadas = retornoJogadas.Split('\n');
+                string[] ultimaJogada;
+                if (jogadas[jogadas.Length-2].StartsWith(idJogadorUm) != true)
+                {
+                    //Round, Id, Naipe, Valor, Posição
+                    ultimaJogada = jogadas[jogadas.Length - 2].Split(',');
+                    for (int i = 0; i < ultimaJogada.Length; i++)
+                    {
+                        Console.WriteLine($"Dados ultima jogada{ultimaJogada[i]}");
+                    }
+                    if (ultimaJogada[1] == adversario[0] && listaDeCartasAdversario[Convert.ToInt32(ultimaJogada[4])].valor == null)
+                    {
+                        
+                        listaDeCartasAdversario[Convert.ToInt32(ultimaJogada[4])].valor = ultimaJogada[3];
+                        listaDeCartasAdversario[Convert.ToInt32(ultimaJogada[4])].VirarImagem();
+                        Console.WriteLine(listaDeCartasAdversario[Convert.ToInt32(ultimaJogada[4])].valor);
+                    }
+                    else if (ultimaJogada[1] == adversario2[0] && listaDeCartasAdversario2[Convert.ToInt32(ultimaJogada[4])].naipe == null)
+                    {
+                       
+                        listaDeCartasAdversario2[Convert.ToInt32(ultimaJogada[4])].valor = ultimaJogada[3];
+                        listaDeCartasAdversario2[Convert.ToInt32(ultimaJogada[4])].VirarImagem();
+                        Console.WriteLine(listaDeCartasAdversario2[Convert.ToInt32(ultimaJogada[4])].valor);
+                    }
+                    else
+                    {
+                        
+                        listaDeCartasAdversario3[Convert.ToInt32(ultimaJogada[4])].valor = ultimaJogada[3];
+                        listaDeCartasAdversario3[Convert.ToInt32(ultimaJogada[4])].VirarImagem();
+                        Console.WriteLine(listaDeCartasAdversario3[Convert.ToInt32(ultimaJogada[4])].valor);
+                    }
+                }
+            }
 
 
             if (ConsultarVez())
@@ -630,12 +657,6 @@ namespace PI
                     int posicaoCartaJogada = 6;
                     string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicaoCartaJogada);
                     MessageBox.Show("Valor da carta jogada: " + valorCarta);
-                    //Carta cartaJogada = listaDeCartas[posicaoCartaJogada];
-                    //listaDeCartasJogadas.Add(cartaJogada);
-                    //cartaJogada.valor = valorCarta;
-                    //cartaJogada.VirarImagem();
-                    //cartaJogada.Top = 100;
-                    //cartaJogada.Left = 750;
                     minhaListaDeCartas[posicaoCartaJogada].valor = valorCarta;
                     minhaListaDeCartas[posicaoCartaJogada].VirarImagem();
                     lblValorCarta.Text = valorCarta;
@@ -643,7 +664,6 @@ namespace PI
                     AtualizarCampos();
                     int idJogadorApostando = Convert.ToInt32(idJogadorUm);
                     string senhaJogadorApostando = senhaJogadorUm;
-                    //txtCartaApostada.Text = "0";
                     int cartaApostada = 0;
 
                     string valorCartaApostada = Jogo.Apostar(idJogadorApostando, senhaJogadorApostando, cartaApostada);
@@ -675,53 +695,38 @@ namespace PI
 
                     if (pontuacaoAtual == pontuacaoAnterior) //Bot não ganhou ou ainda pode ganhar
                     {
-                        string informacoes = Jogo.ExibirJogadas2(Convert.ToInt32(idDaPartida));
-                        Console.WriteLine(informacoes);
+                        string informacoes = Jogo.ExibirJogadas(Convert.ToInt32(idDaPartida));
+                        //Console.WriteLine(informacoes);
                         informacoes = informacoes.Replace('\r', ' ');
                         string[] infos = informacoes.Split('\n');
+                     
                         //string[] ultimaJogada = infos[infos.Length - 2].Split(',');
                         string[] dadosVencedor = infos[posicaoVencedor].Split(',');
-                        posicaoVencedor += 4;
-
-                        
-
-                        //for (int i = 0; i < ultimaJogada.Length; i++)
-                        //{
-                        //    Console.WriteLine($"Vetor ultima jogada {ultimaJogada[i]} posição {i}");
-                        //}
-                        //for (int i = 0; i < infos.Length; i++)
-                        //{
-                        //    //Console.WriteLine(infos[i]);
-                        //}
-
-                        //Console.WriteLine($"O round atual é {ultimaJogada[0]}");
-
-                        //int round = Convert.ToInt32(ultimaJogada[0]);
-
-                        //string jogadasRound = Jogo.ExibirJogadas(Convert.ToInt32(idDaPartida));
-                        //Console.WriteLine($"Jogadas no round {jogadasRound}");
-                        //jogadasRound = jogadasRound.Replace('\r', ' ');
-                        //string[] jogadas = jogadasRound.Split(',');
+                        List<string> jogadasRodada = new List<string>();
 
                         //Naipe jogado pelo ultimo vencedor
                         string naipeJogado = dadosVencedor[2];
+                        int valorJogado = Convert.ToInt32(dadosVencedor[3]);
+
+                        for (int i = infos.Length-2; i >= posicaoVencedor; i--)
+                        {
+                            if (Convert.ToInt32(infos[i].Substring(9)) > valorJogado && infos[i].Substring(7,1) == naipeJogado)
+                            {
+                                valorJogado = Convert.ToInt32(infos[i].Substring(9));
+                            }
+                            Console.WriteLine($"Naipes jogados na rodada: {infos[i].Substring(7, 1)}");
+                            Console.WriteLine($"Valores jogados na rodada: {infos[i].Substring(9)}");
+                        }
+
+                        posicaoVencedor += 4;
+
                         int posicao = ComparaNaipes(minhaListaDeCartas, naipeJogado);
                         if (posicao == -1)
                         {
                             posicao = ComparaNaipes2(minhaListaDeCartas, "C");
                             Console.WriteLine(posicao);
-
-                            //txtPosicaoCarta.Text = posicao.ToString();
                             string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicao);
                             MessageBox.Show("Valor da carta jogada: " + valorCarta);
-
-                            //Carta cartaJogada = listaDeCartas[posicao];
-                            //listaDeCartasJogadas.Add(cartaJogada);
-                            //cartaJogada.valor = valorCarta;
-                            //cartaJogada.VirarImagem();
-                            ////cartaJogada.Top = 100;
-                            ////cartaJogada.Left = 750;
-                            //listaDeCartas[posicao] = null;
                             minhaListaDeCartas[posicao].valor = valorCarta;
                             minhaListaDeCartas[posicao].VirarImagem();
                             lblValorCarta.Text = valorCarta;
@@ -730,7 +735,6 @@ namespace PI
 
                             int idJogadorApostando = Convert.ToInt32(idJogadorUm);
                             string senhaJogadorApostando = senhaJogadorUm;
-                            //txtCartaApostada.Text = "0";
                             int cartaApostada = 0;
                             string valorCartaApostada = Jogo.Apostar(idJogadorApostando, senhaJogadorApostando, cartaApostada);
                             if (valorCartaApostada == "0")
@@ -746,20 +750,10 @@ namespace PI
                         else
                         {
                             Console.WriteLine(posicao);
-
-                            //txtPosicaoCarta.Text = posicao.ToString();
                             string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicao);
                             MessageBox.Show("Valor da carta jogada: " + valorCarta);
-
-                            //Carta cartaJogada = listaDeCartas[posicao];
-                            //listaDeCartasJogadas.Add(cartaJogada);
-                            //cartaJogada.valor = valorCarta;
-                            //cartaJogada.VirarImagem();
-                            //cartaJogada.Top = 100;
-                            //cartaJogada.Left = 750;
                             minhaListaDeCartas[posicao].valor = valorCarta;
                             minhaListaDeCartas[posicao].VirarImagem();
-                            //listaDeCartas[posicao] = null;
                             lblValorCarta.Text = valorCarta;
 
                             AtualizarCampos();
@@ -790,18 +784,8 @@ namespace PI
                             
                             posicao = ComparaNaipes2(minhaListaDeCartas, "E");
                             Console.WriteLine(posicao);
-
-                            //txtPosicaoCarta.Text = posicao.ToString();
                             string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicao);
                             MessageBox.Show("Valor da carta jogada: " + valorCarta);
-
-                            //Carta cartaJogada = listaDeCartas[posicao];
-                            //listaDeCartasJogadas.Add(cartaJogada);
-                            //cartaJogada.valor = valorCarta;
-                            //cartaJogada.VirarImagem();
-                            //cartaJogada.Top = 100;
-                            //cartaJogada.Left = 750;
-                            //listaDeCartas[posicao] = null;
                             minhaListaDeCartas[posicao].valor = valorCarta;
                             minhaListaDeCartas[posicao].VirarImagem();
                             lblValorCarta.Text = valorCarta;
@@ -810,7 +794,6 @@ namespace PI
 
                             int idJogadorApostando = Convert.ToInt32(idJogadorUm);
                             string senhaJogadorApostando = senhaJogadorUm;
-                            //txtCartaApostada.Text = "0";
                             int cartaApostada = 0;
                             string valorCartaApostada = Jogo.Apostar(idJogadorApostando, senhaJogadorApostando, cartaApostada);
                             if (valorCartaApostada == "0")
@@ -825,18 +808,8 @@ namespace PI
                         else
                         {
                             Console.WriteLine(posicao);
-
-                            //txtPosicaoCarta.Text = posicao.ToString();
                             string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicao);
                             MessageBox.Show("Valor da carta jogada: " + valorCarta);
-
-                            //Carta cartaJogada = listaDeCartas[posicao];
-                            //listaDeCartasJogadas.Add(cartaJogada);
-                            //cartaJogada.valor = valorCarta;
-                            //cartaJogada.VirarImagem();
-                            //cartaJogada.Top = 100;
-                            //cartaJogada.Left = 750;
-                            //listaDeCartas[posicao] = null;
                             minhaListaDeCartas[posicao].valor = valorCarta;
                             minhaListaDeCartas[posicao].VirarImagem();
                             lblValorCarta.Text = valorCarta;
@@ -845,7 +818,6 @@ namespace PI
 
                             int idJogadorApostando = Convert.ToInt32(idJogadorUm);
                             string senhaJogadorApostando = senhaJogadorUm;
-                            //txtCartaApostada.Text = "0";
                             int cartaApostada = 0;
                             string valorCartaApostada = Jogo.Apostar(idJogadorApostando, senhaJogadorApostando, cartaApostada);
                             if (valorCartaApostada == "0")
@@ -869,14 +841,10 @@ namespace PI
         public int Pontuacao()
         {
             string dados = Jogo.ListarJogadores2(Convert.ToInt32(idPartida));
-            //Console.WriteLine(dados);
             dados = dados.Replace('\r',' ');
             string[] dadosPontuacaoJogadores = dados.Split('\n');
 
             int tamanhoVetor = dadosPontuacaoJogadores.Length;
-            //Console.WriteLine($"Tamanho vetor: {tamanhoVetor}");
-            //Console.WriteLine($"Dados jogador 1: {dadosPontuacaoJogadores[tamanhoVetor - 3]}");
-            //Console.WriteLine($"Dados jogador 2: {dadosPontuacaoJogadores[1]}");
 
             string[] dadosPontuacao = new string[4];
 
@@ -889,7 +857,6 @@ namespace PI
                 }
             }
 
-            //Console.WriteLine($"Tamanho do vetor dadosPontuacao {dadosPontuacao.Length}");
             Console.WriteLine($"Pontuação atual: {dadosPontuacao[dadosPontuacao.Length - 1]}");
             return Convert.ToInt32(dadosPontuacao[dadosPontuacao.Length-1]);
         }
@@ -912,6 +879,8 @@ namespace PI
             }
             return -1;
         }
+
+
 
 
         public int ComparaNaipes2(List<Carta> cartas, string naipe)
@@ -971,6 +940,30 @@ namespace PI
         {
             MessageBox.Show("Automação iniciada");
             tmrIniciarAutomacao.Enabled = true;
+        }
+
+        private void btnJogadas_Click(object sender, EventArgs e)
+        {
+            string retorno = Jogo.ExibirJogadas2(Convert.ToInt32(idPartida),1);
+            if (retorno == "")
+            {
+                lstJogadas.Items.Add("Não há jogadas");
+            }
+            else if (retorno.Substring(0, 3) == "ERRO")
+            {
+                MessageBox.Show("Ocorreu um erro! \n" + retorno.Substring(5), "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                retorno = retorno.Replace("\r", "");
+                string[] jogadas = retorno.Split('\n');
+
+                lstJogadas.Items.Clear();
+                for (int i = 0; i < jogadas.Length; i++)
+                {
+                    lstJogadas.Items.Add(jogadas[i]);
+                }
+            }
         }
     }
 }

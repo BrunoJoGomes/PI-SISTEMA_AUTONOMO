@@ -33,10 +33,10 @@
             this.lblPartida = new System.Windows.Forms.Label();
             this.lblIdPartida = new System.Windows.Forms.Label();
             this.lblIdJogadorUm = new System.Windows.Forms.Label();
-            this.txtIdJogadorUm = new System.Windows.Forms.TextBox();
+            this.txtMeuId = new System.Windows.Forms.TextBox();
             this.btnMostrarCartas = new System.Windows.Forms.Button();
             this.blbSenhaJogadorUm = new System.Windows.Forms.Label();
-            this.txtSenhaJogadorUm = new System.Windows.Forms.TextBox();
+            this.txtMinhaSenha = new System.Windows.Forms.TextBox();
             this.lblIdJogadorSorteado = new System.Windows.Forms.Label();
             this.lblIdSorteado = new System.Windows.Forms.Label();
             this.lblValorCarta = new System.Windows.Forms.Label();
@@ -46,14 +46,16 @@
             this.lblVezTitulo = new System.Windows.Forms.Label();
             this.lxtStatusRodadaTitulo = new System.Windows.Forms.Label();
             this.lblStatusRodada = new System.Windows.Forms.Label();
+            this.lstJogadas = new System.Windows.Forms.ListBox();
+            this.btnJogadas = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnVoltar
             // 
-            this.btnVoltar.Location = new System.Drawing.Point(11, 289);
+            this.btnVoltar.Location = new System.Drawing.Point(30, 605);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(85, 34);
+            this.btnVoltar.Size = new System.Drawing.Size(135, 39);
             this.btnVoltar.TabIndex = 0;
             this.btnVoltar.Text = "Voltar";
             this.btnVoltar.UseVisualStyleBackColor = true;
@@ -82,24 +84,24 @@
             this.lblIdJogadorUm.AutoSize = true;
             this.lblIdJogadorUm.Location = new System.Drawing.Point(20, 71);
             this.lblIdJogadorUm.Name = "lblIdJogadorUm";
-            this.lblIdJogadorUm.Size = new System.Drawing.Size(83, 16);
+            this.lblIdJogadorUm.Size = new System.Drawing.Size(49, 16);
             this.lblIdJogadorUm.TabIndex = 3;
-            this.lblIdJogadorUm.Text = "ID jogador 1:";
+            this.lblIdJogadorUm.Text = "Meu ID";
             // 
-            // txtIdJogadorUm
+            // txtMeuId
             // 
-            this.txtIdJogadorUm.Location = new System.Drawing.Point(137, 66);
-            this.txtIdJogadorUm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtIdJogadorUm.Name = "txtIdJogadorUm";
-            this.txtIdJogadorUm.Size = new System.Drawing.Size(100, 22);
-            this.txtIdJogadorUm.TabIndex = 4;
+            this.txtMeuId.Location = new System.Drawing.Point(75, 65);
+            this.txtMeuId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtMeuId.Name = "txtMeuId";
+            this.txtMeuId.Size = new System.Drawing.Size(100, 22);
+            this.txtMeuId.TabIndex = 4;
             // 
             // btnMostrarCartas
             // 
-            this.btnMostrarCartas.Location = new System.Drawing.Point(48, 630);
+            this.btnMostrarCartas.Location = new System.Drawing.Point(30, 562);
             this.btnMostrarCartas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMostrarCartas.Name = "btnMostrarCartas";
-            this.btnMostrarCartas.Size = new System.Drawing.Size(119, 39);
+            this.btnMostrarCartas.Size = new System.Drawing.Size(135, 39);
             this.btnMostrarCartas.TabIndex = 33;
             this.btnMostrarCartas.Text = "Mostrar Cartas";
             this.btnMostrarCartas.UseVisualStyleBackColor = true;
@@ -110,17 +112,17 @@
             this.blbSenhaJogadorUm.AutoSize = true;
             this.blbSenhaJogadorUm.Location = new System.Drawing.Point(20, 100);
             this.blbSenhaJogadorUm.Name = "blbSenhaJogadorUm";
-            this.blbSenhaJogadorUm.Size = new System.Drawing.Size(109, 16);
+            this.blbSenhaJogadorUm.Size = new System.Drawing.Size(83, 16);
             this.blbSenhaJogadorUm.TabIndex = 34;
-            this.blbSenhaJogadorUm.Text = "Senha jogador 1:";
+            this.blbSenhaJogadorUm.Text = "Minha senha";
             // 
-            // txtSenhaJogadorUm
+            // txtMinhaSenha
             // 
-            this.txtSenhaJogadorUm.Location = new System.Drawing.Point(137, 94);
-            this.txtSenhaJogadorUm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtSenhaJogadorUm.Name = "txtSenhaJogadorUm";
-            this.txtSenhaJogadorUm.Size = new System.Drawing.Size(100, 22);
-            this.txtSenhaJogadorUm.TabIndex = 35;
+            this.txtMinhaSenha.Location = new System.Drawing.Point(109, 94);
+            this.txtMinhaSenha.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtMinhaSenha.Name = "txtMinhaSenha";
+            this.txtMinhaSenha.Size = new System.Drawing.Size(100, 22);
+            this.txtMinhaSenha.TabIndex = 35;
             // 
             // lblIdJogadorSorteado
             // 
@@ -156,10 +158,10 @@
             // 
             // btnIniciarAutomacao
             // 
-            this.btnIniciarAutomacao.Location = new System.Drawing.Point(11, 252);
+            this.btnIniciarAutomacao.Location = new System.Drawing.Point(30, 519);
             this.btnIniciarAutomacao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnIniciarAutomacao.Name = "btnIniciarAutomacao";
-            this.btnIniciarAutomacao.Size = new System.Drawing.Size(152, 31);
+            this.btnIniciarAutomacao.Size = new System.Drawing.Size(135, 39);
             this.btnIniciarAutomacao.TabIndex = 46;
             this.btnIniciarAutomacao.Text = "Iniciar Automação";
             this.btnIniciarAutomacao.UseVisualStyleBackColor = true;
@@ -201,11 +203,32 @@
             this.lblStatusRodada.TabIndex = 50;
             this.lblStatusRodada.Text = ".";
             // 
+            // lstJogadas
+            // 
+            this.lstJogadas.FormattingEnabled = true;
+            this.lstJogadas.ItemHeight = 16;
+            this.lstJogadas.Location = new System.Drawing.Point(1100, 513);
+            this.lstJogadas.Name = "lstJogadas";
+            this.lstJogadas.Size = new System.Drawing.Size(185, 164);
+            this.lstJogadas.TabIndex = 51;
+            // 
+            // btnJogadas
+            // 
+            this.btnJogadas.Location = new System.Drawing.Point(1100, 474);
+            this.btnJogadas.Name = "btnJogadas";
+            this.btnJogadas.Size = new System.Drawing.Size(185, 33);
+            this.btnJogadas.TabIndex = 52;
+            this.btnJogadas.Text = "Exibir Jogadas";
+            this.btnJogadas.UseVisualStyleBackColor = true;
+            this.btnJogadas.Click += new System.EventHandler(this.btnJogadas_Click);
+            // 
             // frmPartida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1297, 689);
+            this.Controls.Add(this.btnJogadas);
+            this.Controls.Add(this.lstJogadas);
             this.Controls.Add(this.lblStatusRodada);
             this.Controls.Add(this.lxtStatusRodadaTitulo);
             this.Controls.Add(this.lblVezTitulo);
@@ -214,15 +237,15 @@
             this.Controls.Add(this.lblValorCarta);
             this.Controls.Add(this.lblIdSorteado);
             this.Controls.Add(this.lblIdJogadorSorteado);
-            this.Controls.Add(this.txtSenhaJogadorUm);
+            this.Controls.Add(this.txtMinhaSenha);
             this.Controls.Add(this.blbSenhaJogadorUm);
             this.Controls.Add(this.btnMostrarCartas);
-            this.Controls.Add(this.txtIdJogadorUm);
+            this.Controls.Add(this.txtMeuId);
             this.Controls.Add(this.lblIdJogadorUm);
             this.Controls.Add(this.lblIdPartida);
             this.Controls.Add(this.lblPartida);
             this.Controls.Add(this.btnVoltar);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmPartida";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Partida";
@@ -237,10 +260,10 @@
         private System.Windows.Forms.Label lblPartida;
         private System.Windows.Forms.Label lblIdPartida;
         private System.Windows.Forms.Label lblIdJogadorUm;
-        private System.Windows.Forms.TextBox txtIdJogadorUm;
+        private System.Windows.Forms.TextBox txtMeuId;
         private System.Windows.Forms.Button btnMostrarCartas;
         private System.Windows.Forms.Label blbSenhaJogadorUm;
-        private System.Windows.Forms.TextBox txtSenhaJogadorUm;
+        private System.Windows.Forms.TextBox txtMinhaSenha;
         private System.Windows.Forms.Label lblIdJogadorSorteado;
         private System.Windows.Forms.Label lblIdSorteado;
         private System.Windows.Forms.Label lblValorCarta;
@@ -250,5 +273,7 @@
         private System.Windows.Forms.Label lblVezTitulo;
         private System.Windows.Forms.Label lxtStatusRodadaTitulo;
         private System.Windows.Forms.Label lblStatusRodada;
+        private System.Windows.Forms.ListBox lstJogadas;
+        private System.Windows.Forms.Button btnJogadas;
     }
 }

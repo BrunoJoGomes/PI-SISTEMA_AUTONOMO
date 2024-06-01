@@ -34,7 +34,6 @@
             this.txtNomeGrupo = new System.Windows.Forms.TextBox();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.txtNomePartida = new System.Windows.Forms.TextBox();
-            this.btnAtualizar = new System.Windows.Forms.Button();
             this.lblNomeGrupo = new System.Windows.Forms.Label();
             this.btnListarPartidas = new System.Windows.Forms.Button();
             this.btnCriarPartida = new System.Windows.Forms.Button();
@@ -49,9 +48,6 @@
             this.btnIniciarPartida = new System.Windows.Forms.Button();
             this.txtNomeJogador = new System.Windows.Forms.TextBox();
             this.lblNomeJogador = new System.Windows.Forms.Label();
-            this.lblJogadorSorteado = new System.Windows.Forms.Label();
-            this.lblIdSorteado = new System.Windows.Forms.Label();
-            this.lblNomeSorteado = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.lblIdPartida = new System.Windows.Forms.Label();
             this.txtIdPartida = new System.Windows.Forms.TextBox();
@@ -84,7 +80,7 @@
             // 
             this.lblVersao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblVersao.AutoSize = true;
-            this.lblVersao.Location = new System.Drawing.Point(954, 426);
+            this.lblVersao.Location = new System.Drawing.Point(946, 426);
             this.lblVersao.Name = "lblVersao";
             this.lblVersao.Size = new System.Drawing.Size(10, 16);
             this.lblVersao.TabIndex = 7;
@@ -116,17 +112,6 @@
             this.txtNomePartida.Size = new System.Drawing.Size(100, 22);
             this.txtNomePartida.TabIndex = 10;
             // 
-            // btnAtualizar
-            // 
-            this.btnAtualizar.Location = new System.Drawing.Point(13, 376);
-            this.btnAtualizar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAtualizar.Name = "btnAtualizar";
-            this.btnAtualizar.Size = new System.Drawing.Size(100, 44);
-            this.btnAtualizar.TabIndex = 12;
-            this.btnAtualizar.Text = "Atualizar";
-            this.btnAtualizar.UseVisualStyleBackColor = true;
-            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
-            // 
             // lblNomeGrupo
             // 
             this.lblNomeGrupo.AutoSize = true;
@@ -138,7 +123,7 @@
             // 
             // btnListarPartidas
             // 
-            this.btnListarPartidas.Location = new System.Drawing.Point(12, 15);
+            this.btnListarPartidas.Location = new System.Drawing.Point(12, 16);
             this.btnListarPartidas.Margin = new System.Windows.Forms.Padding(4);
             this.btnListarPartidas.Name = "btnListarPartidas";
             this.btnListarPartidas.Size = new System.Drawing.Size(101, 44);
@@ -264,36 +249,6 @@
             this.lblNomeJogador.TabIndex = 26;
             this.lblNomeJogador.Text = "Nome Jogador";
             // 
-            // lblJogadorSorteado
-            // 
-            this.lblJogadorSorteado.AutoSize = true;
-            this.lblJogadorSorteado.Location = new System.Drawing.Point(757, 43);
-            this.lblJogadorSorteado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblJogadorSorteado.Name = "lblJogadorSorteado";
-            this.lblJogadorSorteado.Size = new System.Drawing.Size(117, 16);
-            this.lblJogadorSorteado.TabIndex = 27;
-            this.lblJogadorSorteado.Text = "Jogador Sorteado";
-            // 
-            // lblIdSorteado
-            // 
-            this.lblIdSorteado.AutoSize = true;
-            this.lblIdSorteado.Location = new System.Drawing.Point(757, 69);
-            this.lblIdSorteado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblIdSorteado.Name = "lblIdSorteado";
-            this.lblIdSorteado.Size = new System.Drawing.Size(10, 16);
-            this.lblIdSorteado.TabIndex = 28;
-            this.lblIdSorteado.Text = ".";
-            // 
-            // lblNomeSorteado
-            // 
-            this.lblNomeSorteado.AutoSize = true;
-            this.lblNomeSorteado.Location = new System.Drawing.Point(757, 91);
-            this.lblNomeSorteado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblNomeSorteado.Name = "lblNomeSorteado";
-            this.lblNomeSorteado.Size = new System.Drawing.Size(10, 16);
-            this.lblNomeSorteado.TabIndex = 29;
-            this.lblNomeSorteado.Text = ".";
-            // 
             // cmbStatus
             // 
             this.cmbStatus.FormattingEnabled = true;
@@ -332,9 +287,6 @@
             this.Controls.Add(this.txtIdPartida);
             this.Controls.Add(this.lblIdPartida);
             this.Controls.Add(this.cmbStatus);
-            this.Controls.Add(this.lblNomeSorteado);
-            this.Controls.Add(this.lblIdSorteado);
-            this.Controls.Add(this.lblJogadorSorteado);
             this.Controls.Add(this.lblNomeJogador);
             this.Controls.Add(this.txtNomeJogador);
             this.Controls.Add(this.btnIniciarPartida);
@@ -349,7 +301,6 @@
             this.Controls.Add(this.btnCriarPartida);
             this.Controls.Add(this.btnListarPartidas);
             this.Controls.Add(this.lblNomeGrupo);
-            this.Controls.Add(this.btnAtualizar);
             this.Controls.Add(this.txtNomePartida);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.txtNomeGrupo);
@@ -372,7 +323,6 @@
         private System.Windows.Forms.TextBox txtNomeGrupo;
         private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.TextBox txtNomePartida;
-        private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Label lblNomeGrupo;
         private System.Windows.Forms.Button btnListarPartidas;
         private System.Windows.Forms.Button btnCriarPartida;
@@ -387,9 +337,6 @@
         private System.Windows.Forms.Button btnIniciarPartida;
         private System.Windows.Forms.TextBox txtNomeJogador;
         private System.Windows.Forms.Label lblNomeJogador;
-        private System.Windows.Forms.Label lblJogadorSorteado;
-        private System.Windows.Forms.Label lblIdSorteado;
-        private System.Windows.Forms.Label lblNomeSorteado;
         private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.Label lblIdPartida;
         private System.Windows.Forms.TextBox txtIdPartida;
