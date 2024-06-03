@@ -16,22 +16,16 @@ namespace PI
         public string statusDaPartida;
         public string dataDaPartida;
 
-        //public Partida(string nomeDaPartida, string senhaDaPartida) 
-        //{
-        //    this.nomeDaPartida = nomeDaPartida;
-        //    this.senhaDaPartida = senhaDaPartida;
-        //}    
-
         public void CriarPartida(string nomeDoGrupo)
         {
-            this.idDaPartida = Jogo.CriarPartida(nomeDaPartida, senhaDaPartida, nomeDoGrupo);
-            if (idDaPartida.Substring(0, 3) == "ERRO")
+            string retorno = Jogo.CriarPartida(nomeDaPartida, senhaDaPartida, nomeDoGrupo);
+            if (retorno.Substring(0, 2) == "ER")
             {
-                MessageBox.Show("Ocorreu um erro! \n" + idDaPartida.Substring(5), "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocorreu um erro! \n" + retorno.Substring(5), "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                MessageBox.Show("Grupo salvo", "SUCESSO!");
+                this.idDaPartida = retorno;
             }
         }
     }

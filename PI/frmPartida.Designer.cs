@@ -48,6 +48,9 @@
             this.lblStatusRodada = new System.Windows.Forms.Label();
             this.lstJogadas = new System.Windows.Forms.ListBox();
             this.btnJogadas = new System.Windows.Forms.Button();
+            this.lblAdversario = new System.Windows.Forms.Label();
+            this.lblAdversario2 = new System.Windows.Forms.Label();
+            this.lblAdversario3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnVoltar
@@ -90,7 +93,7 @@
             // 
             // txtMeuId
             // 
-            this.txtMeuId.Location = new System.Drawing.Point(75, 65);
+            this.txtMeuId.Location = new System.Drawing.Point(109, 65);
             this.txtMeuId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMeuId.Name = "txtMeuId";
             this.txtMeuId.Size = new System.Drawing.Size(100, 22);
@@ -170,7 +173,7 @@
             // lblVez
             // 
             this.lblVez.AutoSize = true;
-            this.lblVez.Location = new System.Drawing.Point(59, 146);
+            this.lblVez.Location = new System.Drawing.Point(715, 287);
             this.lblVez.Name = "lblVez";
             this.lblVez.Size = new System.Drawing.Size(10, 16);
             this.lblVez.TabIndex = 47;
@@ -179,7 +182,7 @@
             // lblVezTitulo
             // 
             this.lblVezTitulo.AutoSize = true;
-            this.lblVezTitulo.Location = new System.Drawing.Point(20, 146);
+            this.lblVezTitulo.Location = new System.Drawing.Point(676, 287);
             this.lblVezTitulo.Name = "lblVezTitulo";
             this.lblVezTitulo.Size = new System.Drawing.Size(33, 16);
             this.lblVezTitulo.TabIndex = 48;
@@ -188,7 +191,7 @@
             // lxtStatusRodadaTitulo
             // 
             this.lxtStatusRodadaTitulo.AutoSize = true;
-            this.lxtStatusRodadaTitulo.Location = new System.Drawing.Point(20, 190);
+            this.lxtStatusRodadaTitulo.Location = new System.Drawing.Point(676, 331);
             this.lxtStatusRodadaTitulo.Name = "lxtStatusRodadaTitulo";
             this.lxtStatusRodadaTitulo.Size = new System.Drawing.Size(113, 16);
             this.lxtStatusRodadaTitulo.TabIndex = 49;
@@ -197,7 +200,7 @@
             // lblStatusRodada
             // 
             this.lblStatusRodada.AutoSize = true;
-            this.lblStatusRodada.Location = new System.Drawing.Point(136, 190);
+            this.lblStatusRodada.Location = new System.Drawing.Point(792, 331);
             this.lblStatusRodada.Name = "lblStatusRodada";
             this.lblStatusRodada.Size = new System.Drawing.Size(10, 16);
             this.lblStatusRodada.TabIndex = 50;
@@ -207,14 +210,14 @@
             // 
             this.lstJogadas.FormattingEnabled = true;
             this.lstJogadas.ItemHeight = 16;
-            this.lstJogadas.Location = new System.Drawing.Point(1100, 513);
+            this.lstJogadas.Location = new System.Drawing.Point(1271, 519);
             this.lstJogadas.Name = "lstJogadas";
             this.lstJogadas.Size = new System.Drawing.Size(185, 164);
             this.lstJogadas.TabIndex = 51;
             // 
             // btnJogadas
             // 
-            this.btnJogadas.Location = new System.Drawing.Point(1100, 474);
+            this.btnJogadas.Location = new System.Drawing.Point(1271, 480);
             this.btnJogadas.Name = "btnJogadas";
             this.btnJogadas.Size = new System.Drawing.Size(185, 33);
             this.btnJogadas.TabIndex = 52;
@@ -222,11 +225,41 @@
             this.btnJogadas.UseVisualStyleBackColor = true;
             this.btnJogadas.Click += new System.EventHandler(this.btnJogadas_Click);
             // 
+            // lblAdversario
+            // 
+            this.lblAdversario.AutoSize = true;
+            this.lblAdversario.Location = new System.Drawing.Point(330, 71);
+            this.lblAdversario.Name = "lblAdversario";
+            this.lblAdversario.Size = new System.Drawing.Size(10, 16);
+            this.lblAdversario.TabIndex = 53;
+            this.lblAdversario.Text = ".";
+            // 
+            // lblAdversario2
+            // 
+            this.lblAdversario2.AutoSize = true;
+            this.lblAdversario2.Location = new System.Drawing.Point(139, 203);
+            this.lblAdversario2.Name = "lblAdversario2";
+            this.lblAdversario2.Size = new System.Drawing.Size(10, 16);
+            this.lblAdversario2.TabIndex = 54;
+            this.lblAdversario2.Text = ".";
+            // 
+            // lblAdversario3
+            // 
+            this.lblAdversario3.AutoSize = true;
+            this.lblAdversario3.Location = new System.Drawing.Point(1268, 123);
+            this.lblAdversario3.Name = "lblAdversario3";
+            this.lblAdversario3.Size = new System.Drawing.Size(10, 16);
+            this.lblAdversario3.TabIndex = 55;
+            this.lblAdversario3.Text = ".";
+            // 
             // frmPartida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1297, 689);
+            this.ClientSize = new System.Drawing.Size(1468, 689);
+            this.Controls.Add(this.lblAdversario3);
+            this.Controls.Add(this.lblAdversario2);
+            this.Controls.Add(this.lblAdversario);
             this.Controls.Add(this.btnJogadas);
             this.Controls.Add(this.lstJogadas);
             this.Controls.Add(this.lblStatusRodada);
@@ -275,5 +308,8 @@
         private System.Windows.Forms.Label lblStatusRodada;
         private System.Windows.Forms.ListBox lstJogadas;
         private System.Windows.Forms.Button btnJogadas;
+        private System.Windows.Forms.Label lblAdversario;
+        private System.Windows.Forms.Label lblAdversario2;
+        private System.Windows.Forms.Label lblAdversario3;
     }
 }

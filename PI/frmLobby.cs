@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Schema;
 using MagicTrickServer;
 
 namespace PI
@@ -14,18 +15,12 @@ namespace PI
     public partial class frmLobby : Form
     {
         public string nomeDoGrupo = "Berlim";
-        //public int idPartida;
-        //public string senhaPartida;
-        private string idPlayerOne;
         private string meuId;
         private string minhaSenha;
-        private string idPlayerTwo;
-        private string passwordPlayerOne;
-        private string passwordPlayerTwo;
         private string idMatch;
         private string idDrawn;
         string[] infoPartidas;
-        List<string> senhas = new List<string>();
+
 
         Partida partida = new Partida();
         Jogador jogador = new Jogador();
@@ -37,9 +32,9 @@ namespace PI
             lblVersao.Text = Jogo.Versao;
             cmbStatus.SelectedIndex = 0;
 
-        }
 
-        int[] idJogadores = new int[4];
+
+        }
 
         private void btnCriarPartida_Click(object sender, EventArgs e)
         {
@@ -61,7 +56,7 @@ namespace PI
 
 
             string retorno = Jogo.ListarJogadores(Convert.ToInt32(txtIdPartida.Text));
-            if (partida.Substring(0, 3) == "ERRO")
+            if (partida.Substring(0, 4) == "ERRO")
             {
                 MessageBox.Show("Ocorreu um erro! \n" + partida.Substring(5), "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -76,11 +71,6 @@ namespace PI
                     lstJogadores.Items.Add(players[i]);
                 }
             }
-        }
-
-        private void btnAtualizar_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnListarPartidas_Click(object sender, EventArgs e)
@@ -100,14 +90,13 @@ namespace PI
                     break;
             }
 
-            if (retorno.Substring(0,3) == "ERRO")
+            if (retorno.Substring(0,4) == "ERRO")
             {
                 MessageBox.Show("Ocorreu um erro! \n" + retorno.Substring(5), "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 retorno = retorno.Replace("\r", "");
-                //retorno  = retorno.Substring(0, retorno.Length - 1);
                 string[] partidas = retorno.Split('\n');
 
                 lstPartida.Items.Clear();
@@ -137,49 +126,19 @@ namespace PI
             frmPartida formPartida = new frmPartida();
             if (infoPartidas[3] == "A")
             {
-                //INSTANCIA DO NOVO FORMS
-                //frmPartida formPartida = new frmPartida();
 
                 string jogadorSorteado = Jogo.IniciarPartida(Convert.ToInt32(txtIdJogador.Text), txtSenhaJogador.Text);
 
-                string retorno = Jogo.ListarJogadores(Convert.ToInt32(partida.idDaPartida));
-                retorno = retorno.Replace("\r", "");
-                string[] players = retorno.Split('\n');
 
-                //lblIdSorteado.Text = jogadorSorteado;
                 idDrawn = jogadorSorteado;
 
-                //string substring;
-                //for (int i = 0; i < players.Length - 1; i++)
-                //{
-                //    substring = players[i].Substring(0, 4);
-
-                //    if (substring == jogadorSorteado)
-                //    {
-                //        lblNomeSorteado.Text = players[i].Substring(5);
-                //    }
-                //}
-
                 idMatch = txtIdPartida.Text;
-                string[] idJogadores = new string[4];
-                for (int i = 0; i < players.Length - 1; i++)
-                {
-                    idJogadores[i] = players[i].Substring(0, 4);
-
-                }
 
                 meuId = jogador.idDoJogador;
                 minhaSenha = jogador.senhaDoJogador;
-                //idPlayerTwo = idJogadores[1];
-                //passwordPlayerOne = senhas[0];
-                //passwordPlayerTwo = senhas[1];
-                //idPlayerOne = jogador.idDoJogador;
-                //passwordPlayerOne = jogador.senhaDoJogador;
                 formPartida.idPartida = idMatch;
-                formPartida.idJogadorUm = meuId;
-                formPartida.senhaJogadorUm = minhaSenha;
-                //formPartida.idJogadorDois = idPlayerTwo;
-                //formPartida.senhaJogadorDois = passwordPlayerTwo;
+                formPartida.meuId = meuId;
+                formPartida.minhaSenha = minhaSenha;
                 formPartida.idJogadorSorteado = idDrawn;
                 formPartida.AtualizarTela();
                 formPartida.ShowDialog();
@@ -187,44 +146,11 @@ namespace PI
             }
             else if (infoPartidas[3] == "J")
             {
-                //string retorno = Jogo.ListarJogadores(Convert.ToInt32(partida.idDaPartida));
-                //retorno = retorno.Replace("\r", "");
-                //string[] players = retorno.Split('\n');
-
-                //lblIdSorteado.Text = jogadorSorteado;
-                //idDrawn = lblIdSorteado.Text;
-
-                //string substring;
-                //for (int i = 0; i < players.Length - 1; i++)
-                //{
-                //    substring = players[i].Substring(0, 4);
-
-                //    if (substring == jogadorSorteado)
-                //    {
-                //        lblNomeSorteado.Text = players[i].Substring(5);
-                //    }
-                //}
-
-                //idMatch = lblIdPartida.Text;
-                //string[] idJogadores = new string[4];
-                //for (int i = 0; i < players.Length - 1; i++)
-                //{
-                //    idJogadores[i] = players[i].Substring(0, 4);
-
-                //}
-
                 meuId = jogador.idDoJogador;
                 minhaSenha = jogador.senhaDoJogador;
-                //idPlayerTwo = idJogadores[1];
-                //passwordPlayerOne = senhas[0];
-                //passwordPlayerTwo = senhas[1];
-                //idPlayerOne = jogador.idDoJogador;
-                //passwordPlayerOne = jogador.senhaDoJogador;
                 formPartida.idPartida = partida.idDaPartida;
-                formPartida.idJogadorUm = meuId;
-                formPartida.senhaJogadorUm = minhaSenha;
-                //formPartida.idJogadorDois = idPlayerTwo;
-                //formPartida.senhaJogadorDois = passwordPlayerTwo;
+                formPartida.meuId = meuId;
+                formPartida.minhaSenha = minhaSenha;
                 formPartida.idJogadorSorteado = idDrawn;
                 formPartida.AtualizarTela();
                 formPartida.ShowDialog();
