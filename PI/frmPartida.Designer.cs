@@ -51,6 +51,8 @@
             this.lblAdversario = new System.Windows.Forms.Label();
             this.lblAdversario2 = new System.Windows.Forms.Label();
             this.lblAdversario3 = new System.Windows.Forms.Label();
+            this.lblMinhaAposta = new System.Windows.Forms.Label();
+            this.lblMinhaCartaApostada = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnVoltar
@@ -147,7 +149,7 @@
             // 
             // tmrIniciarAutomacao
             // 
-            this.tmrIniciarAutomacao.Interval = 15000;
+            this.tmrIniciarAutomacao.Interval = 5000;
             this.tmrIniciarAutomacao.Tick += new System.EventHandler(this.tmrIniciarAutomacao_Tick);
             // 
             // btnIniciarAutomacao
@@ -247,6 +249,26 @@
             this.lblAdversario3.TabIndex = 55;
             this.lblAdversario3.Text = ".";
             // 
+            // lblMinhaAposta
+            // 
+            this.lblMinhaAposta.AutoSize = true;
+            this.lblMinhaAposta.BackColor = System.Drawing.Color.Transparent;
+            this.lblMinhaAposta.Location = new System.Drawing.Point(1087, 445);
+            this.lblMinhaAposta.Name = "lblMinhaAposta";
+            this.lblMinhaAposta.Size = new System.Drawing.Size(91, 16);
+            this.lblMinhaAposta.TabIndex = 56;
+            this.lblMinhaAposta.Text = "Minha aposta:";
+            // 
+            // lblMinhaCartaApostada
+            // 
+            this.lblMinhaCartaApostada.AutoSize = true;
+            this.lblMinhaCartaApostada.BackColor = System.Drawing.Color.Transparent;
+            this.lblMinhaCartaApostada.Location = new System.Drawing.Point(1090, 465);
+            this.lblMinhaCartaApostada.Name = "lblMinhaCartaApostada";
+            this.lblMinhaCartaApostada.Size = new System.Drawing.Size(10, 16);
+            this.lblMinhaCartaApostada.TabIndex = 57;
+            this.lblMinhaCartaApostada.Text = ".";
+            // 
             // frmPartida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -254,6 +276,8 @@
             this.BackgroundImage = global::PI.Properties.Resources.fundo_oficial;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1468, 689);
+            this.Controls.Add(this.lblMinhaCartaApostada);
+            this.Controls.Add(this.lblMinhaAposta);
             this.Controls.Add(this.lblAdversario3);
             this.Controls.Add(this.lblAdversario2);
             this.Controls.Add(this.lblAdversario);
@@ -307,5 +331,7 @@
         private System.Windows.Forms.Label lblAdversario;
         private System.Windows.Forms.Label lblAdversario2;
         private System.Windows.Forms.Label lblAdversario3;
+        private System.Windows.Forms.Label lblMinhaAposta;
+        private System.Windows.Forms.Label lblMinhaCartaApostada;
     }
 }
