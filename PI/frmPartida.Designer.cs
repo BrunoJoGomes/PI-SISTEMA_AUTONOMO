@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPartida));
             this.btnVoltar = new System.Windows.Forms.Button();
             this.lblPartida = new System.Windows.Forms.Label();
             this.lblIdPartida = new System.Windows.Forms.Label();
@@ -39,7 +40,6 @@
             this.txtMinhaSenha = new System.Windows.Forms.TextBox();
             this.lblIdJogadorSorteado = new System.Windows.Forms.Label();
             this.lblIdSorteado = new System.Windows.Forms.Label();
-            this.lblValorCarta = new System.Windows.Forms.Label();
             this.tmrIniciarAutomacao = new System.Windows.Forms.Timer(this.components);
             this.btnIniciarAutomacao = new System.Windows.Forms.Button();
             this.lblVez = new System.Windows.Forms.Label();
@@ -145,15 +145,6 @@
             this.lblIdSorteado.TabIndex = 39;
             this.lblIdSorteado.Text = ".";
             // 
-            // lblValorCarta
-            // 
-            this.lblValorCarta.AutoSize = true;
-            this.lblValorCarta.Location = new System.Drawing.Point(873, 167);
-            this.lblValorCarta.Name = "lblValorCarta";
-            this.lblValorCarta.Size = new System.Drawing.Size(10, 16);
-            this.lblValorCarta.TabIndex = 45;
-            this.lblValorCarta.Text = ".";
-            // 
             // tmrIniciarAutomacao
             // 
             this.tmrIniciarAutomacao.Interval = 15000;
@@ -173,6 +164,7 @@
             // lblVez
             // 
             this.lblVez.AutoSize = true;
+            this.lblVez.BackColor = System.Drawing.Color.Transparent;
             this.lblVez.Location = new System.Drawing.Point(715, 287);
             this.lblVez.Name = "lblVez";
             this.lblVez.Size = new System.Drawing.Size(10, 16);
@@ -182,6 +174,7 @@
             // lblVezTitulo
             // 
             this.lblVezTitulo.AutoSize = true;
+            this.lblVezTitulo.BackColor = System.Drawing.Color.Transparent;
             this.lblVezTitulo.Location = new System.Drawing.Point(676, 287);
             this.lblVezTitulo.Name = "lblVezTitulo";
             this.lblVezTitulo.Size = new System.Drawing.Size(33, 16);
@@ -191,6 +184,7 @@
             // lxtStatusRodadaTitulo
             // 
             this.lxtStatusRodadaTitulo.AutoSize = true;
+            this.lxtStatusRodadaTitulo.BackColor = System.Drawing.Color.Transparent;
             this.lxtStatusRodadaTitulo.Location = new System.Drawing.Point(676, 331);
             this.lxtStatusRodadaTitulo.Name = "lxtStatusRodadaTitulo";
             this.lxtStatusRodadaTitulo.Size = new System.Drawing.Size(113, 16);
@@ -200,6 +194,7 @@
             // lblStatusRodada
             // 
             this.lblStatusRodada.AutoSize = true;
+            this.lblStatusRodada.BackColor = System.Drawing.Color.Transparent;
             this.lblStatusRodada.Location = new System.Drawing.Point(792, 331);
             this.lblStatusRodada.Name = "lblStatusRodada";
             this.lblStatusRodada.Size = new System.Drawing.Size(10, 16);
@@ -237,7 +232,7 @@
             // lblAdversario2
             // 
             this.lblAdversario2.AutoSize = true;
-            this.lblAdversario2.Location = new System.Drawing.Point(139, 203);
+            this.lblAdversario2.Location = new System.Drawing.Point(124, 203);
             this.lblAdversario2.Name = "lblAdversario2";
             this.lblAdversario2.Size = new System.Drawing.Size(10, 16);
             this.lblAdversario2.TabIndex = 54;
@@ -246,7 +241,7 @@
             // lblAdversario3
             // 
             this.lblAdversario3.AutoSize = true;
-            this.lblAdversario3.Location = new System.Drawing.Point(1268, 123);
+            this.lblAdversario3.Location = new System.Drawing.Point(1289, 203);
             this.lblAdversario3.Name = "lblAdversario3";
             this.lblAdversario3.Size = new System.Drawing.Size(10, 16);
             this.lblAdversario3.TabIndex = 55;
@@ -256,6 +251,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::PI.Properties.Resources.fundo_oficial;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1468, 689);
             this.Controls.Add(this.lblAdversario3);
             this.Controls.Add(this.lblAdversario2);
@@ -267,7 +264,6 @@
             this.Controls.Add(this.lblVezTitulo);
             this.Controls.Add(this.lblVez);
             this.Controls.Add(this.btnIniciarAutomacao);
-            this.Controls.Add(this.lblValorCarta);
             this.Controls.Add(this.lblIdSorteado);
             this.Controls.Add(this.lblIdJogadorSorteado);
             this.Controls.Add(this.txtMinhaSenha);
@@ -278,6 +274,7 @@
             this.Controls.Add(this.lblIdPartida);
             this.Controls.Add(this.lblPartida);
             this.Controls.Add(this.btnVoltar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmPartida";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -299,7 +296,6 @@
         private System.Windows.Forms.TextBox txtMinhaSenha;
         private System.Windows.Forms.Label lblIdJogadorSorteado;
         private System.Windows.Forms.Label lblIdSorteado;
-        private System.Windows.Forms.Label lblValorCarta;
         private System.Windows.Forms.Timer tmrIniciarAutomacao;
         private System.Windows.Forms.Button btnIniciarAutomacao;
         private System.Windows.Forms.Label lblVez;

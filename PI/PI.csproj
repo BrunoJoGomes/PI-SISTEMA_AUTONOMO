@@ -122,6 +122,10 @@
     <Content Include="Resources\Copas1.png" />
     <Content Include="Resources\Espadas1.png" />
     <Content Include="Resources\Estrela1.png" />
+    <None Include="Resources\fundo.png" />
+    <None Include="Resources\lobby 2.png" />
+    <None Include="Resources\fundo2.png" />
+    <None Include="Resources\fundo oficial.png" />
     <Content Include="Resources\Lua1.png" />
     <Content Include="Resources\Ouros1.png" />
     <Content Include="Resources\Paus1.png" />

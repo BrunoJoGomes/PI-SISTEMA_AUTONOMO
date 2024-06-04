@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLobby));
             this.lstPartida = new System.Windows.Forms.ListBox();
             this.lstJogadores = new System.Windows.Forms.ListBox();
             this.lblVersao = new System.Windows.Forms.Label();
@@ -58,7 +59,7 @@
             this.lstPartida.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lstPartida.FormattingEnabled = true;
             this.lstPartida.ItemHeight = 16;
-            this.lstPartida.Location = new System.Drawing.Point(12, 65);
+            this.lstPartida.Location = new System.Drawing.Point(16, 66);
             this.lstPartida.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lstPartida.Name = "lstPartida";
             this.lstPartida.Size = new System.Drawing.Size(286, 292);
@@ -70,7 +71,7 @@
             this.lstJogadores.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lstJogadores.FormattingEnabled = true;
             this.lstJogadores.ItemHeight = 16;
-            this.lstJogadores.Location = new System.Drawing.Point(304, 65);
+            this.lstJogadores.Location = new System.Drawing.Point(308, 66);
             this.lstJogadores.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lstJogadores.Name = "lstJogadores";
             this.lstJogadores.Size = new System.Drawing.Size(192, 292);
@@ -80,7 +81,7 @@
             // 
             this.lblVersao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblVersao.AutoSize = true;
-            this.lblVersao.Location = new System.Drawing.Point(946, 426);
+            this.lblVersao.Location = new System.Drawing.Point(992, 426);
             this.lblVersao.Name = "lblVersao";
             this.lblVersao.Size = new System.Drawing.Size(10, 16);
             this.lblVersao.TabIndex = 7;
@@ -115,7 +116,7 @@
             // lblNomeGrupo
             // 
             this.lblNomeGrupo.AutoSize = true;
-            this.lblNomeGrupo.Location = new System.Drawing.Point(876, 15);
+            this.lblNomeGrupo.Location = new System.Drawing.Point(924, 16);
             this.lblNomeGrupo.Name = "lblNomeGrupo";
             this.lblNomeGrupo.Size = new System.Drawing.Size(88, 16);
             this.lblNomeGrupo.TabIndex = 13;
@@ -265,7 +266,7 @@
             // lblIdPartida
             // 
             this.lblIdPartida.AutoSize = true;
-            this.lblIdPartida.Location = new System.Drawing.Point(506, 69);
+            this.lblIdPartida.Location = new System.Drawing.Point(503, 69);
             this.lblIdPartida.Name = "lblIdPartida";
             this.lblIdPartida.Size = new System.Drawing.Size(84, 16);
             this.lblIdPartida.TabIndex = 32;
@@ -283,7 +284,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(976, 451);
+            this.BackgroundImage = global::PI.Properties.Resources.lobby_2;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1024, 451);
             this.Controls.Add(this.txtIdPartida);
             this.Controls.Add(this.lblIdPartida);
             this.Controls.Add(this.cmbStatus);
@@ -307,6 +310,7 @@
             this.Controls.Add(this.lblVersao);
             this.Controls.Add(this.lstJogadores);
             this.Controls.Add(this.lstPartida);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmLobby";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

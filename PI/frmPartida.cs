@@ -44,6 +44,9 @@ namespace PI
 
         List<Carta> listaDeCartasAdversario3 = new List<Carta>();
 
+        List<Label> minhasLabels = new List<Label>();
+
+
 
         string informacoes;
         string[] dadosRodada;
@@ -140,19 +143,6 @@ namespace PI
                     }
                 }
                 
-                List<Label> lista = new List<Label>();
-
-                //Label lbl1 = new Label();
-                //lbl1.Location.X =
-                Label lbl1 = new Label();
-                lbl1.Location = new Point(350,360);
-                lbl1.Height = 16;
-                lbl1.Width = 10;
-                lbl1.Text = "10";
-                lbl1.Visible = true;
-                //lbl1.Location.X = 500;
-                Controls.Add(lbl1);
-
 
                 string retorno = Jogo.ConsultarMao(idpartida);
 
@@ -333,6 +323,29 @@ namespace PI
                     {
                         minhaListaDeCartas.Add(new Carta());
                     }
+                }
+
+                for (int i = 0; i < 15; i++)
+                {
+                    if (i == 0)
+                    {
+                        minhasLabels.Add(null);
+                    }
+                    else
+                    {
+                        minhasLabels.Add(new Label());
+                    }
+                }
+
+                for (int i = 1; i < 15; i++)
+                {
+                    minhasLabels[i].Location = new Point(minhaListaDeCartas[i].Left, minhaListaDeCartas[i].Top);
+                    minhasLabels[i].Height = 16;
+                    minhasLabels[i].Width = 15;
+                    //minhasLabels[i].BackColor = Color.Transparent;
+                    minhasLabels[i].Text = "Berlindos";
+                    minhasLabels[i].Visible = true;
+                    Controls.Add(minhasLabels[i]);
                 }
 
                 for (int i = 0; i < 15; i++)
@@ -630,7 +643,7 @@ namespace PI
 
             AtualizarCampos();
             pontuacaoAnterior = pontuacaoAtual;
-            pontuacaoAtual = Pontuacao();
+            //pontuacaoAtual = Pontuacao();
             string retornoJogadas = Jogo.ExibirJogadas2(Convert.ToInt32(idPartida), 1);
             retornoJogadas = retornoJogadas.Replace('\r', ' ');
 
@@ -644,42 +657,63 @@ namespace PI
                 }
             }
 
-            //if (retornoJogadas != "")
-            //{
-            //    retornoJogadas = retornoJogadas.Replace('\r', ' ');
-            //    string[] jogadas = retornoJogadas.Split('\n');
-            //    string[] ultimaJogada;
-            //    if (jogadas[jogadas.Length - 2].StartsWith(idJogadorUm) == false)
-            //    {
-            //        //Round, Id, Naipe, Valor, Posição
-            //        ultimaJogada = jogadas[jogadas.Length - 2].Split(',');
-            //        for (int i = 0; i < ultimaJogada.Length; i++)
-            //        {
-            //            Console.WriteLine($"Dados ultima jogada {ultimaJogada[i]}");
-            //        }
-            //        if (ultimaJogada[1] == adversario[0] && listaDeCartasAdversario[Convert.ToInt32(ultimaJogada[4])].valor == null)
-            //        {
+            if (retornoJogadas != "")
+            {
+                retornoJogadas = retornoJogadas.Replace('\r', ' ');
+                string[] jogadas = retornoJogadas.Split('\n');
+                string[] ultimaJogada;
+                if (jogadas[jogadas.Length - 2].StartsWith(meuId) == false)
+                {
+                    //Round, Id, Naipe, Valor, Posição
+                    ultimaJogada = jogadas[jogadas.Length - 2].Split(',');
+                    for (int i = 0; i < ultimaJogada.Length; i++)
+                    {
+                        Console.WriteLine($"Dados ultima jogada {ultimaJogada[i]}");
+                    }
+                    if (ultimaJogada[1] == adversario[0] && listaDeCartasAdversario[Convert.ToInt32(ultimaJogada[4])].valor == null)
+                    {
 
-            //            listaDeCartasAdversario[Convert.ToInt32(ultimaJogada[4])].valor = ultimaJogada[3];
-            //            listaDeCartasAdversario[Convert.ToInt32(ultimaJogada[4])].VirarImagem();
-            //            Console.WriteLine(listaDeCartasAdversario[Convert.ToInt32(ultimaJogada[4])].valor);
-            //        }
-            //        else if (ultimaJogada[1] == adversario2[0] && listaDeCartasAdversario2[Convert.ToInt32(ultimaJogada[4])].naipe == null)
-            //        {
+                        listaDeCartasAdversario[Convert.ToInt32(ultimaJogada[4])].valor = ultimaJogada[3];
+                        listaDeCartasAdversario[Convert.ToInt32(ultimaJogada[4])].VirarImagem();
+                        Console.WriteLine(listaDeCartasAdversario[Convert.ToInt32(ultimaJogada[4])].valor);
+                        Label lbl1 = new Label();
+                        lbl1.AutoSize = false;
+                        lbl1.TextAlign = ContentAlignment.MiddleCenter;
+                        lbl1.Dock = DockStyle.Fill;
+                        lbl1.Text = ultimaJogada[3];
+                        lbl1.Font = new Font("Modern No. 20", 15);
+                        listaDeCartasAdversario[Convert.ToInt32(ultimaJogada[4])].Controls.Add(lbl1);
+                    }
+                    else if (ultimaJogada[1] == adversario2[0] && listaDeCartasAdversario2[Convert.ToInt32(ultimaJogada[4])].valor == null)
+                    {
 
-            //            listaDeCartasAdversario2[Convert.ToInt32(ultimaJogada[4])].valor = ultimaJogada[3];
-            //            listaDeCartasAdversario2[Convert.ToInt32(ultimaJogada[4])].VirarImagem();
-            //            Console.WriteLine(listaDeCartasAdversario2[Convert.ToInt32(ultimaJogada[4])].valor);
-            //        }
-            //        else
-            //        {
+                        listaDeCartasAdversario2[Convert.ToInt32(ultimaJogada[4])].valor = ultimaJogada[3];
+                        listaDeCartasAdversario2[Convert.ToInt32(ultimaJogada[4])].VirarImagem();
+                        Console.WriteLine(listaDeCartasAdversario2[Convert.ToInt32(ultimaJogada[4])].valor);
+                        Label lbl1 = new Label();
+                        lbl1.AutoSize = false;
+                        lbl1.TextAlign = ContentAlignment.MiddleCenter;
+                        lbl1.Dock = DockStyle.Fill;
+                        lbl1.Text = ultimaJogada[3];
+                        lbl1.Font = new Font("Modern No. 20", 15);
+                        listaDeCartasAdversario2[Convert.ToInt32(ultimaJogada[4])].Controls.Add(lbl1);
+                    }
+                    else if (ultimaJogada[1] == adversario3[0] && listaDeCartasAdversario3[Convert.ToInt32(ultimaJogada[4])].valor == null)
+                    {
 
-            //            listaDeCartasAdversario3[Convert.ToInt32(ultimaJogada[4])].valor = ultimaJogada[3];
-            //            listaDeCartasAdversario3[Convert.ToInt32(ultimaJogada[4])].VirarImagem();
-            //            Console.WriteLine(listaDeCartasAdversario3[Convert.ToInt32(ultimaJogada[4])].valor);
-            //        }
-            //    }
-            //}
+                        listaDeCartasAdversario3[Convert.ToInt32(ultimaJogada[4])].valor = ultimaJogada[3];
+                        listaDeCartasAdversario3[Convert.ToInt32(ultimaJogada[4])].VirarImagem();
+                        Console.WriteLine(listaDeCartasAdversario3[Convert.ToInt32(ultimaJogada[4])].valor);
+                        Label lbl1 = new Label();
+                        lbl1.AutoSize = false;
+                        lbl1.TextAlign = ContentAlignment.MiddleCenter;
+                        lbl1.Dock = DockStyle.Fill;
+                        lbl1.Text = ultimaJogada[3];
+                        lbl1.Font = new Font("Modern No. 20", 15);
+                        listaDeCartasAdversario3[Convert.ToInt32(ultimaJogada[4])].Controls.Add(lbl1);
+                    }
+                }
+            }
 
 
             if (ConsultarVez())
@@ -705,25 +739,20 @@ namespace PI
                     Console.WriteLine("Eu começo!");
                     
                     string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, minhaListaDeCartas.Count-1);
-                    MessageBox.Show("Valor da carta jogada: " + valorCarta);
+                    //MessageBox.Show("Valor da carta jogada: " + valorCarta);
                     minhaListaDeCartas[minhaListaDeCartas.Count - 1].valor = valorCarta;
                     minhaListaDeCartas[minhaListaDeCartas.Count - 1].VirarImagem();
-                    lblValorCarta.Text = valorCarta;
+                    //lblValorCarta.Text = valorCarta;
+                    Label lbl1 = new Label();
+                    lbl1.AutoSize = false;
+                    lbl1.TextAlign = ContentAlignment.MiddleCenter;
+                    lbl1.Dock = DockStyle.Fill;
+                    lbl1.Font = new Font("Modern No. 20", 15);
+                    lbl1.Text = valorCarta;
+                    minhaListaDeCartas[minhaListaDeCartas.Count - 1].Controls.Add(lbl1);
+                    minhasLabels[minhaListaDeCartas.Count - 1].Text = valorCarta;
 
                     AtualizarCampos();
-                    //int idJogadorApostando = Convert.ToInt32(idJogadorUm);
-                    //string senhaJogadorApostando = senhaJogadorUm;
-                    //int cartaApostada = 0;
-
-                    //string valorCartaApostada = Jogo.Apostar(idJogadorApostando, senhaJogadorApostando, cartaApostada);
-                    //if (valorCartaApostada == "0")
-                    //{
-                    //    MessageBox.Show("Pulou a aposta!");
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show("Carta Apostada: " + valorCartaApostada);
-                    //}
 
 
                 }
@@ -738,7 +767,10 @@ namespace PI
                     //// [3] Valor
                     //// [4] Posição
 
-                    if (pontuacaoAtual == pontuacaoAnterior) //Bot não ganhou ou ainda pode ganhar
+                    Console.WriteLine($"Pontuação atual: {Pontuacao()}");
+                    Console.WriteLine($"Pontuação anterior: {pontuacaoAnterior}");
+
+                    if (Pontuacao() == pontuacaoAnterior) //Bot não ganhou ou ainda pode ganhar
                     {
 
 
@@ -749,8 +781,14 @@ namespace PI
                      
                         //string[] ultimaJogada = infos[infos.Length - 2].Split(',');
                         string[] dadosVencedor = infos[posicaoVencedor].Split(',');
+
+                        for (int i = 0; i < dadosVencedor.Length; i++)
+                        {
+                            Console.WriteLine($"{dadosVencedor[i]}");
+                        }
                         List<string> jogadasRodada = new List<string>();
 
+                        posicaoVencedor += 4;
                         //Naipe jogado pelo ultimo vencedor
                         string naipeJogado = dadosVencedor[2];
                         int valorJogado = Convert.ToInt32(dadosVencedor[3]);
@@ -759,26 +797,14 @@ namespace PI
 
                         string valorCarta;
 
-                        if (vetorJogadores.Length <= 3)
-                        {
-                            posicaoVencedor += 2;
-                        }
-                        else
-                        {
-                            posicaoVencedor += 4;
-                        }
-
-                        //for (int i = infos.Length-2; i >= posicaoVencedor; i--)
+                        //if (vetorJogadores.Length <= 3)
                         //{
-                        //    if (Convert.ToInt32(infos[i].Substring(9)) > valorJogado && infos[i].Substring(7,1) == naipeJogado)
-                        //    {
-                        //        valorJogado = Convert.ToInt32(infos[i].Substring(9));
-                        //    }
-                        //    Console.WriteLine($"Naipes jogados na rodada: {infos[i].Substring(7, 1)}");
-                        //    Console.WriteLine($"Valores jogados na rodada: {infos[i].Substring(9)}");
+                        //    posicaoVencedor += 2;
                         //}
-
-
+                        //else
+                        //{
+                        //    posicaoVencedor += 4;
+                        //}
 
                         int posicao = ComparaNaipes3(minhaListaDeCartas, naipeJogado);
                         if (posicao == -1)
@@ -792,7 +818,14 @@ namespace PI
                                 MessageBox.Show("Valor da carta jogada: " + valorCarta);
                                 minhaListaDeCartas[posicao].valor = valorCarta;
                                 minhaListaDeCartas[posicao].VirarImagem();
-                                lblValorCarta.Text = valorCarta;
+                                Label lbl1 = new Label();
+                                lbl1.AutoSize = false;
+                                lbl1.TextAlign = ContentAlignment.MiddleCenter;
+                                lbl1.Dock = DockStyle.Fill;
+                                lbl1.Font = new Font("Modern No. 20", 15);
+                                lbl1.Text = valorCarta;
+                                minhaListaDeCartas[posicao].Controls.Add(lbl1);
+                                //lblValorCarta.Text = valorCarta;
                             }
                             else //Encontrou um coração
                             {
@@ -801,7 +834,13 @@ namespace PI
                                 MessageBox.Show("Valor da carta jogada: " + valorCarta);
                                 minhaListaDeCartas[posicao].valor = valorCarta;
                                 minhaListaDeCartas[posicao].VirarImagem();
-                                lblValorCarta.Text = valorCarta;
+                                Label lbl1 = new Label();
+                                lbl1.AutoSize = false;
+                                lbl1.TextAlign = ContentAlignment.MiddleCenter;
+                                lbl1.Dock = DockStyle.Fill;
+                                lbl1.Font = new Font("  ", 15);
+                                lbl1.Text = valorCarta;
+                                minhaListaDeCartas[posicao].Controls.Add(lbl1);
                             }
 
 
@@ -813,36 +852,17 @@ namespace PI
                             MessageBox.Show("Valor da carta jogada: " + valorCarta);
                             minhaListaDeCartas[posicao].valor = valorCarta;
                             minhaListaDeCartas[posicao].VirarImagem();
-                            lblValorCarta.Text = valorCarta;
+                            Label lbl1 = new Label();
+                            lbl1.AutoSize = false;
+                            lbl1.TextAlign = ContentAlignment.MiddleCenter;
+                            lbl1.Dock = DockStyle.Fill;
+                            lbl1.Font = new Font("Modern No. 20", 15);
+                            lbl1.Text = valorCarta;
+                            minhaListaDeCartas[posicao].Controls.Add(lbl1);
                         }
 
                         AtualizarCampos();
 
-                        //string retorno = Jogo.ExibirJogadas2(Convert.ToInt32(idPartida), 1);
-                        //retorno = retorno.Replace('\r', ' ');
-                        //string[] ultimaRodada;
-
-                        //string[] rodadas = retornoJogadas.Split('\n');
-                        //ultimaRodada = rodadas[rodadas.Length - 1].Split(',');
-
-
-                        //if (Convert.ToInt32(ultimaRodada[0]) == 7)
-                        //{
-                        //    if ()
-                        //}
-
-                        //int idJogadorApostando = Convert.ToInt32(idJogadorUm);
-                        //string senhaJogadorApostando = senhaJogadorUm;
-                        //int cartaApostada = 0;
-                        //string valorCartaApostada = Jogo.Apostar(idJogadorApostando, senhaJogadorApostando, cartaApostada);
-                        //if (valorCartaApostada == "0")
-                        //{
-                        //    MessageBox.Show("Pulou a aposta!");
-                        //}
-                        //else
-                        //{
-                        //    MessageBox.Show("Carta Apostada: " + valorCartaApostada);
-                        //}
 
                     }
                     else //bot ganhou ultima rodada, pode escolher qualquer carta para jogar
@@ -856,132 +876,99 @@ namespace PI
                         posicaoVencedor += 4;
                         //}
                         int posicao = ChecaPosicao(minhaListaDeCartas,minhaListaDeCartas.Count-1);
-                        //if (posicao == -1)
-                        //{
-                            
-                            //posicao = ComparaNaipes2(minhaListaDeCartas, "E");
-                            //Console.WriteLine(posicao);
-                            //string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicao);
-                            //MessageBox.Show("Valor da carta jogada: " + valorCarta);
-                            //minhaListaDeCartas[posicao].valor = valorCarta;
-                            //minhaListaDeCartas[posicao].VirarImagem();
-                            //lblValorCarta.Text = valorCarta;
 
-                            //AtualizarCampos();
-
-                            //int idJogadorApostando = Convert.ToInt32(idJogadorUm);
-                            //string senhaJogadorApostando = senhaJogadorUm;
-                            //int cartaApostada = 0;
-                            //string valorCartaApostada = Jogo.Apostar(idJogadorApostando, senhaJogadorApostando, cartaApostada);
-                            //if (valorCartaApostada == "0")
-                            //{
-                            //    MessageBox.Show("Pulou a aposta!");
-                            //}
-                            //else
-                            //{
-                            //    MessageBox.Show("Carta Apostada: " + valorCartaApostada);
-                            //}
-                        //}
-                        //else
-                        //{
                             Console.WriteLine(posicao);
                             string valorCarta = Jogo.Jogar(idJogadorJogando, senhaJogadorJogando, posicao);
                             MessageBox.Show("Valor da carta jogada: " + valorCarta);
                             minhaListaDeCartas[posicao].valor = valorCarta;
                             minhaListaDeCartas[posicao].VirarImagem();
-                            lblValorCarta.Text = valorCarta;
-
+                            Label lbl1 = new Label();
+                            lbl1.AutoSize = false;
+                            lbl1.TextAlign = ContentAlignment.MiddleCenter;
+                            lbl1.Dock = DockStyle.Fill;
+                            lbl1.Font = new Font("Modern No. 20", 15);
+                            lbl1.Text = valorCarta;
+                            minhaListaDeCartas[posicao].Controls.Add(lbl1);
                             AtualizarCampos();
 
-                            //int idJogadorApostando = Convert.ToInt32(idJogadorUm);
-                            //string senhaJogadorApostando = senhaJogadorUm;
-                            //int cartaApostada = 0;
-                            //string valorCartaApostada = Jogo.Apostar(idJogadorApostando, senhaJogadorApostando, cartaApostada);
-                            //if (valorCartaApostada == "0")
-                            //{
-                            //    MessageBox.Show("Pulou a aposta!");
-                            //}
-                            //else
-                            //{
-                            //    MessageBox.Show("Carta Apostada: " + valorCartaApostada);
-                            //}
-                        //}
                     }
 
                 }
                 AtualizarCampos();
 
-
-                //string retorno = Jogo.ExibirJogadas2(Convert.ToInt32(idPartida), 1);
-
-                //string[] ultimaRodada = new string[6];
-                //if (retorno != "")
-                //{
-                //    retorno = retorno.Replace('\r', ' ');
-                    
-
-                //    string[] rodadas = retornoJogadas.Split('\n');
-                //    ultimaRodada = rodadas[rodadas.Length - 2].Split(',');
-
-                //    for (int i = 0; i < ultimaRodada.Length; i++)
-                //    {
-                //        Console.WriteLine($"Vetor ultima rodada {ultimaRodada[i]} posição {i}");
-                //    }
-                //}
-
-
-                //if (Convert.ToInt32(ultimaRodada[0]) == 7)
-                //{
-                //    int posicao = ChecaValor(minhaListaDeCartas,Pontuacao());
-                //    if(posicao == -1)
-                //    {
-                //        posicao = ChecaValor(minhaListaDeCartas, Pontuacao()-1);
-                //        string valorCartaApostada = Jogo.Apostar(Convert.ToInt32(idJogadorUm), senhaJogadorUm, cartaApostada);
-                //        MessageBox.Show("Carta Apostada: " + valorCartaApostada);
-
-                //    }
-                //    else
-                //    {
-                //        cartaApostada = ChecaPosicao2(minhaListaDeCartas,posicao);
-                //        if(cartaApostada == -1)
-                //        {
-                //            cartaApostada = ChecaPosicao(minhaListaDeCartas, posicao);
-                //        }
-                //        string valorCartaApostada = Jogo.Apostar(Convert.ToInt32(idJogadorUm), senhaJogadorUm, cartaApostada);
-                //        MessageBox.Show("Carta Apostada: " + valorCartaApostada);
-                //    }
-                //}
-                //else
-                //{
-
                 if(numRodada == "7")
                 {
-                    int posicao = ChecaValor(minhaListaDeCartas, Pontuacao());
-                    if (posicao == -1)
+                    int posicao;
+                    if (Pontuacao() <= 7)
                     {
-                        posicao = ChecaValor(minhaListaDeCartas, Pontuacao() + 1);
-                        string valorCartaApostada = Jogo.Apostar(Convert.ToInt32(meuId), minhaSenha, posicao);
-                        MessageBox.Show("Carta Apostada: " + valorCartaApostada);
-                        minhaListaDeCartas[posicao].valor = valorCartaApostada;
-                        minhaListaDeCartas[posicao].VirarImagem();
-                        lblValorCarta.Text = valorCartaApostada;
+                        posicao = ChecaPosicao(minhaListaDeCartas, 7);
+                        if(posicao == -1)
+                        {
+                            posicao = ChecaPosicao2(minhaListaDeCartas, 7);
+                            string valorCartaApostada = Jogo.Apostar(Convert.ToInt32(meuId), minhaSenha, posicao);
+                            MessageBox.Show("Carta Apostada: " + valorCartaApostada);
+                            minhaListaDeCartas[posicao].valor = valorCartaApostada;
+                            minhaListaDeCartas[posicao].VirarImagem();
+                            Label lbl1 = new Label();
+                            lbl1.AutoSize = false;
+                            lbl1.TextAlign = ContentAlignment.MiddleCenter;
+                            lbl1.Dock = DockStyle.Fill;
+                            lbl1.Font = new Font("Modern No. 20", 15);
+                            lbl1.Text = valorCartaApostada;
+                            minhaListaDeCartas[posicao].Controls.Add(lbl1);
+                        }
+                        else
+                        {
+                            string valorCartaApostada = Jogo.Apostar(Convert.ToInt32(meuId), minhaSenha, posicao);
+                            MessageBox.Show("Carta Apostada: " + valorCartaApostada);
+                            minhaListaDeCartas[posicao].valor = valorCartaApostada;
+                            minhaListaDeCartas[posicao].VirarImagem();
+                            Label lbl1 = new Label();
+                            lbl1.AutoSize = false;
+                            lbl1.TextAlign = ContentAlignment.MiddleCenter;
+                            lbl1.Dock = DockStyle.Fill;
+                            lbl1.Font = new Font("Modern No. 20", 15);
+                            lbl1.Text = valorCartaApostada;
+                            minhaListaDeCartas[posicao].Controls.Add(lbl1);
+                        }
+
 
                     }
                     else
                     {
-                        int cartaApostada = ChecaPosicao2(minhaListaDeCartas, posicao);
-                        if (cartaApostada == -1)
+                        posicao = ChecaPosicao2(minhaListaDeCartas, 7);
+                        if (posicao == -1)
                         {
-                            cartaApostada = ChecaPosicao(minhaListaDeCartas, posicao);
+                            posicao = ChecaPosicao(minhaListaDeCartas, 7);
+                            string valorCartaApostada = Jogo.Apostar(Convert.ToInt32(meuId), minhaSenha, posicao);
+                            MessageBox.Show("Carta Apostada: " + valorCartaApostada);
+                            minhaListaDeCartas[posicao].valor = valorCartaApostada;
+                            minhaListaDeCartas[posicao].VirarImagem();
+                            Label lbl1 = new Label();
+                            lbl1.AutoSize = false;
+                            lbl1.TextAlign = ContentAlignment.MiddleCenter;
+                            lbl1.Dock = DockStyle.Fill;
+                            lbl1.Font = new Font("Modern No. 20", 15);
+                            lbl1.Text = valorCartaApostada;
+                            minhaListaDeCartas[posicao].Controls.Add(lbl1);
                         }
-                        string valorCartaApostada = Jogo.Apostar(Convert.ToInt32(meuId), minhaSenha, cartaApostada);
-                        MessageBox.Show("Carta Apostada: " + valorCartaApostada);
-                        minhaListaDeCartas[posicao].valor = valorCartaApostada;
-                        minhaListaDeCartas[posicao].VirarImagem();
-                        lblValorCarta.Text = valorCartaApostada;
+                        else
+                        {
+                            string valorCartaApostada = Jogo.Apostar(Convert.ToInt32(meuId), minhaSenha, posicao);
+                            MessageBox.Show("Carta Apostada: " + valorCartaApostada);
+                            minhaListaDeCartas[posicao].valor = valorCartaApostada;
+                            minhaListaDeCartas[posicao].VirarImagem();
+                            Label lbl1 = new Label();
+                            lbl1.AutoSize = false;
+                            lbl1.TextAlign = ContentAlignment.MiddleCenter;
+                            lbl1.Dock = DockStyle.Fill;
+                            lbl1.Text = valorCartaApostada;
+                            lbl1.Font = new Font("Modern No. 20", 15);
+                            minhaListaDeCartas[posicao].Controls.Add(lbl1);
+                        }
                     }
                 }
-                else
+                else if (Convert.ToInt32(numRodada) < 7)
                 {
                     string valorCartaApostada = Jogo.Apostar(Convert.ToInt32(meuId), minhaSenha, 0);
                     if (valorCartaApostada == "0")
@@ -994,8 +981,7 @@ namespace PI
                     }
                 }
 
-                //}
-
+                pontuacaoAtual = Pontuacao();
 
             }
 
@@ -1062,24 +1048,9 @@ namespace PI
                 }
 
             }
+            Console.WriteLine($"Não achei o naipe {naipe} vou retornar -1");
             return -1;
         }
-
-        ////Procura na lista com base na posição e no naipe
-        //public int ComparaNaipes3(List<Carta> cartas, string naipe, int posicao)
-        //{
-        //    for (int i = posicao; i <= minhaListaDeCartas.Count; i++)
-        //    {
-        //        if (cartas[posicao].valor == null && cartas[posicao].naipe.ToString() == naipe)
-        //        {
-
-        //            return posicao;
-        //        }
-        //    }
-
-        //    return -1;
-
-        //}
 
 
         public int ChecaValor(List<Carta> cartas, int valor) 
@@ -1153,6 +1124,7 @@ namespace PI
         {
             
             informacoes = Jogo.VerificarVez2(Convert.ToInt32(idDaPartida));
+            Console.WriteLine(informacoes);
             dadosRodada = informacoes.Split(',');
             statusPartida = dadosRodada[0];
             idJogadorDaVez = dadosRodada[1];
@@ -1161,6 +1133,8 @@ namespace PI
             lblVez.Text = idJogadorDaVez;
             lblStatusRodada.Text = statusRodada;
         }
+
+
 
         public bool ConsultarVez()
         {
