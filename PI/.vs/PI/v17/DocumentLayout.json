@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmpartida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|solutionrelative:frmpartida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|c:\\users\\bruno\\desktop\\pi\\pi-sistema_autonomo\\pi\\frmpartida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|solutionrelative:frmpartida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -16,10 +20,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmlobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|solutionrelative:frmlobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmpartida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|solutionrelative:frmpartida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F12D7DE5-6E22-4A95-B914-BB6C3B6332C1}|PI.csproj|C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmlobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -41,11 +41,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "frmLobby.cs",
               "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmLobby.cs",
               "RelativeDocumentMoniker": "frmLobby.cs",
@@ -66,7 +66,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "PI",
               "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\PI.csproj",
               "RelativeDocumentMoniker": "PI.csproj",
@@ -77,7 +77,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Carta.cs",
               "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\Carta.cs",
               "RelativeDocumentMoniker": "Carta.cs",
@@ -89,7 +89,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "frmPartida.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmPartida.cs",
               "RelativeDocumentMoniker": "frmPartida.cs",
@@ -101,13 +101,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "frmPartida.cs",
               "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmPartida.cs",
               "RelativeDocumentMoniker": "frmPartida.cs",
               "ToolTip": "C:\\Users\\Bruno\\Desktop\\PI\\PI-SISTEMA_AUTONOMO\\PI\\frmPartida.cs",
               "RelativeToolTip": "frmPartida.cs",
-              "ViewState": "AQIAAHkDAAAAAAAAAAAAAEYEAAAAAAAA",
+              "ViewState": "AQIAAHoAAAAAAAAAAAAAAI0AAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-17T02:48:55.483Z",
               "EditorCaption": ""

@@ -141,12 +141,6 @@ namespace PI
                 retornoJogadas = retornoJogadas.Replace('\r', ' ');
                 string[] jogadas = retornoJogadas.Split('\n');
 
-                lstJogadas.Items.Clear();
-                for (int i = 0; i < jogadas.Length; i++)
-                {
-                    lstJogadas.Items.Add(jogadas[i]);
-                }
-
                 string[] ultimaJogada;
                 if (jogadas[jogadas.Length - 2].StartsWith(meuId) == false)
                 {
@@ -564,29 +558,6 @@ namespace PI
             tmrIniciarAutomacao.Enabled = true;
         }
 
-        private void btnJogadas_Click(object sender, EventArgs e)
-        {
-            string retorno = Jogo.ExibirJogadas2(Convert.ToInt32(idPartida), 1);
-            if (retorno == "")
-            {
-                lstJogadas.Items.Add("Não há jogadas");
-            }
-            else if (retorno.Substring(0, 4) == "ERRO")
-            {
-                MessageBox.Show("Ocorreu um erro! \n" + retorno.Substring(5), "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                retorno = retorno.Replace("\r", "");
-                string[] jogadas = retorno.Split('\n');
-
-                lstJogadas.Items.Clear();
-                for (int i = 0; i < jogadas.Length; i++)
-                {
-                    lstJogadas.Items.Add(jogadas[i]);
-                }
-            }
-        }
 
         public void InstanciaCartas()
         {

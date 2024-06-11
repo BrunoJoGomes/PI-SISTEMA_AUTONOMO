@@ -46,8 +46,6 @@
             this.lblVezTitulo = new System.Windows.Forms.Label();
             this.lxtStatusRodadaTitulo = new System.Windows.Forms.Label();
             this.lblStatusRodada = new System.Windows.Forms.Label();
-            this.lstJogadas = new System.Windows.Forms.ListBox();
-            this.btnJogadas = new System.Windows.Forms.Button();
             this.lblAdversario = new System.Windows.Forms.Label();
             this.lblAdversario2 = new System.Windows.Forms.Label();
             this.lblAdversario3 = new System.Windows.Forms.Label();
@@ -203,25 +201,6 @@
             this.lblStatusRodada.TabIndex = 50;
             this.lblStatusRodada.Text = ".";
             // 
-            // lstJogadas
-            // 
-            this.lstJogadas.FormattingEnabled = true;
-            this.lstJogadas.ItemHeight = 16;
-            this.lstJogadas.Location = new System.Drawing.Point(1271, 519);
-            this.lstJogadas.Name = "lstJogadas";
-            this.lstJogadas.Size = new System.Drawing.Size(185, 164);
-            this.lstJogadas.TabIndex = 51;
-            // 
-            // btnJogadas
-            // 
-            this.btnJogadas.Location = new System.Drawing.Point(1271, 480);
-            this.btnJogadas.Name = "btnJogadas";
-            this.btnJogadas.Size = new System.Drawing.Size(185, 33);
-            this.btnJogadas.TabIndex = 52;
-            this.btnJogadas.Text = "Exibir Jogadas";
-            this.btnJogadas.UseVisualStyleBackColor = true;
-            this.btnJogadas.Click += new System.EventHandler(this.btnJogadas_Click);
-            // 
             // lblAdversario
             // 
             this.lblAdversario.AutoSize = true;
@@ -281,8 +260,6 @@
             this.Controls.Add(this.lblAdversario3);
             this.Controls.Add(this.lblAdversario2);
             this.Controls.Add(this.lblAdversario);
-            this.Controls.Add(this.btnJogadas);
-            this.Controls.Add(this.lstJogadas);
             this.Controls.Add(this.lblStatusRodada);
             this.Controls.Add(this.lxtStatusRodadaTitulo);
             this.Controls.Add(this.lblVezTitulo);
@@ -326,8 +303,6 @@
         private System.Windows.Forms.Label lblVezTitulo;
         private System.Windows.Forms.Label lxtStatusRodadaTitulo;
         private System.Windows.Forms.Label lblStatusRodada;
-        private System.Windows.Forms.ListBox lstJogadas;
-        private System.Windows.Forms.Button btnJogadas;
         private System.Windows.Forms.Label lblAdversario;
         private System.Windows.Forms.Label lblAdversario2;
         private System.Windows.Forms.Label lblAdversario3;
